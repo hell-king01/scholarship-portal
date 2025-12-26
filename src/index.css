@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, Optimistic Color Palette for Scholarship Portal */
+    --background: 45 50% 98%;
+    --foreground: 220 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
+
+    /* Warm Orange - Primary (Optimism, Energy, Hope) */
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft Sky Blue - Secondary (Trust, Reliability) */
+    --secondary: 210 85% 95%;
+    --secondary-foreground: 210 75% 40%;
+
+    /* Fresh Green - Success/Accent (Growth, Achievement) */
+    --accent: 152 75% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 45 30% 94%;
+    --muted-foreground: 220 15% 45%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 20% 88%;
+    --input: 45 20% 88%;
+    --ring: 25 95% 53%;
+
+    --radius: 1rem;
+
+    /* Custom Colors for Match Scores */
+    --match-perfect: 152 75% 40%;
+    --match-good: 45 93% 47%;
+    --match-possible: 25 95% 53%;
+    
+    /* Gradient definitions */
+    --gradient-hero: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(35 95% 58%) 50%, hsl(45 95% 60%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(45 50% 98%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(152 75% 40%) 0%, hsl(162 70% 45%) 100%);
+    --gradient-sky: linear-gradient(135deg, hsl(210 85% 95%) 0%, hsl(200 80% 92%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(220 25% 15% / 0.08);
+    --shadow-card: 0 8px 32px -8px hsl(220 25% 15% / 0.12);
+    --shadow-elevated: 0 16px 48px -12px hsl(220 25% 15% / 0.15);
+    --shadow-glow: 0 0 40px hsl(25 95% 53% / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 45 30% 95%;
+
+    --card: 220 25% 14%;
+    --card-foreground: 45 30% 95%;
+
+    --popover: 220 25% 14%;
+    --popover-foreground: 45 30% 95%;
+
+    --primary: 25 95% 55%;
+    --primary-foreground: 220 25% 10%;
+
+    --secondary: 220 25% 20%;
+    --secondary-foreground: 210 85% 80%;
+
+    --accent: 152 70% 45%;
+    --accent-foreground: 220 25% 10%;
+
+    --muted: 220 25% 18%;
+    --muted-foreground: 45 20% 65%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 25 95% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-hero {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5;
+  }
+
+  .card-scholarship {
+    @apply bg-card rounded-3xl p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border/50;
+  }
+
+  .match-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  .match-perfect {
+    @apply bg-accent/15 text-accent;
+  }
+
+  .match-good {
+    @apply bg-yellow-100 text-yellow-700;
+  }
+
+  .match-possible {
+    @apply bg-primary/15 text-primary;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-lg border border-border/50 rounded-3xl;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full hover:bg-muted-foreground/30;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+}
