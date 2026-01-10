@@ -11,6 +11,7 @@ import {
 const languages = [
   { code: 'en', name: 'English', nativeName: 'English' },
   { code: 'hi', name: 'Hindi', nativeName: 'हिंदी' },
+  { code: 'mr', name: 'Marathi', nativeName: 'मराठी' },
 ];
 
 export const LanguageSwitcher = () => {
