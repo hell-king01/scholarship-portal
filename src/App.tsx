@@ -11,6 +11,10 @@ import OnboardingPage from "./pages/OnboardingPage";
 import DashboardPage from "./pages/DashboardPage";
 import ScholarshipsPage from "./pages/ScholarshipsPage";
 import ApplicationsPage from "./pages/ApplicationsPage";
+import { AdminDashboard } from "./pages/AdminDashboard";
+import { MentorDashboard } from "./pages/MentorDashboard";
+import { EligibilityPage } from "./pages/EligibilityPage";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +33,23 @@ const App = () => (
           <Route path="/scholarships" element={<ScholarshipsPage />} />
           <Route path="/applications" element={<ApplicationsPage />} />
           <Route path="/profile" element={<OnboardingPage />} />
+          <Route path="/eligibility" element={<EligibilityPage />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mentor"
+            element={
+              <ProtectedRoute requiredRole="mentor">
+                <MentorDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
