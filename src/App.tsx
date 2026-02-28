@@ -18,6 +18,7 @@ import ScholarshipDetailsPage from "./pages/ScholarshipDetailsPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./context/AuthContext";
+import DocumentsPage from "./pages/DocumentsPage";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,14 @@ const App = () => (
               }
             />
             <Route
+              path="/documents"
+              element={
+                <ProtectedRoute>
+                  <DocumentsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/dashboard"
               element={
                 <ProtectedRoute>
@@ -48,6 +57,7 @@ const App = () => (
               }
             />
             <Route path="/scholarships" element={<ScholarshipsPage />} />
+            <Route path="/scholarship/:id" element={<ScholarshipDetailsPage />} />
             <Route
               path="/applications"
               element={

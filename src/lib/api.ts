@@ -130,15 +130,67 @@ export const profileAPI = {
   },
 };
 
-// OCR APIs (Keep as placeholders or integrate with a function)
+// OCR APIs
 export const ocrAPI = {
   extractText: async (file: File, type: string) => {
-    // This would typically call a Supabase Edge Function or external service
-    console.log('OCR extraction not yet implemented with Supabase');
-    return { text: '', type };
+    // This handles PDF extraction placeholder or sends to backend
+    // Since Tesseract doesn't easily do PDF in browser without setup, we'll return a graceful message.
+    console.warn('PDF OCR extraction proxy. In a real app this hits a Supabase Edge Function.');
+    return {
+      rawText: 'Mock PDF extracted text. (PDF OCR requires backend processing in this setup)',
+      parsed: {},
+      confidence: 85
+    };
   },
   parseDocument: async (text: string, type: string) => {
-    return { parsed: {}, type };
+    const parsed: any = {};
+    // Normalize text: remove multiple spaces, newlines, etc.
+    const cleanText = text.replace(/\n/g, ' ').replace(/\s+/g, ' ');
+
+    if (type === 'aadhar') {
+      // Look for DOB: DD/MM/YYYY
+      const dobMatch = cleanText.match(/(?:DOB|Date of Birth|Birth|YOB)[^\d]*(\d{2}\/\d{2}\/\d{4}|\d{4})/i);
+      if (dobMatch) parsed.dateOfBirth = dobMatch[1];
+
+      // Look for Aadhar number format: XXXX XXXX XXXX
+      const aadharNumMatch = cleanText.match(/\b\d{4}\s\d{4}\s\d{4}\b/);
+      if (aadharNumMatch) parsed.documentNumber = aadharNumMatch[0];
+
+      // Look for Gender
+      const genderMatch = cleanText.match(/\b(Male|Female|Transgender)\b/i);
+      if (genderMatch) parsed.gender = genderMatch[1];
+    }
+    else if (type === 'income') {
+      // Look for currency indicators followed by amounts
+      const incomeMatch = cleanText.match(/(?:Rs\.?|INR|₹|Rupees|Income\s*(?:is)?)\s*([\d,]+(?![\d,]*\s*P(?:er)?\.?\s*A(?:nnum)?\.?))/i) ||
+        cleanText.match(/([\d,]+)\s*(?:Only)/i);
+      if (incomeMatch) parsed.annualIncome = incomeMatch[1].replace(/,/g, '');
+    }
+    else if (type === 'marksheet') {
+      // Look for Percentage like 85% or 85.5%
+      const percentageMatch = cleanText.match(/\b(\d{2,3}(?:\.\d{1,2})?)\s*%/);
+      if (percentageMatch && parseFloat(percentageMatch[1]) <= 100) {
+        parsed.percentage = percentageMatch[1];
+      }
+
+      // Look for CGPA
+      const cgpaMatch = cleanText.match(/(?:CGPA|SGPA)[\s:]*([0-9](\.[0-9]{1,2})?)/i);
+      if (cgpaMatch) {
+        parsed.cgpa = cgpaMatch[1];
+        // Convert CGPA to percentage roughly (multiply by 9.5)
+        const cgpaVal = parseFloat(cgpaMatch[1]);
+        if (!parsed.percentage) {
+          parsed.percentage = Math.min(100, cgpaVal * 9.5).toFixed(2);
+        }
+      }
+    }
+    else if (type === 'caste') {
+      // Look for Caste categories
+      const categoryMatch = cleanText.match(/\b(General|SC|ST|OBC|EWS|NT|VJNT|SBC)\b/i);
+      if (categoryMatch) parsed.category = categoryMatch[1].toUpperCase();
+    }
+
+    return parsed;
   },
 };
 
@@ -160,13 +212,50 @@ export const scholarshipAPI = {
   },
 
   getById: async (id: string) => {
-    const { data, error } = await supabase
-      .from('scholarships')
-      .select('*')
-      .eq('id', id)
-      .single();
-    if (error) throw error;
-    return data;
+    // Intercept hack for "Aspire Leaders Program 2026" requested by user for demo
+    if (id === 'aspire-leaders-program') {
+      return {
+        id: "aspire-leaders-program",
+        title: "Aspire Leaders Program 2026",
+        titleHi: "एस्पायर लीडर्स प्रोग्राम 2026",
+        provider: "Aspire Institute (Harvard University)",
+        providerHi: "एस्पायर संस्थान (हार्वर्ड विश्वविद्यालय)",
+        providerType: "ngo",
+        description: "The Aspire Leaders Program 2026 is a fully funded, 9-week online leadership program launched by the Aspire Institute. It aims to help students discover their abilities, strengthen their professional skills, and grow into impactful leaders.",
+        descriptionHi: "एस्पायर लीडर्स प्रोग्राम 2026 हार्वर्ड के संकाय द्वारा शुरू किया गया एक पूरी तरह से वित्त पोषित ऑनलाइन नेतृत्व कार्यक्रम है।",
+        amount: 100000,
+        amountType: "one-time",
+        deadline: "2026-03-16",
+        eligibility: {
+          categories: ["All"],
+          genders: ["Male", "Female", "Other"],
+          minPercentage: 0,
+          maxIncome: 800000,
+          educationLevels: ["graduation", "postGrad"],
+          states: ["All"],
+          disabilities: false,
+          degreeTypes: ["all"]
+        },
+        requiredDocuments: [],
+        applicationUrl: "https://www.buddy4study.com/page/aspire-leaders-program",
+        tags: ["harvard", "leadership", "grant"],
+        featured: true,
+        status: "active"
+      };
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('scholarships')
+        .select('*')
+        .eq('id', id)
+        .single();
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error("Failed to find scholarship by id:", id, error);
+      throw error;
+    }
   },
 
   getMatches: async () => {
@@ -216,11 +305,37 @@ export const applicationAPI = {
       .insert([{
         user_id: session.user.id,
         scholarship_id: scholarshipId,
-        status: 'draft',
+        status: data.status || 'draft',
         data
       }])
       .select()
       .single();
+    if (error) throw error;
+    return result;
+  },
+
+  updateStatus: async (applicationId: string, status: string, additionalData?: any) => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) throw new Error('Not authenticated');
+
+    // First fetch current to merge data
+    const { data: currentApp, error: fetchError } = await supabase
+      .from('applications')
+      .select('data')
+      .eq('id', applicationId)
+      .single();
+
+    if (fetchError) throw fetchError;
+
+    const mergedData = { ...(currentApp.data || {}), ...(additionalData || {}) };
+
+    const { data: result, error } = await supabase
+      .from('applications')
+      .update({ status, data: mergedData })
+      .eq('id', applicationId)
+      .select()
+      .single();
+
     if (error) throw error;
     return result;
   },

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { FileText, Clock, CheckCircle2, XCircle, AlertCircle, ChevronRight, GraduationCap, Loader2 } from 'lucide-react';
+import { FileText, Clock, CheckCircle2, XCircle, AlertCircle, ChevronRight, GraduationCap, Loader2, UploadCloud, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
@@ -10,12 +10,23 @@ import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { applicationAPI } from '@/lib/api';
 import { useAuth } from '@/hooks/useAuth';
+import { useToast } from '@/hooks/use-toast';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const ApplicationsPage = () => {
   const { t } = useTranslation();
   const { authenticated, loading: authLoading } = useAuth();
+  const { toast } = useToast();
   const [applications, setApplications] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedApp, setSelectedApp] = useState<any>(null);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -40,12 +51,37 @@ const ApplicationsPage = () => {
     }
   }, [authenticated, authLoading]);
 
+  const handleStatusUpdate = async (appId: string, newStatus: string) => {
+    setIsUpdating(true);
+    try {
+      await applicationAPI.updateStatus(appId, newStatus);
+      setApplications(prev => prev.map(app =>
+        app.id === appId ? { ...app, status: newStatus } : app
+      ));
+      if (selectedApp?.id === appId) {
+        setSelectedApp((prev: any) => ({ ...prev, status: newStatus }));
+        if (newStatus === 'disbursed') {
+          toast({ title: "🎉 Congratulations!", description: "Awesome! Your scholarship money has been received." });
+        } else {
+          toast({ title: "Status Updated", description: "Your application progress has been saved." });
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      toast({ title: "Update Failed", description: "Could not update status", variant: "destructive" });
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
   const getStatusConfig = (status: string) => {
     switch (status) {
       case 'draft': return { icon: Clock, color: 'bg-muted text-muted-foreground', label: 'Draft' };
-      case 'submitted': return { icon: CheckCircle2, color: 'bg-blue-100 text-blue-700', label: 'Submitted' };
-      case 'under_review': return { icon: AlertCircle, color: 'bg-yellow-100 text-yellow-700', label: 'Under Review' };
-      case 'approved': return { icon: CheckCircle2, color: 'bg-accent/10 text-accent', label: 'Approved' };
+      case 'submitted': return { icon: CheckCircle2, color: 'bg-blue-100 text-blue-700', label: 'Applied on Portal' };
+      case 'pending_verification': return { icon: AlertCircle, color: 'bg-yellow-100 text-yellow-700', label: 'Under Verification' };
+      case 'under_review': return { icon: AlertCircle, color: 'bg-orange-100 text-orange-700', label: 'Under Review' };
+      case 'approved': return { icon: CheckCircle2, color: 'bg-green-100 text-green-700', label: 'Approved' };
+      case 'disbursed': return { icon: IndianRupee, color: 'bg-emerald-100 text-emerald-800', label: 'Money Received' };
       case 'rejected': return { icon: XCircle, color: 'bg-destructive/10 text-destructive', label: 'Rejected' };
       default: return { icon: Clock, color: 'bg-muted text-muted-foreground', label: status };
     }
@@ -103,7 +139,7 @@ const ApplicationsPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className="bg-card rounded-2xl border border-border p-5 hover:shadow-card transition-shadow cursor-pointer"
-                  onClick={() => scholarship && (window.location.href = `/scholarship/${scholarship.id}`)}
+                  onClick={() => setSelectedApp(app)}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
@@ -117,20 +153,97 @@ const ApplicationsPage = () => {
                       <p className="text-sm text-muted-foreground mb-3">{scholarship?.provider || 'Unknown Provider'}</p>
                       <div className="flex items-center gap-4 text-sm">
                         <span className="text-muted-foreground">
-                          {app.status === 'draft' ? 'Created' : 'Submitted'}: {new Date(app.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                          {app.status === 'draft' ? 'Created' : 'Updated'}: {new Date(app.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                         </span>
-                        {scholarship?.amount && (
+                        {scholarship?.amount > 0 && (
                           <span className="font-medium text-accent">₹{scholarship.amount.toLocaleString('en-IN')}</span>
                         )}
                       </div>
                     </div>
-                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                    <ChevronRight className="h-5 w-5 text-muted-foreground mt-2" />
                   </div>
                 </motion.div>
               );
             })}
           </div>
         )}
+
+        {/* Action Portal Dialog */}
+        <Dialog open={!!selectedApp} onOpenChange={(open) => !open && setSelectedApp(null)}>
+          <DialogContent className="sm:max-w-md rounded-2xl">
+            <DialogHeader>
+              <DialogTitle>Update Progress</DialogTitle>
+              <DialogDescription>
+                Track where your scholarship money is.
+              </DialogDescription>
+            </DialogHeader>
+            {selectedApp && (
+              <div className="space-y-6 pt-4">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-full ${selectedApp.status === 'submitted' ? 'bg-blue-100 text-blue-700' : 'bg-muted'}`}>
+                      <UploadCloud className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium">Applied on Portal</p>
+                      <p className="text-xs text-muted-foreground">Application ID attached.</p>
+                    </div>
+                    {selectedApp.status === 'draft' && (
+                      <Button size="sm" onClick={() => handleStatusUpdate(selectedApp.id, 'submitted')} disabled={isUpdating}>
+                        Mark Applied
+                      </Button>
+                    )}
+                    {['submitted', 'pending_verification', 'approved', 'disbursed'].includes(selectedApp.status) && (
+                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-full ${selectedApp.status === 'pending_verification' ? 'bg-yellow-100 text-yellow-700' : 'bg-muted'}`}>
+                      <AlertCircle className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium">Under Verification</p>
+                      <p className="text-xs text-muted-foreground">Govt. is reviewing documents.</p>
+                    </div>
+                    {selectedApp.status === 'submitted' && (
+                      <Button size="sm" variant="outline" onClick={() => handleStatusUpdate(selectedApp.id, 'pending_verification')} disabled={isUpdating}>
+                        Mark as Verifying
+                      </Button>
+                    )}
+                    {['pending_verification', 'approved', 'disbursed'].includes(selectedApp.status) && (
+                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-full ${selectedApp.status === 'disbursed' ? 'bg-emerald-100 text-emerald-800' : 'bg-muted'}`}>
+                      <IndianRupee className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium">Money Received</p>
+                      <p className="text-xs text-muted-foreground">Amount credited to bank.</p>
+                    </div>
+                    {['pending_verification', 'approved'].includes(selectedApp.status) && (
+                      <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => handleStatusUpdate(selectedApp.id, 'disbursed')} disabled={isUpdating}>
+                        Mark Received
+                      </Button>
+                    )}
+                    {selectedApp.status === 'disbursed' && (
+                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    )}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t flex justify-end">
+                  <Button variant="ghost" onClick={() => window.open(`/scholarship/${selectedApp.scholarships?.id}`, '_self')}>
+                    View Scholarship Details
+                  </Button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
       </main>
       <BottomNav />
     </div>

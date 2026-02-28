@@ -51,7 +51,7 @@ export const Header = () => {
     { path: '/scholarships', icon: Search, label: 'Scholarships' },
     { path: '/applications', icon: FileText, label: 'Applications' },
     { path: '/eligibility', icon: Calculator, label: 'Eligibility' },
-    { path: '/onboarding', icon: Upload, label: 'OCR Upload' },
+    { path: '/documents', icon: Upload, label: 'Documents' },
   ];
 
   // Profile and settings
@@ -81,8 +81,8 @@ export const Header = () => {
       to={item.path}
       onClick={onClick}
       className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive(item.path)
-          ? 'bg-primary text-primary-foreground'
-          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+        ? 'bg-primary text-primary-foreground'
+        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
         }`}
     >
       <item.icon className="h-5 w-5" />
@@ -111,8 +111,8 @@ export const Header = () => {
                 key={item.path}
                 to={item.path}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${isActive(item.path)
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
               >
                 <item.icon className="h-4 w-4" />

@@ -42,14 +42,15 @@ export const OCRFillSection = ({ onExtract, extractedData }: OCRFillSectionProps
     const parsed = data.parsed || {};
     const fields: string[] = [];
 
-    if (parsed.fullName) fields.push(`Name: ${parsed.fullName}`);
-    if (parsed.dateOfBirth) fields.push(`DOB: ${parsed.dateOfBirth}`);
-    if (parsed.category) fields.push(`Category: ${parsed.category}`);
-    if (parsed.annualIncome) fields.push(`Income: ₹${parsed.annualIncome}`);
-    if (parsed.percentage) fields.push(`Percentage: ${parsed.percentage}%`);
-    if (parsed.institution) fields.push(`Institution: ${parsed.institution}`);
+    Object.entries(parsed).forEach(([key, value]) => {
+      if (value) {
+        // CamelCase to Title Case
+        const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        fields.push(`${formattedKey}: ${value}`);
+      }
+    });
 
-    return fields.length > 0 ? fields : null;
+    return fields.length > 0 ? fields : ['No recognizable data found for auto-fill'];
   };
 
   return (

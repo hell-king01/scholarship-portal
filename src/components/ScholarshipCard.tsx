@@ -154,20 +154,24 @@ export const ScholarshipCard = ({ scholarship, userProfile, onSave, isSaved }: S
 
         {/* Show Apply button only if eligible (matchScore > 0) */}
         {matchScore !== null && matchScore > 0 ? (
-          <Button className="flex-1 gap-2">
-            {t('scholarships.applyNow')}
-            <ChevronRight className="h-4 w-4" />
-          </Button>
+          <Link to={`/scholarship/${scholarship.id}?apply=true`} className="flex-1">
+            <Button className="w-full gap-2">
+              {t('scholarships.applyNow')}
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </Link>
         ) : matchScore === 0 ? (
           <div className="flex-1 flex items-center justify-center px-4 py-2 bg-destructive/10 text-destructive rounded-lg border border-destructive/20">
             <AlertCircle className="h-4 w-4 mr-2" />
             <span className="font-semibold text-sm">Not Eligible</span>
           </div>
         ) : (
-          <Button className="flex-1 gap-2">
-            {t('scholarships.applyNow')}
-            <ChevronRight className="h-4 w-4" />
-          </Button>
+          <Link to={`/scholarship/${scholarship.id}?apply=true`} className="flex-1">
+            <Button className="w-full gap-2">
+              {t('scholarships.applyNow')}
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </Link>
         )}
       </div>
     </motion.div>

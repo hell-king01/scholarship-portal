@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
     ArrowLeft, Calendar, Building2, IndianRupee, CheckCircle2,
-    ExternalLink, Loader2, Share2, Info, AlertCircle
+    ExternalLink, Loader2, Share2, Info, AlertCircle, Copy, Navigation
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useToast } from '@/hooks/use-toast';
 import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
@@ -22,6 +23,7 @@ const ScholarshipDetailsPage = () => {
     const { id } = useParams<{ id: string }>();
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
+    const location = useLocation();
     const { toast } = useToast();
     const { authenticated, loading: authLoading } = useAuth();
 
@@ -30,6 +32,7 @@ const ScholarshipDetailsPage = () => {
     const [loading, setLoading] = useState(true);
     const [applying, setApplying] = useState(false);
     const [hasApplied, setHasApplied] = useState(false);
+    const [showAssistant, setShowAssistant] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -84,6 +87,20 @@ const ScholarshipDetailsPage = () => {
         }
     }, [id, authenticated, authLoading]);
 
+    // Auto-open assistant if coming from "Apply Now" button
+    useEffect(() => {
+        if (!loading && scholarship && new URLSearchParams(location.search).get('apply') === 'true') {
+            if (authenticated) {
+                setShowAssistant(true);
+            } else {
+                toast({ title: "Sign in required", description: "Please sign in to apply for scholarships" });
+                navigate('/auth');
+            }
+            // Remove the param so it doesn't keep triggering on re-renders
+            window.history.replaceState({}, '', window.location.pathname);
+        }
+    }, [loading, scholarship, authenticated, location.search, toast, navigate]);
+
     const handleApply = async () => {
         if (!authenticated) {
             toast({ title: "Sign in required", description: "Please sign in to apply for scholarships" });
@@ -93,21 +110,29 @@ const ScholarshipDetailsPage = () => {
 
         if (!scholarship) return;
 
+        // Instead of immediate redirect, open the assistant
+        setShowAssistant(true);
+    };
+
+    const handleProceedToPortal = async () => {
+        if (!scholarship || hasApplied) {
+            if (scholarship?.applicationUrl) window.open(scholarship.applicationUrl, '_blank');
+            return;
+        }
+
         setApplying(true);
         try {
-            // 1. Create application record
             await applicationAPI.create(scholarship.id, {
                 appliedAt: new Date().toISOString(),
-                status: 'submitted'
+                status: 'draft' // Mark as draft until they confirm on ApplicationsPage
             });
 
             setHasApplied(true);
             toast({
                 title: "Application Tracked!",
-                description: "Redirecting you to the official application portal..."
+                description: "Opening official portal..."
             });
 
-            // 2. Open external link
             if (scholarship.applicationUrl) {
                 window.open(scholarship.applicationUrl, '_blank');
             }
@@ -117,6 +142,11 @@ const ScholarshipDetailsPage = () => {
         } finally {
             setApplying(false);
         }
+    };
+
+    const copyToClipboard = (text: string, label: string) => {
+        navigator.clipboard.writeText(text);
+        toast({ title: "Copied!", description: `${label} copied to clipboard` });
     };
 
     if (loading) {
@@ -156,9 +186,11 @@ const ScholarshipDetailsPage = () => {
                     <div className="lg:col-span-2 space-y-6">
                         <div>
                             <div className="flex flex-wrap gap-2 mb-4">
-                                <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">
-                                    {scholarship.providerType.toUpperCase()}
-                                </Badge>
+                                {scholarship.providerType && (
+                                    <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">
+                                        {scholarship.providerType.toUpperCase()}
+                                    </Badge>
+                                )}
                                 {matchScore !== null && matchScore >= 80 && (
                                     <Badge className="bg-green-100 text-green-700 border-green-200">
                                         <CheckCircle2 className="h-3 w-3 mr-1" /> {matchScore}% Match
@@ -334,6 +366,77 @@ const ScholarshipDetailsPage = () => {
                 </motion.div>
             </main>
             <BottomNav />
+
+            {/* Apply Assistant Sidebar */}
+            <Sheet open={showAssistant} onOpenChange={setShowAssistant}>
+                <SheetContent side="right" className="w-full sm:w-[400px] sm:max-w-md overflow-y-auto">
+                    <SheetHeader className="mb-6">
+                        <SheetTitle className="text-2xl font-display flex items-center gap-2">
+                            Apply Assistant
+                        </SheetTitle>
+                        <SheetDescription>
+                            Copy your details directly from here to paste into the `{scholarship.provider}` portal.
+                        </SheetDescription>
+                    </SheetHeader>
+
+                    <div className="space-y-6">
+                        <div className="space-y-4">
+                            <div className="flex flex-col gap-1.5 p-3 rounded-lg border bg-muted/30 relative group">
+                                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Aadhar Number</span>
+                                <span className="font-mono text-sm">XXXX-XXXX-XXXX</span>
+                                <Button size="icon" variant="ghost" className="h-8 w-8 absolute right-2 top-3 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => copyToClipboard('XXXX-XXXX-XXXX', 'Aadhar')}>
+                                    <Copy className="h-4 w-4 text-muted-foreground" />
+                                </Button>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5 p-3 rounded-lg border bg-muted/30 relative group">
+                                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Full Name</span>
+                                <span className="font-medium text-sm">{profile?.fullName || 'Not Profiled'}</span>
+                                <Button size="icon" variant="ghost" className="h-8 w-8 absolute right-2 top-3 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => copyToClipboard(profile?.fullName || '', 'Name')}>
+                                    <Copy className="h-4 w-4 text-muted-foreground" />
+                                </Button>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5 p-3 rounded-lg border bg-muted/30 relative group">
+                                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Annual Income</span>
+                                <span className="font-medium text-sm">₹{profile?.annualIncome?.toLocaleString('en-IN') || 'Not Set'}</span>
+                                <Button size="icon" variant="ghost" className="h-8 w-8 absolute right-2 top-3 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => copyToClipboard(String(profile?.annualIncome || ''), 'Income')}>
+                                    <Copy className="h-4 w-4 text-muted-foreground" />
+                                </Button>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5 p-3 rounded-lg border bg-muted/30 relative group">
+                                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Category</span>
+                                <span className="font-medium text-sm">{profile?.category || 'Not Set'}</span>
+                                <Button size="icon" variant="ghost" className="h-8 w-8 absolute right-2 top-3 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => copyToClipboard(profile?.category || '', 'Category')}>
+                                    <Copy className="h-4 w-4 text-muted-foreground" />
+                                </Button>
+                            </div>
+                        </div>
+
+                        <div className="bg-primary/10 border border-primary/20 rounded-xl p-4">
+                            <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                                <CheckCircle2 className="h-4 w-4" /> Recommended Steps
+                            </h4>
+                            <ol className="list-decimal pl-4 space-y-2 text-sm text-muted-foreground">
+                                <li>Register on the official portal.</li>
+                                <li>Go to the 'Personal Details' tab.</li>
+                                <li>Paste the values from above.</li>
+                                <li>After applying, track status in ScholarMatch.</li>
+                            </ol>
+                        </div>
+
+                        <Button
+                            onClick={handleProceedToPortal}
+                            className="w-full h-12 text-base shadow-lg bg-green-600 hover:bg-green-700 mt-4"
+                            disabled={applying}
+                        >
+                            {applying ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Navigation className="mr-2 h-5 w-5" />}
+                            Open Official Portal Let's Go
+                        </Button>
+                    </div>
+                </SheetContent>
+            </Sheet>
         </div>
     );
 };
