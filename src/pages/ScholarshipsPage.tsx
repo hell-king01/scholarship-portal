@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
-import { Search, Filter, X, AlertCircle } from 'lucide-react';
+import { Search, Filter, X, AlertCircle, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,14 +10,21 @@ import { Card } from '@/components/ui/card';
 import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { ScholarshipCard } from '@/components/ScholarshipCard';
-import { scholarships, UserProfile, calculateMatchScore } from '@/lib/scholarships-data';
+import { scholarshipAPI, profileAPI } from '@/lib/api';
+import { calculateMatchScore, type UserProfile, type Scholarship } from '@/lib/scholarships-data';
+import { useAuth } from '@/hooks/useAuth';
 
 const ScholarshipsPage = () => {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
+  const { authenticated } = useAuth();
+
+  const [scholarships, setScholarships] = useState<(Scholarship & { matchScore: number })[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
   const [savedScholarships, setSavedScholarships] = useState<string[]>([]);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [filterCriteria, setFilterCriteria] = useState<{
     income?: number;
     category?: string;
@@ -48,6 +55,79 @@ const ScholarshipsPage = () => {
     }
   }, [searchParams]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        // Fetch profile if authenticated
+        let profile = null;
+        if (authenticated) {
+          const rawProfile = await profileAPI.getProfile();
+          if (rawProfile) {
+            profile = {
+              fullName: rawProfile.full_name,
+              dateOfBirth: rawProfile.date_of_birth,
+              gender: rawProfile.gender,
+              category: rawProfile.category,
+              state: rawProfile.state,
+              district: rawProfile.district,
+              hasDisability: rawProfile.has_disability,
+              educationLevel: rawProfile.education_level,
+              institution: rawProfile.institution,
+              course: rawProfile.course,
+              yearOfStudy: rawProfile.year_of_study,
+              percentage: rawProfile.percentage,
+              annualIncome: rawProfile.annual_income,
+              incomeCategory: rawProfile.income_category,
+              documents: {},
+              profileComplete: true,
+            };
+            setUserProfile(profile);
+          }
+        }
+
+        // Create a temporary profile if filter criteria exists but not authenticated
+        const effectiveProfile: UserProfile = profile || {
+          fullName: 'Guest',
+          dateOfBirth: '2000-01-01',
+          gender: (filterCriteria?.gender as any) || 'Male',
+          category: (filterCriteria?.category as any) || 'General',
+          state: filterCriteria?.state || 'All',
+          district: '',
+          hasDisability: false,
+          educationLevel: (filterCriteria?.educationLevel as any) || 'graduation',
+          institution: '',
+          course: '',
+          yearOfStudy: 1,
+          percentage: filterCriteria?.percentage || 60,
+          annualIncome: filterCriteria?.income || 500000,
+          incomeCategory: 'General',
+          documents: {},
+          profileComplete: !!profile,
+        };
+
+        // Fetch scholarships
+        const data = await scholarshipAPI.getAll();
+
+        // Calculate match scores
+        const scored = data.map((s: Scholarship) => ({
+          ...s,
+          matchScore: calculateMatchScore(effectiveProfile, s)
+        }));
+
+        // Sort by match score (eligible first, then ineligible)
+        const sorted = scored.sort((a: any, b: any) => b.matchScore - a.matchScore);
+        setScholarships(sorted);
+      } catch (error) {
+        console.error('Error fetching scholarships:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [authenticated, filterCriteria]);
+
   const filters = [
     { id: 'all', label: t('scholarships.filters.all') },
     { id: 'government', label: t('scholarships.filters.government') },
@@ -55,102 +135,29 @@ const ScholarshipsPage = () => {
     { id: 'ngo', label: t('scholarships.filters.ngo') },
   ];
 
-  // Create mock user profile from filter criteria for matching
-  const getFilteredProfile = (): UserProfile | null => {
-    if (!filterCriteria) return null;
+  const filteredScholarships = scholarships.filter(s => {
+    // Apply filter criteria if available
+    if (filterCriteria) {
+      if (filterCriteria.category && !s.eligibility.categories.includes(filterCriteria.category)) return false;
+      if (filterCriteria.gender && !s.eligibility.genders.includes(filterCriteria.gender)) return false;
+      if (filterCriteria.educationLevel && !s.eligibility.educationLevels.includes(filterCriteria.educationLevel)) return false;
+      if (filterCriteria.state && !s.eligibility.states.includes('All') && !s.eligibility.states.includes(filterCriteria.state)) return false;
+      if (filterCriteria.income && s.eligibility.maxIncome < filterCriteria.income) return false;
+      if (filterCriteria.percentage && s.eligibility.minPercentage > filterCriteria.percentage) return false;
+    }
 
-    return {
-      fullName: 'Filtered User',
-      dateOfBirth: '2000-01-01',
-      gender: (filterCriteria.gender as 'Male' | 'Female' | 'Other') || 'Male',
-      category: (filterCriteria.category as 'SC' | 'ST' | 'OBC' | 'General' | 'EWS') || 'General',
-      state: filterCriteria.state || '',
-      district: '',
-      hasDisability: false,
-      educationLevel: (filterCriteria.educationLevel as 'class10' | 'class12' | 'graduation' | 'postGrad') || 'graduation',
-      institution: '',
-      course: '',
-      yearOfStudy: 1,
-      percentage: filterCriteria.percentage || 60,
-      annualIncome: filterCriteria.income || 500000,
-      incomeCategory: 'General',
-      documents: {},
-      profileComplete: true,
-    };
-  };
+    // Apply provider type filter
+    if (activeFilter !== 'all' && s.providerType !== activeFilter) return false;
 
-  const filteredProfile = getFilteredProfile();
+    // Apply search query
+    if (searchQuery &&
+      !s.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      !s.provider.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
+    }
 
-  // Filter and match scholarships
-  const matchedScholarships = scholarships
-    .map(s => {
-      if (filteredProfile) {
-        return { ...s, matchScore: calculateMatchScore(filteredProfile, s) };
-      }
-      // If no filter criteria, use default mock profile
-      const mockProfile: UserProfile = {
-        fullName: 'Priya Sharma',
-        dateOfBirth: '2002-05-15',
-        gender: 'Female',
-        category: 'OBC',
-        state: 'Bihar',
-        district: 'Patna',
-        hasDisability: false,
-        educationLevel: 'graduation',
-        institution: 'Patna University',
-        course: 'B.Sc. Chemistry',
-        yearOfStudy: 2,
-        percentage: 78,
-        annualIncome: 180000,
-        incomeCategory: 'EWS',
-        documents: { aadhar: { uploaded: true, verified: true }, income: { uploaded: true, verified: true }, marksheet: { uploaded: true, verified: true } },
-        profileComplete: true,
-      };
-      return { ...s, matchScore: calculateMatchScore(mockProfile, s) };
-    })
-    .filter(s => {
-      // Apply filter criteria if available
-      if (filteredProfile) {
-        // Only show scholarships with match score >= 50
-        if (s.matchScore < 50) return false;
-
-        // Additional filtering based on criteria
-        if (filterCriteria?.category && !s.eligibility.categories.includes(filterCriteria.category)) {
-          return false;
-        }
-        if (filterCriteria?.gender && !s.eligibility.genders.includes(filterCriteria.gender)) {
-          return false;
-        }
-        if (filterCriteria?.educationLevel && !s.eligibility.educationLevels.includes(filterCriteria.educationLevel)) {
-          return false;
-        }
-        if (filterCriteria?.state && !s.eligibility.states.includes('All') && !s.eligibility.states.includes(filterCriteria.state)) {
-          return false;
-        }
-        if (filterCriteria?.income && s.eligibility.maxIncome < filterCriteria.income) {
-          return false;
-        }
-        if (filterCriteria?.percentage && s.eligibility.minPercentage > filterCriteria.percentage) {
-          return false;
-        }
-      } else {
-        // Default: show scholarships with match score >= 50
-        if (s.matchScore < 50) return false;
-      }
-
-      // Apply provider type filter
-      if (activeFilter !== 'all' && s.providerType !== activeFilter) {
-        return false;
-      }
-
-      // Apply search query
-      if (searchQuery && !s.title.toLowerCase().includes(searchQuery.toLowerCase()) && !s.provider.toLowerCase().includes(searchQuery.toLowerCase())) {
-        return false;
-      }
-
-      return true;
-    })
-    .sort((a, b) => b.matchScore - a.matchScore);
+    return true;
+  });
 
   return (
     <div className="min-h-screen bg-background pb-20 md:pb-0">
@@ -161,20 +168,14 @@ const ScholarshipsPage = () => {
           <p className="text-muted-foreground mb-6">{t('scholarships.subtitle')}</p>
         </motion.div>
 
-        {/* Show filter criteria banner if filtering from eligibility */}
+        {/* Show filter criteria banner */}
         {filterCriteria && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6"
-          >
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
             <Card className="p-4 bg-primary/10 border-primary/20">
               <div className="flex items-start gap-3">
                 <AlertCircle className="h-5 w-5 text-primary mt-0.5" />
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-primary mb-1">
-                    Filtered by Eligibility Criteria
-                  </p>
+                  <p className="text-sm font-medium text-primary mb-1">Filtered by Eligibility Criteria</p>
                   <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
                     {filterCriteria.income && <Badge variant="outline">Income: ₹{filterCriteria.income.toLocaleString('en-IN')}</Badge>}
                     {filterCriteria.category && <Badge variant="outline">Category: {filterCriteria.category}</Badge>}
@@ -184,14 +185,10 @@ const ScholarshipsPage = () => {
                     {filterCriteria.percentage && <Badge variant="outline">Percentage: {filterCriteria.percentage}%</Badge>}
                   </div>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    setFilterCriteria(null);
-                    window.history.replaceState({}, '', '/scholarships');
-                  }}
-                >
+                <Button variant="ghost" size="sm" onClick={() => {
+                  setFilterCriteria(null);
+                  window.history.replaceState({}, '', '/scholarships');
+                }}>
                   <X className="h-4 w-4" />
                 </Button>
               </div>
@@ -208,10 +205,7 @@ const ScholarshipsPage = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           {searchQuery && (
-            <button
-              onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2"
-            >
+            <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2">
               <X className="h-5 w-5 text-muted-foreground" />
             </button>
           )}
@@ -230,13 +224,13 @@ const ScholarshipsPage = () => {
           ))}
         </div>
 
-        {/* No matches message */}
-        {matchedScholarships.length === 0 ? (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-16"
-          >
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <Loader2 className="h-10 w-10 text-primary animate-spin mb-4" />
+            <p className="text-muted-foreground">Searching for matching scholarships...</p>
+          </div>
+        ) : filteredScholarships.length === 0 ? (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
             <Card className="p-12 max-w-md mx-auto">
               <AlertCircle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
               <h3 className="font-semibold text-lg mb-2">
@@ -245,18 +239,13 @@ const ScholarshipsPage = () => {
                   : t('scholarships.empty.title')}
               </h3>
               <p className="text-sm text-muted-foreground mb-6">
-                {filterCriteria
-                  ? 'Try adjusting your eligibility criteria or check back later for new scholarships.'
-                  : t('scholarships.empty.subtitle')}
+                Try adjusting your criteria or check back later for new scholarships.
               </p>
               {filterCriteria && (
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setFilterCriteria(null);
-                    window.history.replaceState({}, '', '/scholarships');
-                  }}
-                >
+                <Button variant="outline" onClick={() => {
+                  setFilterCriteria(null);
+                  window.history.replaceState({}, '', '/scholarships');
+                }}>
                   Clear Filters
                 </Button>
               )}
@@ -264,25 +253,25 @@ const ScholarshipsPage = () => {
           </motion.div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {matchedScholarships.map((scholarship, index) => {
-              const profileForCard = filteredProfile || {
-                fullName: 'Priya Sharma',
-                dateOfBirth: '2002-05-15',
-                gender: 'Female',
-                category: 'OBC',
-                state: 'Bihar',
-                district: 'Patna',
+            {filteredScholarships.map((scholarship, index) => {
+              const effectiveProfile: UserProfile = userProfile || {
+                fullName: 'Guest',
+                dateOfBirth: '2000-01-01',
+                gender: (filterCriteria?.gender as any) || 'Male',
+                category: (filterCriteria?.category as any) || 'General',
+                state: filterCriteria?.state || 'All',
+                district: '',
                 hasDisability: false,
-                educationLevel: 'graduation',
-                institution: 'Patna University',
-                course: 'B.Sc. Chemistry',
-                yearOfStudy: 2,
-                percentage: 78,
-                annualIncome: 180000,
-                incomeCategory: 'EWS',
+                educationLevel: (filterCriteria?.educationLevel as any) || 'graduation',
+                institution: '',
+                course: '',
+                yearOfStudy: 1,
+                percentage: filterCriteria?.percentage || 60,
+                annualIncome: filterCriteria?.income || 500000,
+                incomeCategory: 'General',
                 documents: {},
-                profileComplete: true,
-              } as UserProfile;
+                profileComplete: false,
+              };
 
               return (
                 <motion.div
@@ -293,7 +282,7 @@ const ScholarshipsPage = () => {
                 >
                   <ScholarshipCard
                     scholarship={scholarship}
-                    userProfile={profileForCard}
+                    userProfile={effectiveProfile}
                     isSaved={savedScholarships.includes(scholarship.id)}
                     onSave={() =>
                       setSavedScholarships((prev) =>
@@ -315,3 +304,4 @@ const ScholarshipsPage = () => {
 };
 
 export default ScholarshipsPage;
+

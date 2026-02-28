@@ -1,107 +1,61 @@
-/**
- * Utility functions for authentication and user role management
- */
+import { supabase } from './supabase';
 
 export type UserRole = 'student' | 'admin' | 'mentor';
 
-interface JWTPayload {
-  userId?: string;
-  email?: string;
-  role?: UserRole;
-  exp?: number;
-  iat?: number;
-  [key: string]: any;
-}
-
 /**
- * Decode JWT token without verification (client-side only)
- * Note: In production, always verify tokens on the server
- */
-export const decodeJWT = (token: string): JWTPayload | null => {
-  try {
-    const base64Url = token.split('.')[1];
-    if (!base64Url) return null;
-    
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split('')
-        .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-        .join('')
-    );
-    
-    return JSON.parse(jsonPayload);
-  } catch (error) {
-    console.error('Failed to decode JWT:', error);
-    return null;
-  }
-};
-
-/**
- * Get user role from auth token
+ * Get user role from Supabase session or user metadata
  * Returns 'student' as default if role cannot be determined
  */
-export const getUserRole = (): UserRole => {
-  const token = localStorage.getItem('authToken');
-  if (!token) return 'student';
-  
-  const payload = decodeJWT(token);
-  if (!payload) return 'student';
-  
-  // Check if token is expired
-  if (payload.exp && payload.exp * 1000 < Date.now()) {
-    localStorage.removeItem('authToken');
-    return 'student';
-  }
-  
-  // Return role from token, default to 'student'
-  const role = payload.role?.toLowerCase();
+export const getUserRole = async (): Promise<UserRole> => {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) return 'student';
+
+  // Try to get role from user metadata first
+  const role = session.user.user_metadata?.role?.toLowerCase();
   if (role === 'admin' || role === 'mentor' || role === 'student') {
-    return role;
+    return role as UserRole;
   }
-  
+
+  // Fallback: Check profiles table
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', session.user.id)
+    .single();
+
+  if (profile?.role) {
+    return profile.role as UserRole;
+  }
+
   return 'student';
 };
 
 /**
  * Check if user is authenticated
  */
-export const isAuthenticated = (): boolean => {
-  const token = localStorage.getItem('authToken');
-  if (!token) return false;
-  
-  const payload = decodeJWT(token);
-  if (!payload) return false;
-  
-  // Check if token is expired
-  if (payload.exp && payload.exp * 1000 < Date.now()) {
-    localStorage.removeItem('authToken');
-    return false;
-  }
-  
-  return true;
+export const isAuthenticated = async (): Promise<boolean> => {
+  const { data: { session } } = await supabase.auth.getSession();
+  return !!session;
 };
 
 /**
- * Get user ID from token
+ * Get user ID from session
  */
-export const getUserId = (): string | null => {
-  const token = localStorage.getItem('authToken');
-  if (!token) return null;
-  
-  const payload = decodeJWT(token);
-  return payload?.userId || null;
+export const getUserId = async (): Promise<string | null> => {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.user.id || null;
 };
 
 /**
  * Check if user has required role
  */
-export const hasRole = (requiredRole: UserRole | UserRole[]): boolean => {
-  const userRole = getUserRole();
+export const hasRole = async (requiredRole: UserRole | UserRole[]): Promise<boolean> => {
+  const userRole = await getUserRole();
   if (Array.isArray(requiredRole)) {
     return requiredRole.includes(userRole);
   }
   return userRole === requiredRole;
 };
+
 
 

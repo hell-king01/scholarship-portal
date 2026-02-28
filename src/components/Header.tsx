@@ -29,7 +29,7 @@ export const Header = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
-  const { role, authenticated } = useAuth();
+  const { role, authenticated, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
@@ -40,10 +40,9 @@ export const Header = () => {
     return location.pathname === path || location.pathname.startsWith(path + '/');
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
+  const handleLogout = async () => {
+    await signOut();
     navigate('/auth?mode=signin');
-    window.location.reload(); // Force reload to clear state
   };
 
   // Main navigation items (always visible)
@@ -81,11 +80,10 @@ export const Header = () => {
     <Link
       to={item.path}
       onClick={onClick}
-      className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-        isActive(item.path)
+      className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive(item.path)
           ? 'bg-primary text-primary-foreground'
           : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-      }`}
+        }`}
     >
       <item.icon className="h-5 w-5" />
       {item.label}
@@ -112,11 +110,10 @@ export const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                  isActive(item.path)
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${isActive(item.path)
                     ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
+                  }`}
               >
                 <item.icon className="h-4 w-4" />
                 {item.label}
@@ -127,7 +124,7 @@ export const Header = () => {
           {/* Right Actions */}
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            
+
             {authenticated && (
               <Button
                 variant="ghost"

@@ -39,6 +39,9 @@ interface AnalyticsData {
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
+import { Header } from '@/components/Header';
+import { BottomNav } from '@/components/BottomNav';
+
 export const AdminDashboard = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
@@ -62,23 +65,32 @@ export const AdminDashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-muted-foreground">Loading analytics...</p>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="flex items-center justify-center py-20">
+          <div className="text-center">
+            <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-muted-foreground">Loading system analytics...</p>
+          </div>
         </div>
+        <BottomNav />
       </div>
     );
   }
 
   if (!analytics) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <Card className="p-8 text-center">
-          <AlertCircle className="h-12 w-12 text-destructive mx-auto mb-4" />
-          <h3 className="font-semibold text-lg mb-2">Failed to load analytics</h3>
-          <p className="text-muted-foreground">Please try again later</p>
-        </Card>
+      <div className="min-h-screen bg-background text-foreground">
+        <Header />
+        <main className="container mx-auto px-4 py-20 flex items-center justify-center">
+          <Card className="p-12 text-center max-w-md">
+            <AlertCircle className="h-16 w-16 text-destructive mx-auto mb-4" />
+            <h3 className="font-semibold text-xl mb-2">Failed to load analytics</h3>
+            <p className="text-muted-foreground mb-6">We couldn't retrieve the system metrics at this time. Please try again later.</p>
+            <Button onClick={loadAnalytics}>Retry Now</Button>
+          </Card>
+        </main>
+        <BottomNav />
       </div>
     );
   }
@@ -89,19 +101,18 @@ export const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <h1 className="font-display font-bold text-xl">Admin Dashboard</h1>
-            <div className="text-sm text-muted-foreground">
-              Last updated: {new Date().toLocaleTimeString()}
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-background pb-20 md:pb-0 font-sans">
+      <Header />
+      <main className="container mx-auto px-4 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <h1 className="font-display text-4xl font-bold mb-2">System <span className="gradient-text">Analytics</span></h1>
+          <p className="text-muted-foreground">Platform-wide overview of scholarship performance and user engagement.</p>
+        </motion.div>
 
-      <main className="container mx-auto px-4 py-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <motion.div

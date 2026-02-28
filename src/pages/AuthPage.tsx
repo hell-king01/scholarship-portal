@@ -2,26 +2,27 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { GraduationCap, Mail, Lock, Phone, Eye, EyeOff, ChevronRight } from 'lucide-react';
+import { GraduationCap, Mail, Lock, Phone, Eye, EyeOff, ChevronRight, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { useToast } from '@/hooks/use-toast';
+import { authAPI } from '@/lib/api';
 
 const AuthPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
-  
+
   const mode = searchParams.get('mode') || 'signin';
   const [isLogin, setIsLogin] = useState(mode !== 'signup');
   const [showPassword, setShowPassword] = useState(false);
   const [authMethod, setAuthMethod] = useState<'email' | 'phone'>('email');
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     email: '',
     phone: '',
@@ -32,19 +33,61 @@ const AuthPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isLogin && formData.password !== formData.confirmPassword) {
+      toast({
+        title: 'Error',
+        description: 'Passwords do not match',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsLoading(true);
 
-    // Simulate auth - in real app, this would connect to backend
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      if (isLogin) {
+        if (authMethod === 'email') {
+          await authAPI.signIn({ email: formData.email, password: formData.password });
+        } else {
+          // Phone auth implementation with OTP would go here
+          throw new Error('Phone authentication not fully implemented yet');
+        }
+
+        toast({
+          title: "Welcome back!",
+          description: "Redirecting to your dashboard...",
+        });
+        navigate('/dashboard');
+      } else {
+        if (authMethod === 'email') {
+          // For sign up, we default to student role
+          await authAPI.signUp({
+            email: formData.email,
+            password: formData.password,
+            role: 'student',
+            name: formData.email.split('@')[0]
+          });
+
+          toast({
+            title: "Account created!",
+            description: "Please check your email for verification. Redirecting to onboarding...",
+          });
+          navigate('/onboarding');
+        } else {
+          throw new Error('Phone authentication not fully implemented yet');
+        }
+      }
+    } catch (error: any) {
+      console.error('Auth error:', error);
       toast({
-        title: isLogin ? "Welcome back!" : "Account created!",
-        description: isLogin 
-          ? "Redirecting to your dashboard..." 
-          : "Let's complete your profile to find scholarships.",
+        title: 'Authentication Error',
+        description: error.message || 'An error occurred during authentication',
+        variant: 'destructive',
       });
-      navigate(isLogin ? '/dashboard' : '/onboarding');
-    }, 1500);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -74,8 +117,8 @@ const AuthPage = () => {
                 {isLogin ? t('auth.welcomeBack') : t('auth.createAccount')}
               </h1>
               <p className="text-muted-foreground">
-                {isLogin 
-                  ? "Sign in to continue to your scholarships" 
+                {isLogin
+                  ? "Sign in to continue to your scholarships"
                   : "Start finding scholarships in minutes"}
               </p>
             </div>
@@ -179,7 +222,7 @@ const AuthPage = () => {
 
                 <Button type="submit" className="w-full h-12 text-base gap-2" disabled={isLoading}>
                   {isLoading ? (
-                    <div className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                    <Loader2 className="h-5 w-5 animate-spin" />
                   ) : (
                     <>
                       {isLogin ? t('common.signIn') : t('common.signUp')}
@@ -205,13 +248,14 @@ const AuthPage = () => {
         </div>
       </div>
 
+
       {/* Right Side - Visual */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary via-primary to-accent p-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-40 h-40 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-40 right-20 w-60 h-60 bg-white rounded-full blur-3xl" />
         </div>
-        
+
         <div className="relative z-10 flex flex-col justify-center text-primary-foreground">
           <motion.div
             initial={{ opacity: 0, x: 20 }}

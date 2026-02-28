@@ -22,7 +22,7 @@ export const ScholarshipCard = ({ scholarship, userProfile, onSave, isSaved }: S
 
   const getMatchBadge = () => {
     if (!matchScore) return null;
-    
+
     if (matchScore >= 90) {
       return (
         <Badge className="match-badge match-perfect">
@@ -74,10 +74,12 @@ export const ScholarshipCard = ({ scholarship, userProfile, onSave, isSaved }: S
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2 flex-wrap">
             {getMatchBadge()}
-            <Badge variant="outline" className={providerTypeColors[scholarship.providerType]}>
-              {scholarship.providerType === 'government' ? '🏛️' : scholarship.providerType === 'private' ? '🏢' : '🤝'}{' '}
-              {scholarship.providerType.charAt(0).toUpperCase() + scholarship.providerType.slice(1)}
-            </Badge>
+            {scholarship.providerType && (
+              <Badge variant="outline" className={providerTypeColors[scholarship.providerType as keyof typeof providerTypeColors] || 'bg-secondary'}>
+                {scholarship.providerType === 'government' ? '🏛️' : scholarship.providerType === 'private' ? '🏢' : '🤝'}{' '}
+                {scholarship.providerType.charAt(0).toUpperCase() + scholarship.providerType.slice(1)}
+              </Badge>
+            )}
             {days <= 7 && days > 0 && (
               <Badge variant="destructive" className="animate-pulse">
                 ⏰ {days} {t('scholarships.daysLeft')}
@@ -149,10 +151,24 @@ export const ScholarshipCard = ({ scholarship, userProfile, onSave, isSaved }: S
             {t('scholarships.viewDetails')}
           </Button>
         </Link>
-        <Button className="flex-1 gap-2">
-          {t('scholarships.applyNow')}
-          <ChevronRight className="h-4 w-4" />
-        </Button>
+
+        {/* Show Apply button only if eligible (matchScore > 0) */}
+        {matchScore !== null && matchScore > 0 ? (
+          <Button className="flex-1 gap-2">
+            {t('scholarships.applyNow')}
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        ) : matchScore === 0 ? (
+          <div className="flex-1 flex items-center justify-center px-4 py-2 bg-destructive/10 text-destructive rounded-lg border border-destructive/20">
+            <AlertCircle className="h-4 w-4 mr-2" />
+            <span className="font-semibold text-sm">Not Eligible</span>
+          </div>
+        ) : (
+          <Button className="flex-1 gap-2">
+            {t('scholarships.applyNow')}
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        )}
       </div>
     </motion.div>
   );

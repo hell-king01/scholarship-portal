@@ -3,12 +3,17 @@ import App from "./App.tsx";
 import "./index.css";
 
 // Register Service Worker for PWA
+// Register Service Worker for PWA
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/sw.js')
       .then((registration) => {
         console.log('Service Worker registered:', registration.scope);
+        // Force update if one is waiting
+        if (registration.waiting) {
+          registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+        }
       })
       .catch((error) => {
         console.log('Service Worker registration failed:', error);

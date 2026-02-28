@@ -1,3 +1,9 @@
+import {
+  matchScholarship,
+  type EnhancedUserProfile,
+  type StandardizedEligibility
+} from './eligibility-engine';
+
 export interface Scholarship {
   id: string;
   title: string;
@@ -18,6 +24,12 @@ export interface Scholarship {
     educationLevels: string[];
     states: string[];
     disabilities: boolean;
+    courseCategories?: string[]; // New
+    degreeTypes?: string[]; // New
+    institutionTypes?: string[]; // New
+    parentOccupations?: string[]; // New
+    minorityStatuses?: string[]; // New
+    isHosteller?: boolean; // New
   };
   requiredDocuments: string[];
   applicationUrl: string;
@@ -33,7 +45,7 @@ export const scholarships: Scholarship[] = [
     provider: 'Ministry of Education',
     providerHi: 'शिक्षा मंत्रालय',
     providerType: 'government',
-    description: 'A prestigious scholarship for meritorious students from economically weaker sections pursuing higher education.',
+    description: 'A prestigious scholarship for meritorious students from economically weaker sections pursuing higher education in professional/technical courses.',
     descriptionHi: 'उच्च शिक्षा प्राप्त कर रहे आर्थिक रूप से कमजोर वर्गों के मेधावी छात्रों के लिए एक प्रतिष्ठित छात्रवृत्ति।',
     amount: 50000,
     amountType: 'yearly',
@@ -46,6 +58,7 @@ export const scholarships: Scholarship[] = [
       educationLevels: ['graduation', 'postGrad'],
       states: ['All'],
       disabilities: false,
+      degreeTypes: ['professional', 'technical'],
     },
     requiredDocuments: ['aadhar', 'income', 'marksheet'],
     applicationUrl: 'https://scholarships.gov.in',
@@ -72,6 +85,7 @@ export const scholarships: Scholarship[] = [
       educationLevels: ['class10', 'class12', 'graduation', 'postGrad'],
       states: ['All'],
       disabilities: false,
+      parentOccupations: ['farmer', 'daily_wage'],
     },
     requiredDocuments: ['aadhar', 'income', 'caste', 'marksheet'],
     applicationUrl: 'https://scholarships.gov.in',
@@ -93,145 +107,69 @@ export const scholarships: Scholarship[] = [
     eligibility: {
       categories: ['SC', 'ST', 'OBC', 'General', 'EWS'],
       genders: ['Male', 'Female', 'Other'],
-      minPercentage: 85,
-      maxIncome: 600000,
-      educationLevels: ['graduation'],
+      minPercentage: 80,
+      maxIncome: 1000000,
+      educationLevels: ['graduation', 'postGrad', 'phd'],
       states: ['All'],
       disabilities: false,
+      courseCategories: ['science', 'medical', 'engineering'],
     },
-    requiredDocuments: ['aadhar', 'marksheet'],
+    requiredDocuments: ['aadhar', 'marksheet', 'admission-letter'],
     applicationUrl: 'https://online-inspire.gov.in',
-    tags: ['science', 'government', 'merit'],
-    featured: true,
+    tags: ['science', 'merit', 'research'],
+    featured: false,
   },
   {
     id: '4',
-    title: 'Tata Trust Education Scholarship',
-    titleHi: 'टाटा ट्रस्ट शिक्षा छात्रवृत्ति',
-    provider: 'Tata Trusts',
-    providerHi: 'टाटा ट्रस्ट',
+    title: 'HDFC Badhte Kadam',
+    titleHi: 'एचडीएफसी बढ़ते कदम',
+    provider: 'HDFC Bank',
+    providerHi: 'एचडीएफसी बैंक',
     providerType: 'private',
-    description: 'Supporting bright students from underprivileged backgrounds to pursue quality education.',
-    descriptionHi: 'वंचित पृष्ठभूमि के प्रतिभाशाली छात्रों को गुणवत्तापूर्ण शिक्षा प्राप्त करने में सहायता।',
-    amount: 75000,
-    amountType: 'yearly',
-    deadline: '2024-05-01',
-    eligibility: {
-      categories: ['SC', 'ST', 'OBC', 'General', 'EWS'],
-      genders: ['Male', 'Female', 'Other'],
-      minPercentage: 70,
-      maxIncome: 400000,
-      educationLevels: ['graduation', 'postGrad'],
-      states: ['All'],
-      disabilities: false,
-    },
-    requiredDocuments: ['aadhar', 'income', 'marksheet'],
-    applicationUrl: 'https://tatatrusts.org',
-    tags: ['private', 'corporate', 'higher-education'],
-    featured: false,
-  },
-  {
-    id: '5',
-    title: 'Pragati Scholarship for Girls',
-    titleHi: 'लड़कियों के लिए प्रगति छात्रवृत्ति',
-    provider: 'AICTE',
-    providerHi: 'एआईसीटीई',
-    providerType: 'government',
-    description: 'Empowering girl students to pursue technical education and break barriers.',
-    descriptionHi: 'लड़कियों को तकनीकी शिक्षा प्राप्त करने और बाधाओं को तोड़ने के लिए सशक्त बनाना।',
-    amount: 50000,
-    amountType: 'yearly',
-    deadline: '2024-03-15',
-    eligibility: {
-      categories: ['SC', 'ST', 'OBC', 'General', 'EWS'],
-      genders: ['Female'],
-      minPercentage: 60,
-      maxIncome: 800000,
-      educationLevels: ['graduation'],
-      states: ['All'],
-      disabilities: false,
-    },
-    requiredDocuments: ['aadhar', 'income', 'marksheet'],
-    applicationUrl: 'https://aicte-pragati-saksham.gov.in',
-    tags: ['girls', 'government', 'technical'],
-    featured: true,
-  },
-  {
-    id: '6',
-    title: 'PM Scholarship for Differently Abled',
-    titleHi: 'दिव्यांगों के लिए पीएम छात्रवृत्ति',
-    provider: 'Ministry of Social Justice',
-    providerHi: 'सामाजिक न्याय मंत्रालय',
-    providerType: 'government',
-    description: 'Special scholarship for students with disabilities to pursue their educational dreams.',
-    descriptionHi: 'विकलांग छात्रों के लिए अपने शैक्षिक सपनों को पूरा करने के लिए विशेष छात्रवृत्ति।',
-    amount: 40000,
-    amountType: 'yearly',
-    deadline: '2024-04-30',
-    eligibility: {
-      categories: ['SC', 'ST', 'OBC', 'General', 'EWS'],
-      genders: ['Male', 'Female', 'Other'],
-      minPercentage: 40,
-      maxIncome: 500000,
-      educationLevels: ['class10', 'class12', 'graduation', 'postGrad'],
-      states: ['All'],
-      disabilities: true,
-    },
-    requiredDocuments: ['aadhar', 'income', 'marksheet'],
-    applicationUrl: 'https://scholarships.gov.in',
-    tags: ['disability', 'government', 'special'],
-    featured: false,
-  },
-  {
-    id: '7',
-    title: 'Foundation for Excellence Scholarship',
-    titleHi: 'उत्कृष्टता के लिए फाउंडेशन छात्रवृत्ति',
-    provider: 'FFE India',
-    providerHi: 'एफएफई इंडिया',
-    providerType: 'ngo',
-    description: 'Supporting first-generation learners from low-income families to achieve academic excellence.',
-    descriptionHi: 'कम आय वाले परिवारों के प्रथम पीढ़ी के शिक्षार्थियों को शैक्षणिक उत्कृष्टता प्राप्त करने में सहायता।',
-    amount: 60000,
-    amountType: 'yearly',
-    deadline: '2024-06-30',
+    description: 'Scholarship to support high-performing students from underprivileged backgrounds.',
+    descriptionHi: 'वंचित पृष्ठभूमि के उच्च प्रदर्शन वाले छात्रों का समर्थन करने के लिए छात्रवृत्ति।',
+    amount: 100000,
+    amountType: 'one-time',
+    deadline: '2024-05-20',
     eligibility: {
       categories: ['SC', 'ST', 'OBC', 'General', 'EWS'],
       genders: ['Male', 'Female', 'Other'],
       minPercentage: 75,
-      maxIncome: 300000,
-      educationLevels: ['graduation'],
+      maxIncome: 600000,
+      educationLevels: ['class10', 'class12', 'graduation'],
       states: ['All'],
       disabilities: false,
     },
-    requiredDocuments: ['aadhar', 'income', 'marksheet'],
-    applicationUrl: 'https://ffe.org',
-    tags: ['ngo', 'first-generation', 'merit'],
-    featured: false,
+    requiredDocuments: ['aadhar', 'income', 'marksheet', 'bank-passbook'],
+    applicationUrl: 'https://www.hdfcbank.com/scholarship',
+    tags: ['private', 'merit-cum-means', 'school'],
+    featured: true,
   },
   {
-    id: '8',
-    title: 'OBC Pre-Matric Scholarship',
-    titleHi: 'ओबीसी प्री-मैट्रिक छात्रवृत्ति',
-    provider: 'Ministry of Social Justice',
-    providerHi: 'सामाजिक न्याय मंत्रालय',
+    id: '5',
+    title: 'Post-Matric Scholarship for Minorities',
+    titleHi: 'अल्पसंख्यकों के लिए पोस्ट मैट्रिक छात्रवृत्ति',
+    provider: 'Ministry of Minority Affairs',
+    providerHi: 'अल्पसंख्यक मामलों के मंत्रालय',
     providerType: 'government',
-    description: 'Supporting OBC students in classes 1-10 to continue their education.',
-    descriptionHi: 'कक्षा 1-10 में ओबीसी छात्रों को उनकी शिक्षा जारी रखने में सहायता।',
-    amount: 12000,
+    description: 'Scholarship scheme for meritorious students belonging to minority communities.',
+    descriptionHi: 'अल्पसंख्यक समुदायों के मेधावी छात्रों के लिए छात्रवृत्ति योजना।',
+    amount: 30000,
     amountType: 'yearly',
-    deadline: '2024-03-20',
+    deadline: '2024-10-31',
     eligibility: {
-      categories: ['OBC'],
+      categories: ['SC', 'ST', 'OBC', 'General', 'EWS'],
       genders: ['Male', 'Female', 'Other'],
       minPercentage: 50,
-      maxIncome: 250000,
-      educationLevels: ['class10'],
+      maxIncome: 200000,
+      educationLevels: ['class10', 'class12', 'graduation'],
       states: ['All'],
       disabilities: false,
+      minorityStatuses: ['muslim', 'christian', 'sikh', 'buddhist', 'jain', 'parsi'],
     },
-    requiredDocuments: ['aadhar', 'income', 'caste', 'marksheet'],
+    requiredDocuments: ['aadhar', 'income', 'minority-certificate'],
     applicationUrl: 'https://scholarships.gov.in',
-    tags: ['obc', 'government', 'pre-matric'],
+    tags: ['minority', 'government', 'school'],
     featured: false,
   },
 ];
@@ -242,15 +180,21 @@ export interface UserProfile {
   dateOfBirth: string;
   gender: 'Male' | 'Female' | 'Other';
   category: 'SC' | 'ST' | 'OBC' | 'General' | 'EWS';
+  minorityStatus?: string; // New
   state: string;
   district: string;
   hasDisability: boolean;
-  educationLevel: 'class10' | 'class12' | 'graduation' | 'postGrad';
+  isHosteller?: 'yes' | 'no'; // New ('yes' | 'no')
+  educationLevel: 'class10' | 'class12' | 'graduation' | 'postGrad' | 'phd' | 'diploma'; // Expanded
   institution: string;
+  institutionType?: string; // New
   course: string;
+  courseCategory?: string; // New
+  degreeType?: string; // New
   yearOfStudy: number;
   percentage: number;
   annualIncome: number;
+  parentOccupation?: string; // New
   incomeCategory: 'BPL' | 'EWS' | 'General';
   documents: {
     aadhar?: { uploaded: boolean; verified: boolean };
@@ -261,82 +205,105 @@ export interface UserProfile {
   profileComplete: boolean;
 }
 
+// OLD MATCHING LOGIC REMOVED - Now using advanced eligibility engine
+
+/**
+ * ADVANCED MATCHING ENGINE INTEGRATION
+ * Uses two-phase matching: Hard Rejection + Weighted Scoring
+ */
+
 export const calculateMatchScore = (profile: UserProfile, scholarship: Scholarship): number => {
-  let score = 0;
-  let totalWeight = 0;
+  // Convert legacy profile to enhanced profile
+  const enhancedProfile: EnhancedUserProfile = {
+    fullName: profile.fullName,
+    dateOfBirth: profile.dateOfBirth,
+    gender: profile.gender,
+    category: profile.category,
+    minorityStatus: profile.minorityStatus,
+    state: profile.state,
+    district: profile.district,
+    hasDisability: profile.hasDisability,
+    isHosteller: profile.isHosteller === 'yes',
+    educationLevel: profile.educationLevel,
+    institution: profile.institution,
+    institutionType: profile.institutionType,
+    course: profile.course,
+    courseCategory: profile.courseCategory,
+    degreeType: profile.degreeType,
+    yearOfStudy: profile.yearOfStudy?.toString(), // Converted to string
+    percentage: profile.percentage,
+    annualIncome: profile.annualIncome,
+    parentOccupation: profile.parentOccupation,
+  };
 
-  // Income eligibility (30% weight)
-  const incomeWeight = 30;
-  totalWeight += incomeWeight;
-  if (profile.annualIncome <= scholarship.eligibility.maxIncome) {
-    score += incomeWeight;
-  }
+  // Convert legacy eligibility to standardized format
+  const standardizedEligibility: StandardizedEligibility = {
+    hard: {
+      categories: scholarship.eligibility.categories?.length ? scholarship.eligibility.categories : undefined,
+      max_income: scholarship.eligibility.maxIncome || undefined,
+      min_percentage: scholarship.eligibility.minPercentage || undefined,
+      education_levels: scholarship.eligibility.educationLevels?.length ? scholarship.eligibility.educationLevels : undefined,
+      genders: scholarship.eligibility.genders?.length ? scholarship.eligibility.genders : undefined,
+      states: scholarship.eligibility.states?.length ? scholarship.eligibility.states : undefined,
+      parent_occupations: scholarship.eligibility.parentOccupations?.length ? scholarship.eligibility.parentOccupations : undefined,
+      minority_statuses: scholarship.eligibility.minorityStatuses?.length ? scholarship.eligibility.minorityStatuses : undefined,
+      requires_hosteller: scholarship.eligibility.isHosteller || undefined,
+    },
+    soft: {
+      course_categories: scholarship.eligibility.courseCategories?.length ? scholarship.eligibility.courseCategories : undefined,
+      degree_types: scholarship.eligibility.degreeTypes?.length ? scholarship.eligibility.degreeTypes : undefined,
+      institution_types: scholarship.eligibility.institutionTypes?.length ? scholarship.eligibility.institutionTypes : undefined,
+    }
+  };
 
-  // Category match (20% weight)
-  const categoryWeight = 20;
-  totalWeight += categoryWeight;
-  if (scholarship.eligibility.categories.includes(profile.category)) {
-    score += categoryWeight;
-  }
-
-  // Education level (15% weight)
-  const eduWeight = 15;
-  totalWeight += eduWeight;
-  if (scholarship.eligibility.educationLevels.includes(profile.educationLevel)) {
-    score += eduWeight;
-  }
-
-  // Academic performance (15% weight)
-  const academicWeight = 15;
-  totalWeight += academicWeight;
-  if (profile.percentage >= scholarship.eligibility.minPercentage) {
-    score += academicWeight;
-  }
-
-  // State eligibility (10% weight)
-  const stateWeight = 10;
-  totalWeight += stateWeight;
-  if (scholarship.eligibility.states.includes('All') || scholarship.eligibility.states.includes(profile.state)) {
-    score += stateWeight;
-  }
-
-  // Gender match (5% weight)
-  const genderWeight = 5;
-  totalWeight += genderWeight;
-  if (scholarship.eligibility.genders.includes(profile.gender)) {
-    score += genderWeight;
-  }
-
-  // Disability match (5% weight)
-  const disabilityWeight = 5;
-  totalWeight += disabilityWeight;
-  if (!scholarship.eligibility.disabilities || profile.hasDisability === scholarship.eligibility.disabilities) {
-    score += disabilityWeight;
-  }
-
-  return Math.round((score / totalWeight) * 100);
+  const result = matchScholarship(enhancedProfile, standardizedEligibility, scholarship.id);
+  return result.matchScore;
 };
 
 export const getMatchReasons = (profile: UserProfile, scholarship: Scholarship): string[] => {
-  const reasons: string[] = [];
+  const enhancedProfile: EnhancedUserProfile = {
+    fullName: profile.fullName,
+    dateOfBirth: profile.dateOfBirth,
+    gender: profile.gender,
+    category: profile.category,
+    minorityStatus: profile.minorityStatus,
+    state: profile.state,
+    district: profile.district,
+    hasDisability: profile.hasDisability,
+    isHosteller: profile.isHosteller === 'yes',
+    educationLevel: profile.educationLevel,
+    institution: profile.institution,
+    institutionType: profile.institutionType,
+    course: profile.course,
+    courseCategory: profile.courseCategory,
+    degreeType: profile.degreeType,
+    yearOfStudy: profile.yearOfStudy?.toString(), // Converted to string
+    percentage: profile.percentage,
+    annualIncome: profile.annualIncome,
+    parentOccupation: profile.parentOccupation,
+  };
 
-  if (profile.annualIncome <= scholarship.eligibility.maxIncome) {
-    reasons.push('Your income qualifies');
-  }
-  if (scholarship.eligibility.categories.includes(profile.category)) {
-    reasons.push(`Your category (${profile.category}) is eligible`);
-  }
-  if (scholarship.eligibility.educationLevels.includes(profile.educationLevel)) {
-    reasons.push('Your education level matches');
-  }
-  if (profile.percentage >= scholarship.eligibility.minPercentage) {
-    reasons.push(`Your marks (${profile.percentage}%) meet the minimum`);
-  }
-  if (scholarship.eligibility.genders.includes(profile.gender)) {
-    reasons.push('Gender requirement met');
-  }
+  const standardizedEligibility: StandardizedEligibility = {
+    hard: {
+      categories: scholarship.eligibility.categories?.length ? scholarship.eligibility.categories : undefined,
+      max_income: scholarship.eligibility.maxIncome || undefined,
+      min_percentage: scholarship.eligibility.minPercentage || undefined,
+      education_levels: scholarship.eligibility.educationLevels?.length ? scholarship.eligibility.educationLevels : undefined,
+      genders: scholarship.eligibility.genders?.length ? scholarship.eligibility.genders : undefined,
+      states: scholarship.eligibility.states?.length ? scholarship.eligibility.states : undefined,
+      parent_occupations: scholarship.eligibility.parentOccupations?.length ? scholarship.eligibility.parentOccupations : undefined,
+      minority_statuses: scholarship.eligibility.minorityStatuses?.length ? scholarship.eligibility.minorityStatuses : undefined,
+      requires_hosteller: scholarship.eligibility.isHosteller || undefined,
+    },
+    soft: {
+      course_categories: scholarship.eligibility.courseCategories?.length ? scholarship.eligibility.courseCategories : undefined,
+      degree_types: scholarship.eligibility.degreeTypes?.length ? scholarship.eligibility.degreeTypes : undefined,
+      institution_types: scholarship.eligibility.institutionTypes?.length ? scholarship.eligibility.institutionTypes : undefined,
+    }
+  };
 
-  return reasons;
+  const result = matchScholarship(enhancedProfile, standardizedEligibility, scholarship.id);
+  return result.matchReasons;
 };
 
 export const indianStates = [

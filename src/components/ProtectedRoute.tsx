@@ -17,12 +17,9 @@ export const ProtectedRoute = ({
   const { role, authenticated, loading } = useAuth();
   const location = useLocation();
 
-  useEffect(() => {
-    // If not authenticated and trying to access protected route, redirect to login
-    if (!loading && !authenticated && location.pathname !== '/auth') {
-      // Could redirect to login with return URL
-    }
-  }, [authenticated, loading, location]);
+  if (!loading && !authenticated) {
+    return <Navigate to="/auth?mode=signin" state={{ from: location }} replace />;
+  }
 
   if (loading) {
     return (

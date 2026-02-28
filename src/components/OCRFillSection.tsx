@@ -143,6 +143,3 @@ export const OCRFillSection = ({ onExtract, extractedData }: OCRFillSectionProps
   );
 };
 
-// Add Label import
-import { Label } from '@/components/ui/label';
-

@@ -4,90 +4,153 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   GraduationCap, FileText, Clock, TrendingUp, ChevronRight,
-  Calendar, Bell, Star, Target, Sparkles, ArrowRight, Upload,
-  Calculator, Search, User, Shield, Users, BarChart3, Settings,
-  CheckCircle2, XCircle, AlertCircle
+  Calendar, Star, Target, Sparkles, ArrowRight, Upload,
+  Calculator, Search, User, Shield, BarChart3, Settings,
+  CheckCircle2, Loader2, Activity, Users, AlertTriangle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
 import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { ScholarshipCard } from '@/components/ScholarshipCard';
-import { scholarships, UserProfile, calculateMatchScore } from '@/lib/scholarships-data';
+import { UserProfile, calculateMatchScore } from '@/lib/scholarships-data';
 import { useAuth } from '@/hooks/useAuth';
-import { useToast } from '@/hooks/use-toast';
-import { profileAPI } from '@/lib/api';
-
-// Mock user profile - in production, fetch from API
-const mockUserProfile: UserProfile = {
-  fullName: 'Priya Sharma',
-  dateOfBirth: '2002-05-15',
-  gender: 'Female',
-  category: 'OBC',
-  state: 'Bihar',
-  district: 'Patna',
-  hasDisability: false,
-  educationLevel: 'graduation',
-  institution: 'Patna University',
-  course: 'B.Sc. Chemistry',
-  yearOfStudy: 2,
-  percentage: 78,
-  annualIncome: 180000,
-  incomeCategory: 'EWS',
-  documents: {
-    aadhar: { uploaded: true, verified: true },
-    income: { uploaded: true, verified: true },
-    marksheet: { uploaded: true, verified: true },
-  },
-  profileComplete: true,
-};
+import { profileAPI, scholarshipAPI, applicationAPI } from '@/lib/api';
 
 const DashboardPage = () => {
   const { t } = useTranslation();
+  const { role, authenticated, loading: authLoading } = useAuth();
   const navigate = useNavigate();
-  const { toast } = useToast();
-  const { role, authenticated } = useAuth();
-  const [savedScholarships, setSavedScholarships] = useState<string[]>([]);
+
+  const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [matchedScholarships, setMatchedScholarships] = useState<any[]>([]);
+  const [savedScholarships, setSavedScholarships] = useState<string[]>([]);
+  const [applicationCount, setApplicationCount] = useState(0);
+  const [profileCompletion, setProfileCompletion] = useState(0);
 
   useEffect(() => {
-    // Fetch user profile if authenticated
-    if (authenticated) {
-      profileAPI.getProfile()
-        .then((data) => {
-          // Map API response to UserProfile type
-          setUserProfile(data as UserProfile);
-        })
-        .catch(() => {
-          // Use mock profile if API fails
-          setUserProfile(mockUserProfile);
-        });
-    } else {
-      setUserProfile(mockUserProfile);
-    }
-  }, [authenticated]);
+    const fetchData = async () => {
+      if (authLoading) return;
+      if (!authenticated) {
+        // Optionally redirect to login, but let's just let it load empty state
+        setLoading(false);
+        return;
+      }
 
-  const profile = userProfile || mockUserProfile;
+      setLoading(true);
+      try {
+        const profile = await profileAPI.getProfile();
+        setUserProfile(profile);
 
-  // Calculate matched scholarships (only for students)
-  const matchedScholarships = role === 'student' ? scholarships
-    .map(s => ({ ...s, matchScore: calculateMatchScore(profile, s) }))
-    .filter(s => s.matchScore >= 50)
-    .sort((a, b) => b.matchScore - a.matchScore) : [];
+        if (profile) {
+          // Map snake_case to CamelCase for local logic
+          const mappedProfile: any = {
+            fullName: profile.full_name,
+            dateOfBirth: profile.date_of_birth,
+            gender: profile.gender,
+            category: profile.category,
+            state: profile.state,
+            district: profile.district,
+            hasDisability: profile.has_disability,
+            educationLevel: profile.education_level,
+            institution: profile.institution,
+            course: profile.course,
+            yearOfStudy: profile.year_of_study,
+            percentage: profile.percentage,
+            annualIncome: profile.annual_income,
+            incomeCategory: profile.income_category,
+            documents: {},
+            profileComplete: true
+          };
 
-  const topMatches = matchedScholarships.slice(0, 3);
-  const profileCompletion = 85;
+          setUserProfile(mappedProfile);
 
-  // STUDENT Dashboard
+          const fields = [
+            mappedProfile.fullName, mappedProfile.dateOfBirth, mappedProfile.gender,
+            mappedProfile.category, mappedProfile.state, mappedProfile.educationLevel,
+            mappedProfile.institution, mappedProfile.annualIncome
+          ];
+          const completed = fields.filter((f: any) => !!f).length;
+          setProfileCompletion(Math.round((completed / fields.length) * 100));
+
+          const data = await scholarshipAPI.getAll();
+
+          const scored = data.map((s: any) => ({
+            ...s,
+            matchScore: calculateMatchScore(mappedProfile, s)
+          }));
+
+          // New engine returns 0 for hard-rejected scholarships
+          const matched = scored
+            .filter((s: any) => s.matchScore > 0) // Only show eligible scholarships
+            .sort((a: any, b: any) => b.matchScore - a.matchScore);
+
+          setMatchedScholarships(matched);
+
+          // 5. Fetch applications count
+          const apps = await applicationAPI.getAll();
+          setApplicationCount(apps.length);
+        } else {
+          // Handle no profile
+        }
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [authenticated, authLoading, role]);
+
+  if (loading || authLoading) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center">
+        <Loader2 className="h-10 w-10 text-primary animate-spin mb-4" />
+        <p className="text-muted-foreground">Loading your dashboard...</p>
+      </div>
+    );
+  }
+
+  // Handle Redirects for Role-Based Dashboards
+  if (role === 'admin') {
+    // In a real app, we might redirect. For now, render the Admin View inline or link to it.
+    // Since the user has a specific /admin route, let's redirect them there for a better experience.
+    // But we can also keep the "Landing Dashboard" concept.
+    // Let's redirect to be cleaner.
+    // navigate('/admin'); // Warning: side-effect in render. Better to do in useEffect.
+  }
+
+  // Redirect Logic for Admin/Mentor to their specific pages if needed
+  // For now, we will render specific views or the Student View
+
   const StudentDashboard = () => {
+    // If no profile, force onboarding/setup
+    if (!userProfile) {
+      return (
+        <div className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-6">
+          <div className="bg-primary/10 p-6 rounded-full">
+            <User className="h-16 w-16 text-primary" />
+          </div>
+          <h1 className="text-2xl font-bold">Complete Your Profile</h1>
+          <p className="text-muted-foreground max-w-md">
+            To match you with the best scholarships, we need a few details about your education and background.
+          </p>
+          <Link to="/onboarding">
+            <Button size="lg" className="gap-2">
+              Set Up Profile <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      );
+    }
+
     const quickActions = [
-      { icon: Upload, label: 'Upload Documents', path: '/onboarding', color: 'bg-primary/10 text-primary', description: 'OCR Fill' },
-      { icon: Calculator, label: 'Check Eligibility', path: '/eligibility', color: 'bg-accent/10 text-accent', description: 'Predict matches' },
-      { icon: Search, label: 'Browse Scholarships', path: '/scholarships', color: 'bg-blue-100 text-blue-600', description: 'View all' },
-      { icon: FileText, label: 'My Applications', path: '/applications', color: 'bg-green-100 text-green-600', description: 'Track status' },
-      { icon: User, label: 'Profile', path: '/profile', color: 'bg-purple-100 text-purple-600', description: 'Edit details' },
+      { icon: Calculator, label: 'Check Eligibility', path: '/eligibility', color: 'bg-accent/10 text-accent', description: 'Find your perfect matches' },
+      { icon: Search, label: 'Browse All', path: '/scholarships', color: 'bg-blue-100 text-blue-600', description: 'Explore all opportunities' },
+      { icon: FileText, label: 'My Applications', path: '/applications', color: 'bg-green-100 text-green-600', description: 'Check your progress' },
+      { icon: User, label: 'My Profile', path: '/onboarding', color: 'bg-purple-100 text-purple-600', description: 'Update details' },
     ];
 
     const upcomingDeadlines = matchedScholarships
@@ -98,350 +161,232 @@ const DashboardPage = () => {
       .slice(0, 3);
 
     return (
-      <>
-        {/* Welcome Section */}
+      <div className="space-y-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-br from-primary/5 via-accent/5 to-transparent border border-border/50"
         >
-          <h1 className="font-display text-2xl md:text-3xl font-bold mb-2">
-            {t('dashboard.welcome')}, {profile.fullName.split(' ')[0]}! 👋
-          </h1>
-          <p className="text-muted-foreground">
-            You have {matchedScholarships.length} scholarships waiting for you
-          </p>
-        </motion.div>
-
-        {/* Stats Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
-        >
-          <Card className="p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
-                <GraduationCap className="h-5 w-5 text-accent" />
-              </div>
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <h1 className="font-display text-3xl md:text-4xl font-bold mb-3 tracking-tight">
+                Welcome back, <span className="gradient-text">{userProfile.fullName.split(' ')[0]}</span>! 👋
+              </h1>
+              <p className="text-muted-foreground text-lg max-w-xl">
+                We've found <span className="text-foreground font-semibold font-display">{matchedScholarships.length} scholarships</span> that match your profile.
+              </p>
             </div>
-            <div className="text-2xl font-bold">{matchedScholarships.length}</div>
-            <div className="text-sm text-muted-foreground">{t('dashboard.matchedScholarships')}</div>
-          </Card>
-
-          <Card className="p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                <FileText className="h-5 w-5 text-primary" />
-              </div>
-            </div>
-            <div className="text-2xl font-bold">2</div>
-            <div className="text-sm text-muted-foreground">{t('dashboard.activeApplications')}</div>
-          </Card>
-
-          <Card className="p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-destructive/10 rounded-xl flex items-center justify-center">
-                <Clock className="h-5 w-5 text-destructive" />
-              </div>
-            </div>
-            <div className="text-2xl font-bold">{upcomingDeadlines.length}</div>
-            <div className="text-sm text-muted-foreground">{t('dashboard.upcomingDeadlines')}</div>
-          </Card>
-
-          <Card className="p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center">
-                <TrendingUp className="h-5 w-5 text-secondary-foreground" />
-              </div>
-            </div>
-            <div className="text-2xl font-bold">{profileCompletion}%</div>
-            <div className="text-sm text-muted-foreground">{t('dashboard.profileStatus')}</div>
-          </Card>
-        </motion.div>
-
-        {/* Profile Completion Banner */}
-        {profileCompletion < 100 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-gradient-to-r from-primary to-accent rounded-2xl p-5 mb-8 text-primary-foreground"
-          >
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              <div className="flex-1 min-w-[200px]">
-                <h3 className="font-semibold mb-2">Complete your profile for better matches</h3>
+            {profileCompletion < 100 && (
+              <div className="flex flex-col items-center gap-2 bg-card/50 backdrop-blur-sm p-4 rounded-2xl border border-white/20 shadow-sm">
                 <div className="flex items-center gap-3">
-                  <Progress value={profileCompletion} className="flex-1 h-2 bg-white/20" />
-                  <span className="text-sm font-medium">{profileCompletion}%</span>
+                  <div className="relative w-16 h-16">
+                    <svg className="w-full h-full transform -rotate-90">
+                      <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="6" className="text-muted/30" />
+                      <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray={`${profileCompletion * 1.76} 176`} className="text-primary" strokeLinecap="round" />
+                    </svg>
+                    <span className="absolute inset-0 flex items-center justify-center text-sm font-bold">{profileCompletion}%</span>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Profile Status</p>
+                    <Link to="/onboarding" className="text-sm font-bold text-primary hover:underline flex items-center gap-1">
+                      Complete Now <ChevronRight className="h-3 w-3" />
+                    </Link>
+                  </div>
                 </div>
               </div>
-              <Link to="/profile">
-                <Button variant="secondary" size="sm" className="gap-2">
-                  Complete Now
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        )}
+            )}
+          </div>
+        </motion.div>
 
-        {/* Quick Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mb-8"
-        >
-          <h2 className="font-display font-semibold text-lg mb-4">{t('dashboard.quickActions')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {quickActions.map((action) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="group p-6 hover:shadow-elevated transition-all duration-300 border-border/50 hover:border-primary/50 relative overflow-hidden">
+            <div className="relative z-10">
+              <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
+                <GraduationCap className="h-6 w-6 text-primary" />
+              </div>
+              <div className="text-3xl font-bold mb-1 tracking-tight">{matchedScholarships.length}</div>
+              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Matched</div>
+            </div>
+          </Card>
+
+          <Card className="group p-6 hover:shadow-elevated transition-all duration-300 border-border/50 hover:border-accent/50 relative overflow-hidden">
+            <div className="relative z-10">
+              <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
+                <FileText className="h-6 w-6 text-accent" />
+              </div>
+              {/* Placeholder for fetching applications count */}
+              <div className="text-3xl font-bold mb-1 tracking-tight">{applicationCount}</div>
+              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Applied</div>
+            </div>
+          </Card>
+        </div>
+
+        <section>
+          <div className="flex items-center justify-between mb-6 text-center lg:text-left">
+            <h2 className="font-display font-bold text-xl flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-primary" />
+              Quick Actions
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {quickActions.map((action, idx) => (
               <Link key={action.path} to={action.path}>
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex items-center gap-4 p-4 bg-card rounded-2xl border border-border hover:shadow-card transition-all"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * idx }}
+                  whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
+                  className="group relative flex items-center gap-5 p-6 bg-card rounded-3xl border border-border/60 hover:border-primary/40 transition-all shadow-soft overflow-hidden"
                 >
-                  <div className={`w-12 h-12 ${action.color} rounded-xl flex items-center justify-center`}>
-                    <action.icon className="h-6 w-6" />
+                  <div className={`w-14 h-14 ${action.color} rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500`}>
+                    <action.icon className="h-7 w-7" />
                   </div>
                   <div className="flex-1">
-                    <span className="font-medium block">{action.label}</span>
-                    <span className="text-xs text-muted-foreground">{action.description}</span>
+                    <span className="font-bold text-lg block mb-0.5">{action.label}</span>
+                    <span className="text-sm text-muted-foreground line-clamp-1">{action.description}</span>
                   </div>
-                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
                 </motion.div>
               </Link>
             ))}
           </div>
-        </motion.div>
+        </section>
 
-        {/* Top Matches */}
-        {topMatches.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mb-8"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="font-display font-semibold text-lg flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-primary" />
-                Top Matches for You
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="font-display font-bold text-xl flex items-center gap-2">
+                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                Top Matches For You
               </h2>
-              <Link to="/scholarships" className="text-sm text-primary font-medium hover:underline">
-                {t('common.viewAll')}
+              <Link to="/scholarships">
+                <Button variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10">
+                  View All Matches
+                </Button>
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {topMatches.map((scholarship) => (
-                <ScholarshipCard
-                  key={scholarship.id}
-                  scholarship={scholarship}
-                  userProfile={profile}
-                  isSaved={savedScholarships.includes(scholarship.id)}
-                  onSave={() => setSavedScholarships(prev =>
-                    prev.includes(scholarship.id) ? prev.filter(s => s !== scholarship.id) : [...prev, scholarship.id]
-                  )}
-                />
-              ))}
-            </div>
-          </motion.div>
-        )}
+            {matchedScholarships.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {matchedScholarships.slice(0, 4).map((scholarship) => (
+                  <ScholarshipCard
+                    key={scholarship.id}
+                    scholarship={scholarship}
+                    userProfile={userProfile}
+                    // Implement save logic with local state or API
+                    isSaved={savedScholarships.includes(scholarship.id)}
+                    onSave={() => setSavedScholarships(prev =>
+                      prev.includes(scholarship.id) ? prev.filter(s => s !== scholarship.id) : [...prev, scholarship.id]
+                    )}
+                  />
+                ))}
+              </div>
+            ) : (
+              <Card className="p-8 text-center bg-muted/30 border-dashed">
+                <AlertTriangle className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
+                <p className="text-muted-foreground font-medium">No perfect matches found yet.</p>
+                <p className="text-sm text-muted-foreground mt-2">Try updating your profile details to see more relevant scholarships.</p>
+                <Button variant="outline" className="mt-4" onClick={() => navigate('/onboarding')}>Update Profile</Button>
+              </Card>
+            )}
+          </div>
 
-        {/* Upcoming Deadlines */}
-        {upcomingDeadlines.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <h2 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
+          <Card className="glass-card p-6 flex flex-col h-full border-border/40">
+            <h2 className="font-display font-bold text-lg mb-6 flex items-center gap-2">
               <Calendar className="h-5 w-5 text-destructive" />
-              {t('dashboard.upcomingDeadlines')}
+              Deadlines Approaching
             </h2>
-            <Card className="divide-y divide-border">
-              {upcomingDeadlines.map((scholarship) => {
+            <div className="space-y-6 flex-1">
+              {upcomingDeadlines.length > 0 ? upcomingDeadlines.map((scholarship) => {
                 const daysLeft = Math.ceil((new Date(scholarship.deadline).getTime() - Date.now()) / (1000 * 60 * 60 * 24));
                 return (
                   <Link
                     key={scholarship.id}
-                    to={`/scholarships`}
-                    className="flex items-center justify-between p-4 hover:bg-secondary/50 transition-colors"
+                    to={`/scholarship/${scholarship.id}`}
+                    className="group relative pl-4 border-l-2 border-border hover:border-primary transition-colors block"
                   >
-                    <div>
-                      <p className="font-medium">{scholarship.title}</p>
-                      <p className="text-sm text-muted-foreground">{scholarship.provider}</p>
+                    <div className="mb-1">
+                      <p className="font-semibold text-sm line-clamp-2 group-hover:text-primary transition-colors">{scholarship.title}</p>
                     </div>
-                    <div className="text-right">
-                      <p className={`font-semibold ${daysLeft <= 7 ? 'text-destructive' : 'text-foreground'}`}>
+                    <div className="flex items-center justify-between mt-2">
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${daysLeft <= 7 ? 'bg-destructive/10 text-destructive' : 'bg-muted text-muted-foreground'}`}>
                         {daysLeft} days left
-                      </p>
-                      <p className="text-xs text-muted-foreground">
+                      </span>
+                      <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">
                         {new Date(scholarship.deadline).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
-                      </p>
+                      </span>
                     </div>
                   </Link>
                 );
-              })}
-            </Card>
-          </motion.div>
-        )}
-      </>
+              }) : (
+                <div className="flex flex-col items-center justify-center h-full text-center py-8">
+                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-3">
+                    <CheckCircle2 className="w-6 h-6 text-muted-foreground" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">No urgent deadlines.</p>
+                </div>
+              )}
+            </div>
+          </Card>
+          <Card className="glass-card p-6 flex flex-col h-full border-border/40 mt-8">
+            <h2 className="font-display font-bold text-lg mb-6 flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-yellow-500" />
+              Success Tips
+            </h2>
+            <div className="space-y-4">
+              {[
+                { title: 'Keep Documents Ready', desc: 'Scan your income & caste certificates in advance.' },
+                { title: 'Check Deadlines', desc: 'Apply at least 3 days before the closing date.' },
+                { title: 'Verify Details', desc: 'Double check bank account details for DBT.' }
+              ].map((tip, i) => (
+                <div key={i} className="p-3 bg-muted/40 rounded-xl border border-border/50">
+                  <p className="text-sm font-bold block mb-1">{tip.title}</p>
+                  <p className="text-xs text-muted-foreground">{tip.desc}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </div>
     );
   };
 
-  // MENTOR Dashboard
-  const MentorDashboard = () => {
-    const mentorActions = [
-      { icon: Users, label: 'Mentor Dashboard', path: '/mentor', color: 'bg-primary/10 text-primary', description: 'View assigned students' },
-      { icon: CheckCircle2, label: 'Pending Reviews', path: '/mentor?tab=pending', color: 'bg-yellow-100 text-yellow-600', description: 'Review applications' },
-      { icon: FileText, label: 'Approved/Rejected', path: '/mentor?tab=reviewed', color: 'bg-green-100 text-green-600', description: 'View history' },
-      { icon: GraduationCap, label: 'View Students', path: '/mentor?tab=students', color: 'bg-blue-100 text-blue-600', description: 'All students' },
-    ];
-
+  const AdminDashboardRedirect = () => {
+    // Small component to redirect/link
     return (
-      <>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <h1 className="font-display text-2xl md:text-3xl font-bold mb-2">
-            Mentor Dashboard
-          </h1>
-          <p className="text-muted-foreground">
-            Review and manage student applications
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">12</div>
-            <div className="text-sm text-muted-foreground">Assigned Students</div>
-          </Card>
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">5</div>
-            <div className="text-sm text-muted-foreground">Pending Reviews</div>
-          </Card>
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">8</div>
-            <div className="text-sm text-muted-foreground">Approved</div>
-          </Card>
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">2</div>
-            <div className="text-sm text-muted-foreground">Rejected</div>
-          </Card>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {mentorActions.map((action) => (
-            <Link key={action.path} to={action.path}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-4 p-4 bg-card rounded-2xl border border-border hover:shadow-card transition-all"
-              >
-                <div className={`w-12 h-12 ${action.color} rounded-xl flex items-center justify-center`}>
-                  <action.icon className="h-6 w-6" />
-                </div>
-                <div className="flex-1">
-                  <span className="font-medium block">{action.label}</span>
-                  <span className="text-xs text-muted-foreground">{action.description}</span>
-                </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground" />
-              </motion.div>
-            </Link>
-          ))}
-        </div>
-      </>
-    );
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold mb-4">Admin Access</h2>
+        <Link to="/admin">
+          <Button>Go to Admin Dashboard</Button>
+        </Link>
+      </div>
+    )
   };
 
-  // ADMIN Dashboard
-  const AdminDashboard = () => {
-    const adminActions = [
-      { icon: Shield, label: 'Admin Dashboard', path: '/admin', color: 'bg-primary/10 text-primary', description: 'Full analytics' },
-      { icon: BarChart3, label: 'Analytics', path: '/admin?tab=analytics', color: 'bg-blue-100 text-blue-600', description: 'View metrics' },
-      { icon: Users, label: 'Manage Users', path: '/admin?tab=users', color: 'bg-green-100 text-green-600', description: 'User management' },
-      { icon: GraduationCap, label: 'Manage Scholarships', path: '/admin?tab=scholarships', color: 'bg-purple-100 text-purple-600', description: 'Edit scholarships' },
-    ];
-
+  const MentorDashboardRedirect = () => {
     return (
-      <>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <h1 className="font-display text-2xl md:text-3xl font-bold mb-2">
-            Admin Dashboard
-          </h1>
-          <p className="text-muted-foreground">
-            Manage the scholarship portal
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">1,234</div>
-            <div className="text-sm text-muted-foreground">Total Users</div>
-          </Card>
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">856</div>
-            <div className="text-sm text-muted-foreground">Eligible Users</div>
-          </Card>
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">378</div>
-            <div className="text-sm text-muted-foreground">Ineligible Users</div>
-          </Card>
-          <Card className="p-4">
-            <div className="text-2xl font-bold mb-1">24</div>
-            <div className="text-sm text-muted-foreground">Total Scholarships</div>
-          </Card>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {adminActions.map((action) => (
-            <Link key={action.path} to={action.path}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-4 p-4 bg-card rounded-2xl border border-border hover:shadow-card transition-all"
-              >
-                <div className={`w-12 h-12 ${action.color} rounded-xl flex items-center justify-center`}>
-                  <action.icon className="h-6 w-6" />
-                </div>
-                <div className="flex-1">
-                  <span className="font-medium block">{action.label}</span>
-                  <span className="text-xs text-muted-foreground">{action.description}</span>
-                </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground" />
-              </motion.div>
-            </Link>
-          ))}
-        </div>
-      </>
-    );
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold mb-4">Mentor Access</h2>
+        <Link to="/mentor">
+          <Button>Go to Mentor Dashboard</Button>
+        </Link>
+      </div>
+    )
   };
 
-  // Render based on role
   const renderDashboard = () => {
     switch (role) {
       case 'admin':
-        return <AdminDashboard />;
+        return <AdminDashboardRedirect />;
       case 'mentor':
-        return <MentorDashboard />;
+        return <MentorDashboardRedirect />;
       default:
         return <StudentDashboard />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
+    <div className="min-h-screen bg-background pb-20 md:pb-0 font-sans selection:bg-primary/20">
       <Header />
-      <main className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-4 py-8 lg:py-12">
         {renderDashboard()}
       </main>
       <BottomNav />

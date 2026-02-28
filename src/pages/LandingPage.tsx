@@ -4,9 +4,20 @@ import { Link } from 'react-router-dom';
 import { GraduationCap, Search, FileCheck, Languages, Sparkles, ChevronRight, Users, IndianRupee, Award, Star, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { useAuth } from '@/hooks/useAuth';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
   const { t } = useTranslation();
+  const { authenticated, loading } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loading && authenticated) {
+      navigate('/dashboard');
+    }
+  }, [authenticated, loading, navigate]);
 
   const features = [
     {
@@ -79,12 +90,20 @@ const LandingPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <LanguageSwitcher />
-              <Link to="/auth">
-                <Button variant="ghost">{t('common.signIn')}</Button>
-              </Link>
-              <Link to="/auth?mode=signup">
-                <Button className="hidden sm:flex">{t('common.getStarted')}</Button>
-              </Link>
+              {authenticated ? (
+                <Link to="/dashboard">
+                  <Button className="flex">{t('common.dashboard') || 'Dashboard'}</Button>
+                </Link>
+              ) : (
+                <>
+                  <Link to="/auth">
+                    <Button variant="ghost">{t('common.signIn')}</Button>
+                  </Link>
+                  <Link to="/auth?mode=signup">
+                    <Button className="hidden sm:flex">{t('common.getStarted')}</Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -103,11 +122,11 @@ const LandingPage = () => {
                 <Sparkles className="h-4 w-4 text-primary" />
                 <span>Free for all students</span>
               </div>
-              
+
               <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
                 {t('landing.heroTitle')}
               </h1>
-              
+
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 {t('landing.heroSubtitle')}
               </p>
