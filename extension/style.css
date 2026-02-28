@@ -1,0 +1,98 @@
+#scholar-match-assistant-sidebar {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  width: 300px;
+  height: auto;
+  min-height: 400px;
+  max-height: 80vh;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  z-index: 10000000;
+  display: flex !important;
+  flex-direction: column;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  color: #1e293b;
+}
+
+.sma-header {
+  padding: 16px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sma-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+  margin: 0 !important;
+}
+
+.sma-content {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sma-field {
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  position: relative;
+  background: #fff;
+}
+
+.sma-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.sma-value {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sma-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.sma-copy-btn:hover {
+  background: #f1f5f9;
+}
+
+.sma-footer {
+  padding: 12px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 10px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.sma-close-btn {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+.sma-close-btn:hover {
+  color: #ef4444;
+}
