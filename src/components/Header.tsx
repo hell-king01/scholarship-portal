@@ -49,9 +49,8 @@ export const Header = () => {
   const mainNavItems = [
     { path: '/', icon: Home, label: 'Home', exact: true },
     { path: '/scholarships', icon: Search, label: 'Scholarships' },
-    { path: '/applications', icon: FileText, label: 'Applications' },
+    { path: '/documents', icon: Shield, label: 'Documentation' },
     { path: '/eligibility', icon: Calculator, label: 'Eligibility' },
-    { path: '/documents', icon: Upload, label: 'Documents' },
   ];
 
   // Profile and settings

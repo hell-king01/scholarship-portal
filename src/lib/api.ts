@@ -1,5 +1,6 @@
 import { supabase } from './supabase';
 import { toast } from '@/hooks/use-toast';
+import { indianStates } from './scholarships-data';
 
 // Auth APIs
 export const authAPI = {
@@ -154,38 +155,51 @@ export const ocrAPI = {
 
       // Look for Aadhar number format: XXXX XXXX XXXX
       const aadharNumMatch = cleanText.match(/\b\d{4}\s\d{4}\s\d{4}\b/);
-      if (aadharNumMatch) parsed.documentNumber = aadharNumMatch[0];
+      if (aadharNumMatch) parsed.aadharNumber = aadharNumMatch[0];
 
       // Look for Gender
       const genderMatch = cleanText.match(/\b(Male|Female|Transgender)\b/i);
       if (genderMatch) parsed.gender = genderMatch[1];
+
+      // Robust Address Extraction
+      // Look for address keywords or patterns like "Address:", "Permanent Address"
+      const addressMatch = cleanText.match(/(?:Address|Add):?\s*([\w\s,.-]{10,150}(?:Pin|Code|Pin\s*Code)?\s*\d{6})/i);
+      if (addressMatch) {
+        parsed.address = addressMatch[1].trim();
+        // Try to extract state and district from address
+        const stateMatch = indianStates.find(s => addressMatch[1].toLowerCase().includes(s.toLowerCase()));
+        if (stateMatch) parsed.state = stateMatch;
+        // Simple district check (word before state often)
+        const districtMatch = addressMatch[1].match(/(\w+)\s*,?\s*[A-Z][a-z]+/);
+        if (districtMatch) parsed.district = districtMatch[1];
+      }
     }
     else if (type === 'income') {
-      // Look for currency indicators followed by amounts
       const incomeMatch = cleanText.match(/(?:Rs\.?|INR|₹|Rupees|Income\s*(?:is)?)\s*([\d,]+(?![\d,]*\s*P(?:er)?\.?\s*A(?:nnum)?\.?))/i) ||
         cleanText.match(/([\d,]+)\s*(?:Only)/i);
       if (incomeMatch) parsed.annualIncome = incomeMatch[1].replace(/,/g, '');
     }
     else if (type === 'marksheet') {
-      // Look for Percentage like 85% or 85.5%
       const percentageMatch = cleanText.match(/\b(\d{2,3}(?:\.\d{1,2})?)\s*%/);
       if (percentageMatch && parseFloat(percentageMatch[1]) <= 100) {
         parsed.percentage = percentageMatch[1];
       }
 
-      // Look for CGPA
       const cgpaMatch = cleanText.match(/(?:CGPA|SGPA)[\s:]*([0-9](\.[0-9]{1,2})?)/i);
       if (cgpaMatch) {
         parsed.cgpa = cgpaMatch[1];
-        // Convert CGPA to percentage roughly (multiply by 9.5)
-        const cgpaVal = parseFloat(cgpaMatch[1]);
-        if (!parsed.percentage) {
-          parsed.percentage = Math.min(100, cgpaVal * 9.5).toFixed(2);
-        }
+        if (!parsed.percentage) parsed.percentage = Math.min(100, parseFloat(cgpaMatch[1]) * 9.5).toFixed(2);
       }
+
+      // Extract institution name (look for "School" or "University" or "College")
+      const instMatch = cleanText.match(/(?:Name\s*of\s*the\s*Institution|School|College|University|Institute)\s*:?\s*([\w\s]{5,100})/i);
+      if (instMatch) parsed.institution = instMatch[1].trim();
+
+      // Extract course name
+      const courseMatch = cleanText.match(/(?:Course|Degree|Class)\s*:?\s*([\w\s]{3,50})/i);
+      if (courseMatch) parsed.course = courseMatch[1].trim();
     }
     else if (type === 'caste') {
-      // Look for Caste categories
       const categoryMatch = cleanText.match(/\b(General|SC|ST|OBC|EWS|NT|VJNT|SBC)\b/i);
       if (categoryMatch) parsed.category = categoryMatch[1].toUpperCase();
     }
@@ -488,6 +502,35 @@ export const mentorAPI = {
 
     if (error) throw error;
     return { success: true };
+  }
+};
+
+// Documents APIs (Backend Integration)
+const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
+export const documentsAPI = {
+  listDocuments: async (userId: string) => {
+    const response = await fetch(`${BACKEND_URL}/api/documents/${userId}`);
+    if (!response.ok) throw new Error('Failed to fetch documents');
+    return response.json();
+  },
+
+  generateDocument: async (type: string, data: any, lang: string = 'en') => {
+    const response = await fetch(`${BACKEND_URL}/api/documents/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, data, lang }),
+    });
+    if (!response.ok) throw new Error('Failed to generate document');
+    return response.json();
+  },
+
+  deleteDocument: async (userId: string, fileName: string) => {
+    // TODO: Implement delete on backend if needed
+    const response = await fetch(`${BACKEND_URL}/api/documents/${userId}/${fileName}`, {
+      method: 'DELETE'
+    });
+    return response.json();
   }
 };
 

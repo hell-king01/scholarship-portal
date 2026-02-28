@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; padding: 20px; }
+        .header { text-align: center; border-bottom: 2px solid #333; margin-bottom: 30px; }
+        .title { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+        .content { margin-bottom: 40px; }
+        .footer { display: flex; justify-content: space-between; margin-top: 50px; }
+        .seal { width: 100px; height: 100px; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; color: #ccc; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">INCOME AFFIDAVIT</div>
+    </div>
+    
+    <div class="content">
+        <p>I, <strong>{{fullName}}</strong>, resident of <strong>{{address}}</strong>, do hereby solemnly affirm and declare as follows:</p>
+        
+        <ol>
+            <li>That I am the parent/guardian of the student applying for the scholarship.</li>
+            <li>That my annual family income from all sources for the financial year {{date}} is <strong>Rs. {{annualIncome}}</strong> ({{income_in_words}}).</li>
+            <li>That the information provided above is true to the best of my knowledge and belief.</li>
+        </ol>
+        
+        <p>Verified at ________________ on this date {{date}}.</p>
+    </div>
+    
+    <div class="footer">
+        <div>
+            <p>__________________________</p>
+            <p>Deponent Signature</p>
+        </div>
+        <div class="seal text-center">
+            NOTARY SEAL
+        </div>
+    </div>
+</body>
+</html>

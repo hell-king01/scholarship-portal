@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            margin-bottom: 40px;
+        }
+
+        .footer {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">SELF DECLARATION OF INCOME</div>
+    </div>
+
+    <div class="content">
+        <p>This is to certify that I, <strong>{{fullName}}</strong>, am the head of the family residing at
+            <strong>{{address}}</strong>.</p>
+
+        <p>I hereby declare that my annual family income from all sources including salary/business/agriculture for the
+            financial year ending March {{year}} is <strong>{{annualIncome}}</strong>.</p>
+
+        <p>I understand that if this information is found to be incorrect, my scholarship application will be rejected
+            and legal action may be taken.</p>
+    </div>
+
+    <div class="footer">
+        <p>Date: {{date}}</p>
+        <p>Place: _______________</p>
+        <br><br>
+        <p>__________________________</p>
+        <p>Signature of Parent/Guardian</p>
+    </div>
+</body>
+
+</html>

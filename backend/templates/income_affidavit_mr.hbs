@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Arial Unicode MS', 'FreeSans', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            margin-bottom: 40px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .seal {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">आर्थिक उत्पन्नाचे प्रतिज्ञापत्र (Affidavit)</div>
+    </div>
+
+    <div class="content">
+        <p>मी, <strong>{{fullName}}</strong>, रा. <strong>{{address}}</strong>, याद्वारे गांभीर्यपूर्वक प्रतिज्ञा करतो
+            आणि जाहीर करतो की:</p>
+
+        <ol>
+            <li>मी शिष्यवृत्तीसाठी अर्ज करणाऱ्या विद्यार्थ्याचा पालक/पालक आहे.</li>
+            <li>माझ्या कुटुंबाचे सर्व स्त्रोतांकडून मिळणारे वार्षिक उत्पन्न आर्थिक संवत्सरासाठी {{date}} <strong>रु.
+                    {{annualIncome}}</strong> आहे. ({{income_in_words}}).</li>
+            <li>वर दिलेली माहिती माझ्या सर्वोत्तम माहिती आणि विश्वासाप्रमाणे सत्य आहे.</li>
+        </ol>
+
+        <p>दिनांक {{date}} रोजी _______________ येथे सत्यापित.</p>
+    </div>
+
+    <div class="footer">
+        <div>
+            <p>__________________________</p>
+            <p>अर्जदाराची स्वाक्षरी</p>
+        </div>
+        <div class="seal text-center">
+            NOTARY SEAL
+        </div>
+    </div>
+</body>
+
+</html>

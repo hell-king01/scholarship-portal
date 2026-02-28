@@ -1,453 +1,301 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Calculator, CheckCircle2, XCircle, AlertCircle, Loader2 } from 'lucide-react';
+import {
+  Calculator, CheckCircle2, XCircle, AlertCircle, Loader2,
+  TrendingUp, Sparkles, Brain, ArrowRight, Info, Target, Zap, IndianRupee
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { scholarshipAPI } from '@/lib/api';
-import { indianStates } from '@/lib/scholarships-data';
+import { profileAPI } from '@/lib/api';
 
-interface EligibilityResult {
-  eligible: boolean;
-  matchScore: number;
-  reasons: string[];
-  rejectionReasons?: string[];
-  matchedScholarships: Array<{
-    id: string;
-    title: string;
-    matchScore: number;
-    amount: number;
-  }>;
-}
+const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const EligibilityPredictor = () => {
-  const { t } = useTranslation();
   const { toast } = useToast();
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState<EligibilityResult | null>(null);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(true);
+  const [simulating, setSimulating] = useState(false);
+  const [prediction, setPrediction] = useState<any>(null);
+  const [profile, setProfile] = useState<any>(null);
 
-  const [formData, setFormData] = useState({
-    income: '',
-    category: '',
-    gender: '',
-    educationLevel: '',
-    state: '',
-    percentage: '',
+  // Simulation State
+  const [simData, setSimData] = useState({
+    marks: 0,
+    income: 0,
+    category: ''
   });
 
-  const validateField = (name: string, value: string): string => {
-    switch (name) {
-      case 'income':
-        if (!value) return 'Annual income is required';
-        if (isNaN(Number(value)) || Number(value) < 0) return 'Income must be a valid number';
-        if (Number(value) > 100000000) return 'Income seems too high. Please check.';
-        return '';
-      case 'category':
-        if (!value) return 'Category is required';
-        return '';
-      case 'gender':
-        if (!value) return 'Gender is required';
-        return '';
-      case 'educationLevel':
-        if (!value) return 'Education level is required';
-        return '';
-      case 'state':
-        if (!value) return 'State is required';
-        return '';
-      case 'percentage':
-        if (value && (isNaN(Number(value)) || Number(value) < 0 || Number(value) > 100)) {
-          return 'Percentage must be between 0 and 100';
-        }
-        return '';
-      default:
-        return '';
-    }
-  };
-
-  const handleChange = (name: string, value: string) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => {
-        const newErrors = { ...prev };
-        delete newErrors[name];
-        return newErrors;
-      });
-    }
-
-    // Validate on blur for income field (no numbers in income field is handled by input type)
-    if (name === 'income' && value) {
-      const error = validateField(name, value);
-      if (error) {
-        setErrors(prev => ({ ...prev, [name]: error }));
-      }
-    }
-  };
-
-  const handleBlur = (name: string) => {
-    const value = formData[name as keyof typeof formData];
-    const error = validateField(name, value);
-    if (error) {
-      setErrors(prev => ({ ...prev, [name]: error }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate all fields
-    const newErrors: Record<string, string> = {};
-    Object.keys(formData).forEach(key => {
-      if (key !== 'percentage') {
-        const error = validateField(key, formData[key as keyof typeof formData]);
-        if (error) newErrors[key] = error;
-      }
-    });
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      toast({
-        title: 'Validation error',
-        description: 'Please fix the errors in the form',
-        variant: 'destructive',
-      });
-      return;
-    }
-
-    setIsLoading(true);
-    setResult(null);
-
+  const fetchCurrentEligibility = async () => {
     try {
-      const criteria = {
-        income: Number(formData.income),
-        category: formData.category,
-        gender: formData.gender,
-        educationLevel: formData.educationLevel,
-        state: formData.state,
-        percentage: formData.percentage ? Number(formData.percentage) : undefined,
-      };
+      setLoading(true);
+      const prof = await profileAPI.getProfile();
+      setProfile(prof);
+      setSimData({
+        marks: prof?.percentage || 0,
+        income: prof?.annual_income || 0,
+        category: prof?.category || 'General'
+      });
 
-      const response = await scholarshipAPI.predictEligibility(criteria);
-      setResult(response);
-      
-      // Build query params for redirect
-      const params = new URLSearchParams({
-        income: formData.income,
-        category: formData.category,
-        gender: formData.gender,
-        educationLevel: formData.educationLevel,
-        state: formData.state,
+      const resp = await fetch(`${BACKEND_URL}/api/eligibility/recalculate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: prof?.id || 'temp' })
       });
-      if (formData.percentage) {
-        params.append('percentage', formData.percentage);
-      }
-      
-      // Redirect to scholarships page with criteria
-      navigate(`/scholarships?${params.toString()}`);
-      
-      toast({
-        title: 'Eligibility calculated!',
-        description: response.eligible 
-          ? `Redirecting to ${response.matchedScholarships.length} matching scholarships...`
-          : 'Redirecting to scholarships page...',
-      });
-    } catch (error: any) {
-      toast({
-        title: 'Error',
-        description: error.response?.data?.message || 'Failed to check eligibility',
-        variant: 'destructive',
-      });
+      const data = await resp.json();
+      setPrediction(data.prediction);
+    } catch (err) {
+      console.error(err);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
+
+  const runSimulation = async () => {
+    setSimulating(true);
+    try {
+      const resp = await fetch(`${BACKEND_URL}/api/eligibility/simulate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          marks: Number(simData.marks),
+          income: Number(simData.income),
+          category: simData.category
+        })
+      });
+      const data = await resp.json();
+      setPrediction(data.prediction);
+      toast({ title: "Simulation Complete", description: "Scholarship eligibility recalculated." });
+    } catch (err) {
+      toast({ title: "Simulation Failed", variant: "destructive" });
+    } finally {
+      setSimulating(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentEligibility();
+  }, []);
+
+  const getProbabilityColor = (p: string) => {
+    if (p === 'High') return 'text-green-500 bg-green-500/10 border-green-500/20';
+    if (p === 'Medium') return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/20';
+    return 'text-red-500 bg-red-500/10 border-red-500/20';
+  };
+
+  if (loading) return (
+    <div className="flex flex-col items-center justify-center p-20 gap-4">
+      <Loader2 className="h-10 w-10 animate-spin text-primary" />
+      <p className="text-muted-foreground animate-pulse text-sm font-medium">Analyzing your profile with AI...</p>
+    </div>
+  );
 
   return (
-    <div className="space-y-6">
-      <Card className="p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-            <Calculator className="h-6 w-6 text-primary" />
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Simulation Controls - Left Side */}
+      <div className="lg:col-span-1 space-y-6">
+        <Card className="p-6 border-primary/20 bg-primary/5 shadow-xl shadow-primary/5">
+          <div className="flex items-center gap-2 mb-6 text-primary">
+            <Zap className="h-5 w-5 fill-primary/20" />
+            <h3 className="font-bold text-lg">"What If" Simulator</h3>
+          </div>
+
+          <div className="space-y-5">
+            <div className="space-y-2">
+              <Label className="text-xs uppercase tracking-wider text-muted-foreground">Simulated Marks (%)</Label>
+              <div className="flex gap-4 items-center">
+                <Input
+                  type="number"
+                  value={simData.marks}
+                  onChange={(e) => setSimData({ ...simData, marks: Number(e.target.value) })}
+                  className="h-10 bg-background"
+                />
+                <span className="text-sm font-bold text-primary w-12">{simData.marks}%</span>
+              </div>
+              <Progress value={simData.marks} className="h-1.5" />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs uppercase tracking-wider text-muted-foreground">Simulated Annual Income</Label>
+              <Input
+                type="number"
+                value={simData.income}
+                onChange={(e) => setSimData({ ...simData, income: Number(e.target.value) })}
+                className="h-10 bg-background"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs uppercase tracking-wider text-muted-foreground">Category Change</Label>
+              <Select value={simData.category} onValueChange={(v) => setSimData({ ...simData, category: v })}>
+                <SelectTrigger className="bg-background">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="General">General</SelectItem>
+                  <SelectItem value="OBC">OBC</SelectItem>
+                  <SelectItem value="SC">SC</SelectItem>
+                  <SelectItem value="ST">ST</SelectItem>
+                  <SelectItem value="EWS">EWS</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <Button
+              onClick={runSimulation}
+              disabled={simulating}
+              className="w-full mt-4 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
+            >
+              {simulating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Brain className="mr-2 h-4 w-4" />}
+              Recalculate AI Score
+            </Button>
+
+            <p className="text-[10px] text-center text-muted-foreground">
+              Note: Simulation changes are not saved to your profile.
+            </p>
+          </div>
+        </Card>
+
+        {/* Forecast Card */}
+        <Card className="p-5 border-dashed bg-accent/5">
+          <div className="flex items-center gap-2 mb-3">
+            <TrendingUp className="h-4 w-4 text-accent" />
+            <h4 className="text-sm font-bold">Future Forecast</h4>
+          </div>
+          <div className="text-xs space-y-2">
+            <div className="flex justify-between items-center p-2 bg-background/50 rounded-lg">
+              <span className="text-muted-foreground">Next Grade Predicted:</span>
+              <span className="font-bold text-primary">{prediction?.forecast?.nextGrade || 'N/A'}</span>
+            </div>
+            <div className="flex justify-between items-center p-2 bg-background/50 rounded-lg">
+              <span className="text-muted-foreground">Est. Marks (AI):</span>
+              <span className="font-bold text-primary">{prediction?.forecast?.estimatedMarks || 'N/A'}%</span>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* Prediction Output - Right Side */}
+      <div className="lg:col-span-2 space-y-6">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={prediction?.overallScore || 'none'}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Card className="p-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4">
+                <Badge className={`px-4 py-1.5 text-sm font-bold border ${getProbabilityColor(prediction?.probabilityLabel)}`}>
+                  {prediction?.probabilityLabel} Probability
+                </Badge>
+              </div>
+
+              <div className="mb-8 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                <div>
+                  <h3 className="text-3xl font-display font-bold mb-2">AI Eligibility Score</h3>
+                  <div className="flex items-end gap-3">
+                    <span className="text-6xl font-black text-primary tracking-tighter">
+                      {prediction?.overallScore || 0}
+                    </span>
+                    <span className="text-muted-foreground font-medium mb-2">/ 100</span>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-primary/10 rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 flex-1 md:max-w-xs shadow-inner">
+                  <div className="text-[10px] uppercase font-black text-primary/70 mb-1 tracking-widest">Est. Potential Aid</div>
+                  <div className="text-3xl font-black flex items-center gap-2">
+                    <IndianRupee className="h-6 w-6" />
+                    {((prediction?.overallScore || 0) * 1200).toLocaleString()}
+                  </div>
+                  <p className="text-[10px] text-muted-foreground mt-1 font-medium">Predicted based on matching scholarship history</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                {Object.entries(prediction?.weightedScores || {}).map(([key, score]: [string, any]) => (
+                  <div key={key} className="p-3 bg-muted/40 rounded-xl border border-muted-foreground/10 text-center">
+                    <div className="text-[10px] uppercase text-muted-foreground font-bold mb-1">{key}</div>
+                    <div className="text-lg font-black text-primary">{score}/100</div>
+                    <Progress value={score} className="h-1 mt-2" />
+                  </div>
+                ))}
+              </div>
+
+              <Tabs defaultValue="explanation">
+                <TabsList className="mb-6">
+                  <TabsTrigger value="explanation" className="gap-2">
+                    <Info className="h-4 w-4" /> Why Match?
+                  </TabsTrigger>
+                  <TabsTrigger value="suggestions" className="gap-2">
+                    <Sparkles className="h-4 w-4" /> Suggestions
+                  </TabsTrigger>
+                  <TabsTrigger value="missing" className="gap-2">
+                    <AlertCircle className="h-4 w-4" /> Missing Criteria
+                  </TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="explanation" className="space-y-3">
+                  {Object.entries(prediction?.explanationBreakdown || {}).map(([key, text]: [string, any]) => (
+                    <div key={key} className="flex gap-3 items-center p-3 bg-primary/5 rounded-lg border border-primary/10">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                      <span className="text-sm font-medium capitalize"><span className="font-bold">{key}:</span> {text}</span>
+                    </div>
+                  ))}
+                </TabsContent>
+
+                <TabsContent value="suggestions" className="space-y-3">
+                  {(prediction?.improvementSuggestions || prediction?.suggestions)?.map((s: string, i: number) => (
+                    <div key={i} className="flex gap-3 items-start p-3 bg-green-500/5 rounded-lg border border-green-500/10">
+                      <Zap className="h-4 w-4 text-green-500 mt-0.5" />
+                      <span className="text-sm font-medium">{s}</span>
+                    </div>
+                  ))}
+                </TabsContent>
+
+                <TabsContent value="missing" className="space-y-3">
+                  {prediction?.missingCriteria?.length > 0 ? (
+                    prediction.missingCriteria.map((m: string, i: number) => (
+                      <div key={i} className="flex gap-3 items-start p-3 bg-red-500/5 rounded-lg border border-red-500/10">
+                        <XCircle className="h-4 w-4 text-red-500 mt-0.5" />
+                        <span className="text-sm font-medium text-destructive">{m}</span>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex gap-3 items-center p-3 bg-green-500/10 rounded-lg">
+                      <CheckCircle2 className="h-5 w-5 text-green-500" />
+                      <span className="text-sm font-bold">You meet all basic requirements!</span>
+                    </div>
+                  )}
+                </TabsContent>
+              </Tabs>
+            </Card>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Gamification Tip */}
+        <div className="p-4 bg-primary/10 rounded-2xl border border-primary/20 flex gap-4 items-center">
+          <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center animate-pulse">
+            <Target className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
-            <h2 className="font-display text-xl font-bold">Check Your Eligibility</h2>
-            <p className="text-sm text-muted-foreground">
-              Enter your details to see which scholarships you qualify for
+            <h4 className="font-bold text-primary">Unlock New Tiers!</h4>
+            <p className="text-xs text-muted-foreground italic">
+              {prediction?.overallScore < 80
+                ? "Increase your marks by 5% to unlock 'Premium Foundation' scholarships."
+                : "You're in the top 10% of applicants! Apply to 'Elite Match' scholarships now."
+              }
             </p>
           </div>
         </div>
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Annual Income */}
-          <div className="space-y-2">
-            <Label htmlFor="income">
-              Annual Family Income (₹) <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="income"
-              type="number"
-              placeholder="e.g., 250000"
-              className={`h-12 ${errors.income ? 'border-destructive' : ''}`}
-              value={formData.income}
-              onChange={(e) => {
-                const value = e.target.value;
-                // Prevent non-numeric characters
-                if (value === '' || /^\d+$/.test(value)) {
-                  handleChange('income', value);
-                }
-              }}
-              onBlur={() => handleBlur('income')}
-            />
-            {errors.income && (
-              <p className="text-sm text-destructive flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" />
-                {errors.income}
-              </p>
-            )}
-            <p className="text-xs text-muted-foreground">
-              Enter total annual family income in Indian Rupees
-            </p>
-          </div>
-
-          {/* Category */}
-          <div className="space-y-2">
-            <Label htmlFor="category">
-              Category <span className="text-destructive">*</span>
-            </Label>
-            <Select
-              value={formData.category}
-              onValueChange={(value) => handleChange('category', value)}
-            >
-              <SelectTrigger className={`h-12 ${errors.category ? 'border-destructive' : ''}`}>
-                <SelectValue placeholder="Select your category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="General">General</SelectItem>
-                <SelectItem value="OBC">OBC (Other Backward Classes)</SelectItem>
-                <SelectItem value="SC">SC (Scheduled Caste)</SelectItem>
-                <SelectItem value="ST">ST (Scheduled Tribe)</SelectItem>
-                <SelectItem value="EWS">EWS (Economically Weaker Section)</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.category && (
-              <p className="text-sm text-destructive flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" />
-                {errors.category}
-              </p>
-            )}
-          </div>
-
-          {/* Gender */}
-          <div className="space-y-2">
-            <Label htmlFor="gender">
-              Gender <span className="text-destructive">*</span>
-            </Label>
-            <Select
-              value={formData.gender}
-              onValueChange={(value) => handleChange('gender', value)}
-            >
-              <SelectTrigger className={`h-12 ${errors.gender ? 'border-destructive' : ''}`}>
-                <SelectValue placeholder="Select gender" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Male">Male</SelectItem>
-                <SelectItem value="Female">Female</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.gender && (
-              <p className="text-sm text-destructive flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" />
-                {errors.gender}
-              </p>
-            )}
-          </div>
-
-          {/* Education Level */}
-          <div className="space-y-2">
-            <Label htmlFor="educationLevel">
-              Current Education Level <span className="text-destructive">*</span>
-            </Label>
-            <Select
-              value={formData.educationLevel}
-              onValueChange={(value) => handleChange('educationLevel', value)}
-            >
-              <SelectTrigger className={`h-12 ${errors.educationLevel ? 'border-destructive' : ''}`}>
-                <SelectValue placeholder="Select education level" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="class10">Class 10th</SelectItem>
-                <SelectItem value="class12">Class 12th</SelectItem>
-                <SelectItem value="graduation">Graduation</SelectItem>
-                <SelectItem value="postGrad">Post Graduation</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.educationLevel && (
-              <p className="text-sm text-destructive flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" />
-                {errors.educationLevel}
-              </p>
-            )}
-          </div>
-
-          {/* State */}
-          <div className="space-y-2">
-            <Label htmlFor="state">
-              State <span className="text-destructive">*</span>
-            </Label>
-            <Select
-              value={formData.state}
-              onValueChange={(value) => handleChange('state', value)}
-            >
-              <SelectTrigger className={`h-12 ${errors.state ? 'border-destructive' : ''}`}>
-                <SelectValue placeholder="Select your state" />
-              </SelectTrigger>
-              <SelectContent className="max-h-[300px]">
-                {indianStates.map((state) => (
-                  <SelectItem key={state} value={state}>
-                    {state}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.state && (
-              <p className="text-sm text-destructive flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" />
-                {errors.state}
-              </p>
-            )}
-          </div>
-
-          {/* Percentage (Optional) */}
-          <div className="space-y-2">
-            <Label htmlFor="percentage">Percentage/CGPA (Optional)</Label>
-            <Input
-              id="percentage"
-              type="number"
-              placeholder="e.g., 85"
-              min="0"
-              max="100"
-              step="0.01"
-              className={`h-12 ${errors.percentage ? 'border-destructive' : ''}`}
-              value={formData.percentage}
-              onChange={(e) => handleChange('percentage', e.target.value)}
-              onBlur={() => handleBlur('percentage')}
-            />
-            {errors.percentage && (
-              <p className="text-sm text-destructive flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" />
-                {errors.percentage}
-              </p>
-            )}
-            <p className="text-xs text-muted-foreground">
-              Your academic percentage or CGPA (if available)
-            </p>
-          </div>
-
-          <Button
-            type="submit"
-            className="w-full h-12 text-base"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-                Checking Eligibility...
-              </>
-            ) : (
-              <>
-                <Calculator className="h-5 w-5 mr-2" />
-                Check Eligibility
-              </>
-            )}
-          </Button>
-        </form>
-      </Card>
-
-      {/* Results */}
-      {result && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="space-y-4"
-        >
-          <Card className={`p-6 ${result.eligible ? 'bg-accent/10 border-accent' : 'bg-destructive/10 border-destructive'}`}>
-            <div className="flex items-start gap-4">
-              {result.eligible ? (
-                <CheckCircle2 className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
-              ) : (
-                <XCircle className="h-8 w-8 text-destructive flex-shrink-0 mt-1" />
-              )}
-              <div className="flex-1">
-                <h3 className="font-bold text-lg mb-2">
-                  {result.eligible ? 'You Are Eligible!' : 'Eligibility Issues Found'}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Match Score: <span className="font-bold">{result.matchScore}%</span>
-                </p>
-
-                {result.eligible && result.reasons.length > 0 && (
-                  <div className="space-y-2 mb-4">
-                    <p className="font-medium text-sm">Why you qualify:</p>
-                    <ul className="space-y-1">
-                      {result.reasons.map((reason, index) => (
-                        <li key={index} className="text-sm flex items-start gap-2">
-                          <CheckCircle2 className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
-                          <span>{reason}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {!result.eligible && result.rejectionReasons && result.rejectionReasons.length > 0 && (
-                  <div className="space-y-2 mb-4">
-                    <p className="font-medium text-sm">Issues:</p>
-                    <ul className="space-y-1">
-                      {result.rejectionReasons.map((reason, index) => (
-                        <li key={index} className="text-sm flex items-start gap-2">
-                          <XCircle className="h-4 w-4 text-destructive mt-0.5 flex-shrink-0" />
-                          <span>{reason}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          </Card>
-
-          {result.matchedScholarships.length > 0 && (
-            <Card className="p-6">
-              <h4 className="font-semibold mb-4">Matched Scholarships ({result.matchedScholarships.length})</h4>
-              <div className="space-y-3">
-                {result.matchedScholarships.map((scholarship) => (
-                  <div
-                    key={scholarship.id}
-                    className="flex items-center justify-between p-3 bg-muted rounded-lg"
-                  >
-                    <div className="flex-1">
-                      <p className="font-medium">{scholarship.title}</p>
-                      <p className="text-sm text-muted-foreground">
-                        Match: {scholarship.matchScore}% • ₹{scholarship.amount.toLocaleString('en-IN')}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card>
-          )}
-        </motion.div>
-      )}
+      </div>
     </div>
   );
 };

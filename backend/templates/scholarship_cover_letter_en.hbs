@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #333;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .date {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 30px 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .content {
+            margin-bottom: 40px;
+        }
+
+        .signature {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="date">Date: {{date}}</div>
+        <p><strong>To,</strong></p>
+        <p>The Scholarship Committee / Selection Board,</p>
+        <p><strong>{{scholarshipName}}</strong> Office.</p>
+    </div>
+
+    <div class="title">SUBJECT: COVER LETTER FOR SCHOLARSHIP APPLICATION</div>
+
+    <div class="content">
+        <p>Respected Sir/Madam,</p>
+
+        <p>I, <strong>{{fullName}}</strong>, a resident of <strong>{{address}}</strong>, am writing this letter to
+            formally apply for the <strong>{{scholarshipName}}</strong>. I am currently pursuing
+            <strong>{{course}}</strong> at <strong>{{institution}}</strong>.</p>
+
+        <p>My academic performance has been consistent, with a percentage of <strong>{{percentage}}%</strong> in my
+            previous qualification. My annual family income is <strong>Rs. {{annualIncome}}</strong>, and receiving this
+            scholarship would significantly assist me in continuing my education without financial burden.</p>
+
+        <p>I have attached all the necessary documents for your verification. I hope for your favorable consideration of
+            my application.</p>
+
+        <p>Thank you.</p>
+    </div>
+
+    <div class="signature">
+        <p>Yours Sincerely,</p>
+        <br><br>
+        <p>__________________________</p>
+        <p><strong>{{fullName}}</strong></p>
+        <p>Ph: {{phoneNumber}} / Email: {{email}}</p>
+    </div>
+</body>
+
+</html>

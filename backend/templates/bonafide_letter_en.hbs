@@ -1,0 +1,30 @@
+<div style="font-family: Arial, sans-serif; padding: 40px; line-height: 1.6;">
+    <h3 style="text-align: center;">Request for Bonafide Certificate</h3>
+
+    <p style="text-align: right;">Date: {{date}}</p>
+
+    <p>To,<br />
+        The Principal/Registrar,<br />
+        {{institutionName || "Your Institution"}}</p>
+
+    <p>Subject: Request for issuance of Bonafide Certificate for Scholarship Purpose.</p>
+
+    <p>Respected Sir/Madam,</p>
+
+    <p>I am <strong>{{fullName}}</strong>, a student of <strong>{{courseName}}</strong> (Year {{yearOfStudy}}) in your
+        esteemed institution. My UID/Roll Number is ____________________.</p>
+
+    <p>I am applying for the <strong>{{scholarshipName || "Scholarship Portal"}}</strong> and require a Bonafide
+        Certificate as mandatory documentation for the same. I request you to kindly issue the certificate at the
+        earliest.</p>
+
+    <p>Thanking you,</p>
+
+    <div style="margin-top: 60px;">
+        <p>Yours Sincerely,</p>
+        <p style="margin-top: 40px;">__________________________</p>
+        <p><strong>{{fullName}}</strong><br />
+            Address: {{address}}<br />
+            Ref: {{docId}}</p>
+    </div>
+</div>
