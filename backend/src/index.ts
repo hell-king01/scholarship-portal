@@ -7,6 +7,11 @@ import { OcrService } from './services/OcrService';
 import { EligibilityService } from './services/EligibilityService';
 import { DocGenService } from './services/DocGenService';
 import { ValidationService } from './services/ValidationService';
+import { ChatbotService } from './services/ChatbotService';
+import { FAQService } from './services/FAQService';
+import { AnalyticsService } from './services/AnalyticsService';
+import { ActivityService } from './services/ActivityService';
+import { UserJourneyService } from './services/UserJourneyService';
 import { DocumentModel } from './models/Document';
 import crypto from 'crypto';
 import path from 'path';
@@ -82,6 +87,9 @@ app.post('/api/ocr', upload.single('document'), async (req, res) => {
             fields: result.parsed
         }));
 
+        // Log OCR activity
+        await ActivityService.logAction(userId, 'ocr_upload', `Uploaded and processed ${docType} document.`, { confidence: result.confidence });
+
         res.json({ success: true, data: result });
     } catch (error: any) {
         console.error('OCR Processing Error:', error);
@@ -109,6 +117,12 @@ app.post('/api/eligibility/recalculate', async (req, res) => {
         const { currentProfile } = req.body;
 
         const prediction = EligibilityService.recalculate(currentProfile);
+
+        // Log activity if userId is provided
+        const userId = req.body.userId;
+        if (userId) {
+            await ActivityService.logAction(userId, 'eligibility_checked', `Recalculated eligibility. Score: ${prediction.eligibilityScore}`);
+        }
 
         res.json({ success: true, prediction });
     } catch (error: any) {
@@ -188,6 +202,101 @@ app.get('/api/documents/:userId/:fileName', (req, res) => {
         res.sendFile(filePath);
     } else {
         res.status(404).json({ error: 'File not found' });
+    }
+});
+
+// --- NEW ENDPOINTS ---
+
+// 6. Chatbot API
+app.post('/api/chatbot/query', async (req, res) => {
+    try {
+        const { userId, message, contextType } = req.body;
+        const response = await ChatbotService.handleQuery(userId || 'guest', message, contextType);
+
+        // Log chatbot interaction
+        if (userId) {
+            await ActivityService.logAction(userId, 'chatbot_interaction', `User asked: ${message}`);
+        }
+
+        res.json({ success: true, ...response });
+    } catch (error: any) {
+        console.error('Chatbot Error:', error);
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
+    }
+});
+
+// 7. FAQ API
+app.get('/api/faqs', async (req, res) => {
+    try {
+        const { query, category } = req.query;
+        const faqs = await FAQService.searchFAQs(query as string, category as string);
+        res.json({ success: true, faqs });
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
+    }
+});
+
+app.post('/api/faqs/helpful/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { isHelpful } = req.body;
+        await FAQService.markHelpful(id, isHelpful);
+        res.json({ success: true });
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
+    }
+});
+
+// 8. Analytics API
+app.get('/api/analytics/student', async (req, res) => {
+    try {
+        const userId = (req.query.userId || 'guest') as string;
+        const analytics = await AnalyticsService.getStudentAnalytics(userId);
+        res.json({ success: true, analytics });
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
+    }
+});
+
+app.get('/api/admin/analytics', async (req, res) => {
+    try {
+        const analytics = await AnalyticsService.getAdminAnalytics();
+        res.json({ success: true, analytics });
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
+    }
+});
+
+// 9. Activity API
+app.get('/api/activity', async (req, res) => {
+    try {
+        const userId = (req.query.userId || 'guest') as string;
+        const actionType = req.query.actionType as string;
+        const logs = await ActivityService.getLogs(userId, actionType);
+        res.json({ success: true, logs });
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
+    }
+});
+
+// 10. Journey API
+app.get('/api/journey/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const journey = await UserJourneyService.getJourney(userId);
+        res.json({ success: true, journey });
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
+    }
+});
+
+app.post('/api/journey/update', async (req, res) => {
+    try {
+        const { userId, step } = req.body;
+        const journey = await UserJourneyService.updateStep(userId, step);
+        res.json({ success: true, journey });
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
     }
 });
 

@@ -391,72 +391,10 @@ export const notificationAPI = {
 // Admin APIs
 export const adminAPI = {
   getAnalytics: async () => {
-    // 1. Total Users
-    const { count: totalUsers } = await supabase
-      .from('profiles')
-      .select('*', { count: 'exact', head: true });
-
-    // 2. Total Scholarships
-    const { count: totalScholarships } = await supabase
-      .from('scholarships')
-      .select('*', { count: 'exact', head: true });
-
-    // 3. Applications Stats
-    const { data: applications } = await supabase
-      .from('applications')
-      .select('status, created_at');
-
-    // Group applications by date for the chart
-    const applicationsOverTimeMap = new Map();
-    applications?.forEach(app => {
-      const date = new Date(app.created_at).toISOString().slice(0, 7); // YYYY-MM
-      applicationsOverTimeMap.set(date, (applicationsOverTimeMap.get(date) || 0) + 1);
-    });
-
-    const applicationsOverTime = Array.from(applicationsOverTimeMap.entries())
-      .map(([date, count]) => ({ date, applications: count }))
-      .sort((a, b) => a.date.localeCompare(b.date));
-
-    // 4. Category/Demographics (fetch profiles to aggregate)
-    const { data: profiles } = await supabase
-      .from('profiles')
-      .select('category, annual_income, role')
-      .eq('role', 'student');
-
-    const categoryMap = new Map();
-    let eligibleCount = 0; // Simple proxy: profiles with "complete" data considered "potentially eligible"
-    let ineligibleCount = 0;
-
-    profiles?.forEach(p => {
-      // Category stats
-      const cat = p.category || 'Unknown';
-      categoryMap.set(cat, (categoryMap.get(cat) || 0) + 1);
-
-      // Simple proxy for "eligible vs ineligible" stats based on income
-      // In a real engine, this would be more complex
-      if (p.annual_income && p.annual_income < 800000) {
-        eligibleCount++;
-      } else {
-        ineligibleCount++;
-      }
-    });
-
-    const categoryDistribution = Array.from(categoryMap.entries())
-      .map(([category, count]) => ({ category, count }));
-
-    return {
-      totalUsers: totalUsers || 0,
-      eligibleUsers: eligibleCount,
-      ineligibleUsers: ineligibleCount,
-      totalScholarships: totalScholarships || 0,
-      popularScholarships: [], // Complex to calculate without grouping, leaving empty for MVP
-      categoryDistribution,
-      applicationsOverTime,
-      eligibleVsIneligible: {
-        eligible: eligibleCount,
-        ineligible: ineligibleCount
-      }
-    };
+    const response = await fetch(`${BACKEND_URL}/api/admin/analytics`);
+    if (!response.ok) throw new Error('Failed to fetch admin analytics');
+    const data = await response.json();
+    return data.analytics;
   }
 };
 

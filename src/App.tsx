@@ -19,6 +19,11 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./context/AuthContext";
 import DocumentsPage from "./pages/DocumentsPage";
+import FAQPage from "./pages/FAQPage";
+import StudentAnalyticsPage from "./pages/StudentAnalyticsPage";
+import ActivityPage from "./pages/ActivityPage";
+import Chatbot from "./components/Chatbot";
+import { useAuth } from "./hooks/useAuth";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +34,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <Chatbot userId="guest" />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<AuthPage />} />
@@ -75,6 +81,23 @@ const App = () => (
               }
             />
             <Route path="/eligibility" element={<EligibilityPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route
+              path="/analytics"
+              element={
+                <ProtectedRoute>
+                  <StudentAnalyticsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/activity"
+              element={
+                <ProtectedRoute>
+                  <ActivityPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/admin"
               element={
