@@ -1,8 +1,8 @@
 -- 1. Create the Provider Table exactly as you described
 CREATE TABLE IF NOT EXISTS public.provider_profiles (
   id uuid not null,
-  email text not null,         -- Added for your reference
-  password text not null,      -- Added for your reference
+  email text null,         -- Changed to null to avoid constraint issues
+  password text null,      -- Changed to null (should not store passwords here)
   organization_name text not null,
   organization_type text null,
   website_url text null,

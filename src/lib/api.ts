@@ -84,6 +84,7 @@ export const profileAPI = {
 
     if (role === 'provider') {
       const providerUpdate = {
+        email: session.user.email,
         organization_name: data.organizationName || data.fullName,
         organization_type: data.organizationType,
         website_url: data.websiteUrl,

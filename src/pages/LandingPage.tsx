@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { GraduationCap, Search, FileCheck, Languages, Sparkles, ChevronRight, Users, IndianRupee, Award, Star, ArrowRight } from 'lucide-react';
+import { GraduationCap, Search, FileCheck, Languages, Sparkles, ChevronRight, Users, IndianRupee, Award, Star, ArrowRight, MousePointerClick } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+
 import { useAuth } from '@/hooks/useAuth';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -89,7 +89,7 @@ const LandingPage = () => {
               <span className="font-display font-bold text-xl">ScholarMatch</span>
             </div>
             <div className="flex items-center gap-3">
-              <LanguageSwitcher />
+
               {authenticated ? (
                 <Link to="/dashboard">
                   <Button className="flex">{t('common.dashboard') || 'Dashboard'}</Button>
@@ -179,14 +179,24 @@ const LandingPage = () => {
                           <div className="h-6 flex-1 bg-muted rounded" />
                         </div>
                       </div>
-                      <div className="bg-card rounded-xl p-4 shadow-soft">
-                        <div className="flex items-center gap-2 mb-3">
-                          <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                          <span className="text-sm font-medium">₹50,000/year</span>
+                      <div className="bg-card rounded-xl p-4 shadow-soft border border-primary/20 bg-gradient-to-br from-card to-primary/5">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Sparkles className="h-4 w-4 text-primary" />
+                          <span className="text-[10px] font-bold uppercase tracking-wider">Smart Assistant</span>
                         </div>
-                        <div className="h-3 w-full bg-muted rounded mb-2" />
-                        <div className="h-2 w-2/3 bg-muted rounded" />
-                        <Button size="sm" className="w-full mt-3">Apply Now</Button>
+                        <div className="text-[9px] font-mono text-primary/60 mb-2">Secure Token Ready</div>
+                        <div className="bg-accent/10 rounded-lg p-2 mb-2 border border-accent/20">
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-[8px] font-bold text-accent">Zero-Install Magic</span>
+                            <span className="text-[7px] bg-accent/20 text-accent px-1.5 rounded-full">ACTIVE</span>
+                          </div>
+                          <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+                            <div className="h-full w-full bg-accent animate-pulse" />
+                          </div>
+                        </div>
+                        <Button size="sm" className="w-full h-7 text-[10px] gap-1">
+                          <MousePointerClick className="h-3 w-3" /> Install Apply Widget
+                        </Button>
                       </div>
                     </div>
                   </div>

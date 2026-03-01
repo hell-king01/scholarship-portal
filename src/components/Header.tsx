@@ -2,12 +2,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence } from 'framer-motion';
 import {
-  GraduationCap, Home, Search, FileText, User, Bell, Menu,
+  GraduationCap, Home, Search, FileText, User, Menu,
   Upload, Calculator, Shield, Users, LogIn, LogOut
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { NotificationsPanel } from './NotificationsPanel';
+
 import { useAuth } from '@/hooks/useAuth';
 import {
   Sheet,
@@ -31,7 +30,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const { role, authenticated, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
+
 
   const isActive = (path: string) => {
     if (path === '/') {
@@ -129,19 +128,7 @@ export const Header = () => {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            <LanguageSwitcher />
 
-            {authenticated && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="relative"
-                onClick={() => setNotificationsOpen(true)}
-              >
-                <Bell className="h-5 w-5" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
-              </Button>
-            )}
 
             {/* Desktop: User Menu */}
             {authenticated ? (
@@ -272,18 +259,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Notifications Panel */}
-      <AnimatePresence>
-        {notificationsOpen && (
-          <>
-            <div
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
-              onClick={() => setNotificationsOpen(false)}
-            />
-            <NotificationsPanel onClose={() => setNotificationsOpen(false)} />
-          </>
-        )}
-      </AnimatePresence>
+
     </header>
   );
 };

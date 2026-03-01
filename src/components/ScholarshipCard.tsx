@@ -154,7 +154,7 @@ export const ScholarshipCard = ({ scholarship, userProfile, onSave, isSaved }: S
 
         {/* Show Apply button only if eligible (matchScore > 0) */}
         {matchScore !== null && matchScore > 0 ? (
-          <Link to={`/scholarship/${scholarship.id}?apply=true`} className="flex-1">
+          <Link to={`/scholarship/${scholarship.id}`} className="flex-1">
             <Button className="w-full gap-2">
               {t('scholarships.applyNow')}
               <ChevronRight className="h-4 w-4" />
@@ -166,7 +166,7 @@ export const ScholarshipCard = ({ scholarship, userProfile, onSave, isSaved }: S
             <span className="font-semibold text-sm">Not Eligible</span>
           </div>
         ) : (
-          <Link to={`/scholarship/${scholarship.id}?apply=true`} className="flex-1">
+          <Link to={`/scholarship/${scholarship.id}`} className="flex-1">
             <Button className="w-full gap-2">
               {t('scholarships.applyNow')}
               <ChevronRight className="h-4 w-4" />

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+
 import { useToast } from '@/hooks/use-toast';
 import { authAPI } from '@/lib/api';
 
@@ -102,7 +102,7 @@ const AuthPage = () => {
             </div>
             <span className="font-display font-bold text-xl">ScholarMatch</span>
           </a>
-          <LanguageSwitcher />
+
         </div>
 
         {/* Form Container */}

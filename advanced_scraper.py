@@ -66,24 +66,24 @@ async def search_scholarship_urls(queries: List[str], max_results_per_query: int
                     logging.warning(f"No results found on DDG for: {query}. Attempting Google fallback...")
                     if page:
                          encoded_query = urllib.parse.quote_plus(query)
-                         google_url = f"https://www.google.com/search?q={encoded_query}"
-                         await page.goto(google_url, wait_until="domcontentloaded", timeout=45000)
+                         bing_url = f"https://www.bing.com/search?q={encoded_query}"
+                         await page.goto(bing_url, wait_until="domcontentloaded", timeout=45000)
                          try:
-                             await page.wait_for_selector('h3', timeout=5000)
+                             await page.wait_for_selector('h2', timeout=5000)
                          except:
-                             logging.warning(f"Timeout waiting for h3 on google search: {query}")
+                             logging.warning(f"Timeout waiting for h2 on bing search: {query}")
                              pass
                          await page.wait_for_timeout(2000)
                          
-                         google_links = await page.evaluate('''() => {
+                         bing_links = await page.evaluate('''() => {
                              return Array.from(document.querySelectorAll('a'))
                                  .map(a => a.href)
-                                 .filter(href => href.startsWith('http') && !href.includes('google.com') && !href.includes('googleusercontent'));
+                                 .filter(href => href.startsWith('http') && !href.includes('bing.com') && !href.includes('microsoft.com'));
                          }''')
                          
-                         for link in google_links[:max_results_per_query]:
+                         for link in bing_links[:max_results_per_query]:
                              urls.add(link)
-                             logging.info(f"Found URL (Google fallback): {link}")
+                             logging.info(f"Found URL (Bing fallback): {link}")
                     
             except Exception as e:
                 logging.error(f"Search failed for query '{query}': {e}")
@@ -338,13 +338,12 @@ async def main():
         logging.warning("Please set your GEMINI_API_KEY.")
         return
 
-    # 1. Dynamic Real-Time Discovery
-    search_queries = [
-        "pre matric and post matric scholarship site:up.gov.in",
-        "official state scholarship portal bihar site:bih.nic.in",
-        "sje rajasthan scholarship portal latest schemes",
-        "official foundational scholarships india application 2026",
-        "mahadbt maharashtra scholarship portal guidelines site:maharashtra.gov.in"
+    # 1. Hardcoded target URLs to ensure quick fetch
+    target_urls = [
+        "https://www.education.gov.in/scholarships",
+        "https://tribal.nic.in/Scholarship",
+        "https://minorityaffairs.gov.in/scholarship-schemes",
+        "https://socialjustice.gov.in/schemes/"
     ]
     
     # 2. Get already processed URLs from Supabase
@@ -359,10 +358,6 @@ async def main():
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
         page = await context.new_page()
-
-        # Perform the search using DDG with a Playwright Bing Scraper fallback
-        found_urls = await search_scholarship_urls(search_queries, max_results_per_query=3, page=page)
-        target_urls = list(set([str(u) for u in found_urls]))
         
         target_urls = [u for u in target_urls if u not in processed_urls]
         logging.info(f"Starting pipeline with {len(target_urls)} potential official URLs.")
