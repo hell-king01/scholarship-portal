@@ -45,13 +45,14 @@ export const Header = () => {
     navigate('/auth?mode=signin');
   };
 
-  // Main navigation items (always visible)
   const mainNavItems = [
     { path: '/', icon: Home, label: 'Home', exact: true },
     { path: '/scholarships', icon: Search, label: 'Scholarships' },
-    { path: '/applications', icon: FileText, label: 'Applications' },
-    { path: '/eligibility', icon: Calculator, label: 'Eligibility' },
-    { path: '/documents', icon: Upload, label: 'Documents' },
+    // Only show these to students and admins, not providers
+    ...(role !== 'provider' ? [
+      { path: '/eligibility', icon: Calculator, label: 'Eligibility' },
+      { path: '/documents', icon: Upload, label: 'Documents' }
+    ] : [])
   ];
 
   // Profile and settings
@@ -64,6 +65,10 @@ export const Header = () => {
     { path: '/admin', icon: Shield, label: 'Admin Dashboard' },
   ] : [];
 
+  const providerItems = role === 'provider' ? [
+    { path: '/provider', icon: Users, label: 'Provider Dashboard' },
+  ] : [];
+
   const mentorItems = role === 'mentor' ? [
     { path: '/mentor', icon: Users, label: 'Mentor Dashboard' },
   ] : [];
@@ -73,6 +78,7 @@ export const Header = () => {
     ...mainNavItems,
     ...profileItems,
     ...adminItems,
+    ...providerItems,
     ...mentorItems,
   ];
 
@@ -159,6 +165,19 @@ export const Header = () => {
                     <>
                       <DropdownMenuSeparator />
                       {adminItems.map((item) => (
+                        <DropdownMenuItem key={item.path} asChild>
+                          <Link to={item.path} className="flex items-center gap-2 cursor-pointer">
+                            <item.icon className="h-4 w-4" />
+                            {item.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </>
+                  )}
+                  {providerItems.length > 0 && (
+                    <>
+                      <DropdownMenuSeparator />
+                      {providerItems.map((item) => (
                         <DropdownMenuItem key={item.path} asChild>
                           <Link to={item.path} className="flex items-center gap-2 cursor-pointer">
                             <item.icon className="h-4 w-4" />

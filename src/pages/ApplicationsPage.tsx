@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { FileText, Clock, CheckCircle2, XCircle, AlertCircle, ChevronRight, GraduationCap, Loader2, UploadCloud, IndianRupee } from 'lucide-react';
+import { FileText, Clock, CheckCircle2, XCircle, AlertCircle, ChevronRight, GraduationCap, Loader2, UploadCloud, IndianRupee, Bookmark } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
-import { applicationAPI } from '@/lib/api';
+import { applicationAPI, scholarshipAPI } from '@/lib/api';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
+import { useSavedScholarships } from '@/hooks/useSavedScholarships';
 import {
   Dialog,
   DialogContent,
@@ -23,13 +24,40 @@ const ApplicationsPage = () => {
   const { t } = useTranslation();
   const { authenticated, loading: authLoading } = useAuth();
   const { toast } = useToast();
+  const { savedScholarships } = useSavedScholarships();
   const [applications, setApplications] = useState<any[]>([]);
+  const [savedData, setSavedData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedApp, setSelectedApp] = useState<any>(null);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [activeTab, setActiveTab] = useState('all');
+
+  const filteredItems = useMemo(() => {
+    if (activeTab === 'all') return applications;
+
+    if (activeTab === 'saved') {
+      const appliedIds = new Set(applications.map(app => app.scholarship_id));
+      const bookmarks = savedData
+        .filter(s => !appliedIds.has(s.id))
+        .map(s => ({
+          id: `bookmark-${s.id}`,
+          scholarship_id: s.id,
+          status: 'bookmark',
+          created_at: new Date().toISOString(),
+          scholarships: s
+        }));
+      const drafts = applications.filter(app => app.status === 'draft');
+      return [...drafts, ...bookmarks];
+    }
+
+    if (activeTab === 'applied') return applications.filter(app => ['submitted', 'pending_verification', 'under_review'].includes(app.status));
+    if (activeTab === 'completed') return applications.filter(app => ['approved', 'disbursed', 'rejected'].includes(app.status));
+
+    return applications;
+  }, [applications, savedData, activeTab]);
 
   useEffect(() => {
-    const fetchApplications = async () => {
+    const fetchData = async () => {
       if (!authenticated) {
         setLoading(false);
         return;
@@ -37,8 +65,12 @@ const ApplicationsPage = () => {
 
       try {
         setLoading(true);
-        const data = await applicationAPI.getAll();
-        setApplications(data);
+        const [appData, bookmarks] = await Promise.all([
+          applicationAPI.getAll(),
+          savedScholarships.length > 0 ? scholarshipAPI.getMultipleById(savedScholarships) : Promise.resolve([])
+        ]);
+        setApplications(appData);
+        setSavedData(bookmarks);
       } catch (error) {
         console.error('Error fetching applications:', error);
       } finally {
@@ -47,9 +79,9 @@ const ApplicationsPage = () => {
     };
 
     if (!authLoading) {
-      fetchApplications();
+      fetchData();
     }
-  }, [authenticated, authLoading]);
+  }, [authenticated, authLoading, savedScholarships]);
 
   const handleStatusUpdate = async (appId: string, newStatus: string) => {
     setIsUpdating(true);
@@ -76,6 +108,7 @@ const ApplicationsPage = () => {
 
   const getStatusConfig = (status: string) => {
     switch (status) {
+      case 'bookmark': return { icon: Bookmark, color: 'bg-primary/10 text-primary', label: 'Bookmarked' };
       case 'draft': return { icon: Clock, color: 'bg-muted text-muted-foreground', label: 'Draft' };
       case 'submitted': return { icon: CheckCircle2, color: 'bg-blue-100 text-blue-700', label: 'Applied on Portal' };
       case 'pending_verification': return { icon: AlertCircle, color: 'bg-yellow-100 text-yellow-700', label: 'Under Verification' };
@@ -118,53 +151,85 @@ const ApplicationsPage = () => {
               <Link to="/auth?mode=signin"><Button className="w-full">Sign In</Button></Link>
             </Card>
           </motion.div>
-        ) : applications.length === 0 ? (
+        ) : (applications.length === 0 && savedData.length === 0) ? (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
             <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="h-10 w-10 text-muted-foreground" />
             </div>
             <h3 className="font-semibold text-lg mb-2">No applications yet</h3>
-            <p className="text-muted-foreground mb-6">Start your journey by applying for scholarships that match your profile.</p>
+            <p className="text-muted-foreground mb-6">Start your journey by applying for scholarships that match your profile or bookmarking ones you like.</p>
             <Link to="/scholarships"><Button>Browse Scholarships</Button></Link>
           </motion.div>
         ) : (
-          <div className="space-y-4">
-            {applications.map((app, index) => {
-              const statusConfig = getStatusConfig(app.status);
-              const scholarship = app.scholarships;
-              return (
-                <motion.div
-                  key={app.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-card rounded-2xl border border-border p-5 hover:shadow-card transition-shadow cursor-pointer"
-                  onClick={() => setSelectedApp(app)}
+          <div className="space-y-6">
+            <div className="flex gap-2 pb-2 overflow-x-auto scrollbar-hide">
+              {['all', 'saved', 'applied', 'completed'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${activeTab === tab
+                    ? 'bg-primary text-primary-foreground shadow-md'
+                    : 'bg-muted/50 text-muted-foreground hover:bg-muted'
+                    }`}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge className={statusConfig.color}>
-                          <statusConfig.icon className="h-3 w-3 mr-1" />
-                          {statusConfig.label}
-                        </Badge>
+                  {tab === 'all' && 'All Applications'}
+                  {tab === 'saved' && 'Saved / Bookmarks'}
+                  {tab === 'applied' && 'Under Processing'}
+                  {tab === 'completed' && 'Completed'}
+                </button>
+              ))}
+            </div>
+
+            {filteredItems.length === 0 ? (
+              <div className="text-center py-10 bg-card rounded-2xl border border-dashed border-border">
+                <p className="text-muted-foreground">No scholarships found in this category.</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {filteredItems.map((item, index) => {
+                  const statusConfig = getStatusConfig(item.status);
+                  const scholarship = item.scholarships;
+                  return (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-card rounded-2xl border border-border p-5 hover:shadow-card transition-shadow cursor-pointer"
+                      onClick={() => {
+                        if (item.status === 'bookmark') {
+                          window.open(`/scholarship/${item.scholarship_id}`, '_self');
+                        } else {
+                          setSelectedApp(item);
+                        }
+                      }}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Badge className={statusConfig.color}>
+                              <statusConfig.icon className="h-3 w-3 mr-1" />
+                              {statusConfig.label}
+                            </Badge>
+                          </div>
+                          <h3 className="font-semibold text-lg mb-1">{scholarship?.title || 'Unknown Scholarship'}</h3>
+                          <p className="text-sm text-muted-foreground mb-3">{scholarship?.provider || 'Unknown Provider'}</p>
+                          <div className="flex items-center gap-4 text-sm">
+                            <span className="text-muted-foreground">
+                              {item.status === 'bookmark' ? 'Saved' : (item.status === 'draft' ? 'Created' : 'Updated')}: {new Date(item.created_at || new Date()).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                            </span>
+                            {scholarship?.amount > 0 && (
+                              <span className="font-medium text-accent">₹{scholarship.amount.toLocaleString('en-IN')}</span>
+                            )}
+                          </div>
+                        </div>
+                        <ChevronRight className="h-5 w-5 text-muted-foreground mt-2" />
                       </div>
-                      <h3 className="font-semibold text-lg mb-1">{scholarship?.title || 'Unknown Scholarship'}</h3>
-                      <p className="text-sm text-muted-foreground mb-3">{scholarship?.provider || 'Unknown Provider'}</p>
-                      <div className="flex items-center gap-4 text-sm">
-                        <span className="text-muted-foreground">
-                          {app.status === 'draft' ? 'Created' : 'Updated'}: {new Date(app.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
-                        </span>
-                        {scholarship?.amount > 0 && (
-                          <span className="font-medium text-accent">₹{scholarship.amount.toLocaleString('en-IN')}</span>
-                        )}
-                      </div>
-                    </div>
-                    <ChevronRight className="h-5 w-5 text-muted-foreground mt-2" />
-                  </div>
-                </motion.div>
-              );
-            })}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
 

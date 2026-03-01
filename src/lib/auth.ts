@@ -1,6 +1,6 @@
 import { supabase } from './supabase';
 
-export type UserRole = 'student' | 'admin' | 'mentor';
+export type UserRole = 'student' | 'admin' | 'mentor' | 'provider';
 
 /**
  * Get user role from Supabase session or user metadata
@@ -12,7 +12,7 @@ export const getUserRole = async (): Promise<UserRole> => {
 
   // Try to get role from user metadata first
   const role = session.user.user_metadata?.role?.toLowerCase();
-  if (role === 'admin' || role === 'mentor' || role === 'student') {
+  if (role === 'admin' || role === 'mentor' || role === 'student' || role === 'provider') {
     return role as UserRole;
   }
 

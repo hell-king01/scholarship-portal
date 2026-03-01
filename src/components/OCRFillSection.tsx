@@ -21,18 +21,23 @@ interface ExtractedData {
 }
 
 interface OCRFillSectionProps {
-  onExtract: (type: 'aadhar' | 'income' | 'caste' | 'marksheet', data: ExtractedData) => void;
+  onExtract: (type: string, data: ExtractedData) => void;
   extractedData: Record<string, ExtractedData>;
+  uploadedDocs?: Record<string, { name: string, url: string, extracted_data?: any }>;
 }
 
-export const OCRFillSection = ({ onExtract, extractedData }: OCRFillSectionProps) => {
+export const OCRFillSection = ({ onExtract, extractedData, uploadedDocs = {} }: OCRFillSectionProps) => {
   const { t } = useTranslation();
 
   const documents = [
-    { type: 'aadhar' as const, label: t('profile.documents.aadhar'), required: true },
-    { type: 'income' as const, label: t('profile.documents.income'), required: true },
-    { type: 'caste' as const, label: t('profile.documents.caste'), required: true },
-    { type: 'marksheet' as const, label: t('profile.documents.marksheet'), required: false },
+    { type: 'aadhar', label: t('profile.documents.aadhar') || 'Aadhar Card', required: true, enableOCR: true },
+    { type: 'income', label: t('profile.documents.income') || 'Income Certificate', required: true, enableOCR: true },
+    { type: 'caste', label: t('profile.documents.caste') || 'Caste Certificate', required: false, enableOCR: true },
+    { type: 'marksheet', label: t('profile.documents.marksheet') || 'Previous Marksheet', required: false, enableOCR: true },
+    { type: 'domicile', label: 'Domicile Certificate', required: true, enableOCR: false },
+    { type: 'medical', label: 'Medical Certificate (if disabled)', required: false, enableOCR: false },
+    { type: 'parent_death', label: "Parent's Death Certificate (if applicable)", required: false, enableOCR: false },
+    { type: 'passbook', label: 'Bank Passbook / Cancelled Cheque', required: true, enableOCR: false },
   ];
 
   const getExtractedSummary = (type: string) => {
@@ -79,10 +84,17 @@ export const OCRFillSection = ({ onExtract, extractedData }: OCRFillSectionProps
                   {doc.label}
                   {doc.required && <span className="text-destructive ml-1">*</span>}
                 </Label>
-                {isExtracted && (
-                  <div className="flex items-center gap-1 text-xs text-accent">
-                    <CheckCircle2 className="h-3 w-3" />
-                    <span>Extracted</span>
+                {(isExtracted || uploadedDocs[doc.type]) && (
+                  <div className="flex items-center gap-2">
+                    {uploadedDocs[doc.type] && (
+                      <a href={uploadedDocs[doc.type].url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">
+                        View Saved
+                      </a>
+                    )}
+                    <div className="flex items-center gap-1 text-xs text-accent">
+                      <CheckCircle2 className="h-3 w-3" />
+                      <span>{isExtracted ? 'Extracted' : 'Uploaded'}</span>
+                    </div>
                   </div>
                 )}
               </div>
@@ -90,7 +102,11 @@ export const OCRFillSection = ({ onExtract, extractedData }: OCRFillSectionProps
               <OCRUpload
                 type={doc.type}
                 label={doc.label}
+                enableOCR={doc.enableOCR}
                 onExtract={(data) => onExtract(doc.type, data)}
+                existingUrl={uploadedDocs[doc.type]?.url}
+                existingData={uploadedDocs[doc.type]?.extracted_data}
+                existingName={uploadedDocs[doc.type]?.name}
               />
 
               {summary && (

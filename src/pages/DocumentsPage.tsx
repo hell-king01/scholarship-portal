@@ -16,11 +16,35 @@ const DocumentsPage = () => {
     const { authenticated, loading: authLoading } = useAuth();
     const [saving, setSaving] = useState(false);
     const [extractedData, setExtractedData] = useState<Record<string, any>>({});
+    const [uploadedDocs, setUploadedDocs] = useState<Record<string, { name: string, url: string, extracted_data?: any }>>({});
 
     // Track what we plan to update in the profile
     const [pendingUpdates, setPendingUpdates] = useState<Record<string, any>>({});
 
-    const handleExtract = (type: 'aadhar' | 'income' | 'caste' | 'marksheet', data: any) => {
+    useEffect(() => {
+        const fetchUploadedDocs = async () => {
+            if (!authenticated || authLoading) return;
+            try {
+                const { documentAPI } = await import('@/lib/api');
+                const userDocs = await documentAPI.getUserDocuments();
+
+                const docsMap: Record<string, { name: string, url: string, extracted_data: any }> = {};
+                for (const doc of userDocs) {
+                    const type = doc.document_type;
+                    const url = await documentAPI.getDocumentUrl(doc.file_name);
+                    if (url) {
+                        docsMap[type] = { name: doc.file_name, url, extracted_data: doc.extracted_data };
+                    }
+                }
+                setUploadedDocs(docsMap);
+            } catch (err) {
+                console.error("Failed to fetch documents", err);
+            }
+        };
+        fetchUploadedDocs();
+    }, [authenticated, authLoading]);
+
+    const handleExtract = (type: string, data: any) => {
         setExtractedData(prev => ({ ...prev, [type]: data }));
 
         const parsed = data.parsed;
@@ -140,7 +164,11 @@ const DocumentsPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                 >
-                    <OCRFillSection onExtract={handleExtract} extractedData={extractedData} />
+                    <OCRFillSection
+                        onExtract={handleExtract}
+                        extractedData={extractedData}
+                        uploadedDocs={uploadedDocs}
+                    />
                 </motion.div>
 
                 {Object.keys(pendingUpdates).length > 0 && (

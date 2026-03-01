@@ -1,0 +1,7663 @@
+[
+  {
+    "title": "PM Yashasvi Scholarship 2026",
+    "provider": "Ministry of Social Justice and Empowerment, Government of India",
+    "provider_type": "government",
+    "amount": 75000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-08-31",
+    "eligibility": {
+      "category": [
+        "OBC",
+        "EBC",
+        "DNT"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10",
+        "Class 11",
+        "Class 12"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "merit",
+      "social justice"
+    ]
+  },
+  {
+    "title": "TRTI Scholarship 2026 (Maharashtra ST)",
+    "provider": "Tribal Research and Training Institute, Pune",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "School",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "PhD",
+        "ITI",
+        "Professional"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "tribal",
+      "state specific"
+    ]
+  },
+  {
+    "title": "National Means-cum-Merit Scholarship (NMMS)",
+    "provider": "Ministry of Education, Government of India",
+    "provider_type": "government",
+    "amount": 12000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 350000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10",
+        "Class 11",
+        "Class 12"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "merit",
+      "means",
+      "central"
+    ]
+  },
+  {
+    "title": "Maharashtra Post-Matric OBC Scholarship",
+    "provider": "Government of Maharashtra - Social Justice Department",
+    "provider_type": "government",
+    "amount": 2000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Maharashtra Minority Post-Matric Scholarship",
+    "provider": "Government of Maharashtra - Minority Development Department",
+    "provider_type": "government",
+    "amount": 1500.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 500000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Maharashtra EBC Post-Matric Scholarship",
+    "provider": "Government of Maharashtra - Social Justice Department",
+    "provider_type": "government",
+    "amount": 1500.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 100000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Maharashtra Girls Merit Scholarship",
+    "provider": "Government of Maharashtra - Women & Child Development",
+    "provider_type": "government",
+    "amount": 20000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-09-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 600000.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": true,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "girls",
+      "merit"
+    ]
+  },
+  {
+    "title": "Maharashtra Rajarshi Chhatrapati Shahu Maharaj Scholarship",
+    "provider": "Government of Maharashtra - Social Justice Department",
+    "provider_type": "government",
+    "amount": 30000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-08-31",
+    "eligibility": {
+      "category": [
+        "OBC",
+        "SC",
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Telangana Post-Matric SC Scholarship",
+    "provider": "Government of Telangana - BC Welfare Department",
+    "provider_type": "government",
+    "amount": 2000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Telangana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Telangana Post-Matric BC Scholarship",
+    "provider": "Government of Telangana - BC Welfare Department",
+    "provider_type": "government",
+    "amount": 1800.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Telangana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Telangana Minority Welfare Scholarship",
+    "provider": "Government of Telangana - Minority Welfare Department",
+    "provider_type": "government",
+    "amount": 1500.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Telangana"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Andhra Pradesh Post-Matric SC Scholarship",
+    "provider": "Government of Andhra Pradesh - BC Welfare Department",
+    "provider_type": "government",
+    "amount": 2200.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Andhra Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Andhra Pradesh Post-Matric BC Scholarship",
+    "provider": "Government of Andhra Pradesh - BC Welfare Department",
+    "provider_type": "government",
+    "amount": 2000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Andhra Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Andhra Pradesh Minority Welfare Scholarship",
+    "provider": "Government of Andhra Pradesh - Minority Welfare Department",
+    "provider_type": "government",
+    "amount": 1500.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric"
+      ],
+      "states": [
+        "Andhra Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Andhra Pradesh NTR Vidyonnathi Scheme",
+    "provider": "Government of Andhra Pradesh - Education Department",
+    "provider_type": "government",
+    "amount": 20000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-09-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 500000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Andhra Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Andhra Pradesh Jagananna Vidya Deevena",
+    "provider": "Government of Andhra Pradesh - Education Department",
+    "provider_type": "government",
+    "amount": 15000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Andhra Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Minority"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Post Matric Scholarship for SC Students (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 20000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "Polytechnic"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post Matric Scholarship for ST Students (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 20000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "Polytechnic"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post Matric Scholarship for OBC/SEBC Students (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 13000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "OBC",
+        "SEBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Post-Matric",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "Polytechnic"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Pre Matric Scholarship for SC Students (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 6000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Pre Matric Scholarship for ST Students (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 6000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Pre Matric Scholarship for OBC/SEBC Students (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 4000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [
+        "OBC",
+        "SEBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Pre Matric Scholarship for EBC Students (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 4000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "e-Medhabruti UG Merit Scholarship (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 10000.0,
+    "amount_type": "yearly",
+    "deadline": "2099-12-31",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "e-Medhabruti PG Merit Scholarship (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 15000.0,
+    "amount_type": "yearly",
+    "deadline": "2099-12-31",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "e-Medhabruti Technical & Professional Scholarship (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 20000.0,
+    "amount_type": "yearly",
+    "deadline": "2099-12-31",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "Polytechnic"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "technical",
+      "professional"
+    ]
+  },
+  {
+    "title": "Sudakshya for Girls Child Scholarship (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 18000.0,
+    "amount_type": "yearly",
+    "deadline": "2099-12-31",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [
+        "Diploma",
+        "Polytechnic",
+        "ITI",
+        "ITC"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": true,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "girls",
+      "technical"
+    ]
+  },
+  {
+    "title": "Krishi Vidya Nidhi Yojana (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 66000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "Polytechnic",
+        "ITI",
+        "ITC",
+        "PhD"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "agriculture"
+    ]
+  },
+  {
+    "title": "Green Passage Scheme - Higher Education (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 500000.0,
+    "amount_type": "yearly",
+    "deadline": "2099-12-31",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "higher education"
+    ]
+  },
+  {
+    "title": "Green Passage Scheme - Technical Education (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2099-12-31",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Diploma",
+        "Polytechnic",
+        "ITI",
+        "ITC"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "technical education"
+    ]
+  },
+  {
+    "title": "BOC Scholarship - Nirman Shramik Kalyan Yojana (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 40000.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [
+        "General",
+        "SC",
+        "ST",
+        "OBC",
+        "SEBC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10",
+        "Class 11",
+        "Class 12",
+        "Diploma",
+        "Polytechnic",
+        "ITI",
+        "ITC"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [
+        "construction workers"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "workers children"
+    ]
+  },
+  {
+    "title": "Gopabandhu Sikhya Sahayata Yojana (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 20000.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Shahid Madho Singh Haath Kharcha Yojana (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 5000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10",
+        "Class 11",
+        "Class 12"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "tribal"
+    ]
+  },
+  {
+    "title": "Banishree Scholarship (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 8400.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 60000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10",
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "Polytechnic",
+        "ITI",
+        "ITC"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Videsh Siksha Bruti - Foreign Education Scholarship (Odisha)",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 2500000.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 1200000.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "foreign education"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for SC Students (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-15",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "PUC",
+        "ITI",
+        "Diploma",
+        "Undergraduate",
+        "Postgraduate",
+        "Professional courses"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for ST Students (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-15",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "PUC",
+        "ITI",
+        "Diploma",
+        "Undergraduate",
+        "Postgraduate",
+        "Professional courses"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for OBC Students (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "PUC",
+        "ITI",
+        "Diploma",
+        "General Degree",
+        "Dual Degree",
+        "Undergraduate",
+        "Postgraduate",
+        "Professional courses"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for Minorities (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "PUC",
+        "ITI",
+        "Diploma",
+        "General Degree",
+        "Professional/Technical Courses",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for EWS/General Category (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [
+        "General",
+        "EWS"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "ITI",
+        "Professional"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [
+        "defense personnel",
+        "unorganized workers"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for Persons with Disabilities - UDID (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC",
+        "General"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "PUC",
+        "ITI",
+        "Diploma",
+        "Undergraduate",
+        "Postgraduate",
+        "Professional courses"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Minority"
+      ],
+      "hosteller": null,
+      "disability": true,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "disability",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Vidyasiri Food and Accommodation Scholarship for OBC Students (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-12",
+    "eligibility": {
+      "category": [
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "PUC",
+        "Diploma",
+        "ITI",
+        "General Degree",
+        "Professional courses",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": true,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "hostel",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Merit-Cum-Means (MCM) Scholarship for Minorities - Professional and Technical Courses (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-09-30",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority",
+      "merit",
+      "means",
+      "professional",
+      "technical"
+    ]
+  },
+  {
+    "title": "Sandeepani Shishya Vethana Scholarship (Karnataka State Brahmin Development Board)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [
+        "Brahmin"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "ITI",
+        "Professional"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Pre-Matric SC Students (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-15",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Pre-Matric ST Students (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-03-07",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Pre-Matric OBC Students (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Pre-Matric Minorities (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Jain",
+        "Buddhist",
+        "Sikh",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Pre-Matric PWD/UDID (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": true,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "disability",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "UP Post-Matric Scholarship (Dashmottar)",
+    "provider": "Uttar Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-20",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC",
+        "General"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Uttar Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Minority"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "UP Pre-Matric Scholarship",
+    "provider": "Uttar Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-30",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC",
+        "General"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 100000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Uttar Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Minority"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Mukhyamantri Yuva Swavalamban Yojana (MYSY)",
+    "provider": "Gujarat Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 600000.0,
+      "gender": [],
+      "education_levels": [
+        "Diploma",
+        "Undergraduate"
+      ],
+      "states": [
+        "Gujarat"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Gujarat Post-Matric Scholarship for SC/ST",
+    "provider": "Gujarat Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Gujarat"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Haryana Post-Matric Scholarship for SC Students",
+    "provider": "Haryana Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Haryana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Dr. Ambedkar Medhavi Chhattar Sansodhit Yojana",
+    "provider": "Haryana Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 400000.0,
+      "gender": [],
+      "education_levels": [
+        "School",
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "PhD",
+        "ITI",
+        "Professional"
+      ],
+      "states": [
+        "Haryana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "Swami Vivekananda Merit-cum-Means Scholarship (SVMCM)",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit",
+      "means"
+    ]
+  },
+  {
+    "title": "West Bengal Post-Matric Scholarship for SC/ST/OBC",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "UP Post-Matric Intermediate Scholarship",
+    "provider": "Uttar Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-30",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC",
+        "General"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12"
+      ],
+      "states": [
+        "Uttar Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Minority"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Gujarat Post-Matric Scholarship for OBC",
+    "provider": "Gujarat Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 150000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Gujarat"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Gujarat Post-Matric Scholarship for Minorities",
+    "provider": "Gujarat Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 120000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Professional"
+      ],
+      "states": [
+        "Gujarat"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Haryana Post-Matric Scholarship for BC/OBC Students",
+    "provider": "Haryana Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [
+        "BC",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 150000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Haryana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Aikyashree Scholarship (West Bengal Minority)",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "minority"
+    ]
+  },
+  {
+    "title": "Bihar Post Matric Scholarship (BC/EBC)",
+    "provider": "Education Department, Bihar",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "BC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 300000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Bihar"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Mukhyamantri Kanya Utthan Yojana (Graduation)",
+    "provider": "Education Department, Bihar",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Bihar"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": true,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "girls"
+    ]
+  },
+  {
+    "title": "Rajasthan Post-Matric Scholarship (SC/ST)",
+    "provider": "SJE Department, Rajasthan",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Rajasthan"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Chief Minister Higher Education Scholarship (Rajasthan)",
+    "provider": "Department of College Education, Rajasthan",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-01",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Rajasthan"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "higher education"
+    ]
+  },
+  {
+    "title": "Savitribai Phule Pre-Matric Scholarship (SC Girls)",
+    "provider": "Social Justice Department, Maharashtra",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": true,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "girls",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "Maharashtra GOI Post-Matric Scholarship for SC",
+    "provider": "Social Justice Department, Maharashtra",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Mahatma Jyothiba Phule Overseas Vidya Nidhi (BC/EBC)",
+    "provider": "BC Welfare Department, Telangana",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "BC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 500000.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Telangana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "foreign education"
+    ]
+  },
+  {
+    "title": "Ambedkar Overseas Vidya Nidhi (SC/ST)",
+    "provider": "SC/ST Welfare Department, Telangana",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 500000.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Telangana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "foreign education"
+    ]
+  },
+  {
+    "title": "Mukhyamantri Medhavi Vidyarthi Yojana (MMVY)",
+    "provider": "MP Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 600000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Madhya Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "MP TAAS Post-Matric Scholarship (SC/ST/OBC)",
+    "provider": "Tribal Welfare Department, MP",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-06-30",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 600000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Madhya Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Tamil Nadu Post-Matric Scholarship for SC/ST",
+    "provider": "Adi Dravidar and Tribal Welfare, TN",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Tamil Nadu"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Tamil Nadu BC/MBC/DNC Post-Matric Scholarship",
+    "provider": "BC Welfare Department, TN",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-06-30",
+    "eligibility": {
+      "category": [
+        "BC",
+        "MBC",
+        "DNC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Tamil Nadu"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "District Merit Scholarship (DMS) Kerala",
+    "provider": "Directorate of Collegiate Education, Kerala",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Diploma"
+      ],
+      "states": [
+        "Kerala"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "E-Grantz Kerala (SC/ST/OEC/OBC Support)",
+    "provider": "BC Welfare/Tribal Welfare, Kerala",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OEC",
+        "OBC",
+        "KPCR"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 100000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "PhD"
+      ],
+      "states": [
+        "Kerala"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Punjab Post-Matric Scholarship for SC/BC Students",
+    "provider": "Social Justice/Empowerment, Punjab",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-06",
+    "eligibility": {
+      "category": [
+        "SC",
+        "BC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Punjab"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Punjab Educational Endowment Fund (PEEF)",
+    "provider": "PEEF, Punjab",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 720000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Punjab"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Mukhyamantri Vidyarthi Pratibha Yojna",
+    "provider": "SC/ST/OBC/Minority Welfare, Delhi",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10",
+        "Class 11",
+        "Class 12"
+      ],
+      "states": [
+        "Delhi"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Minority"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "Merit Scholarship for SC/ST/OBC Students (Higher Ed)",
+    "provider": "SC/ST/OBC/Minority Welfare, Delhi",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Delhi"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit",
+      "higher education"
+    ]
+  },
+  {
+    "title": "Jharkhand e-Kalyan Post-Matric Scholarship",
+    "provider": "Scheduled Tribe/Caste/BC Welfare, Jharkhand",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "BC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma",
+        "PhD"
+      ],
+      "states": [
+        "Jharkhand"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Mukhymantri Shiksha Protsahan Yojana (Jharkhand)",
+    "provider": "Labour/Welfare Dept, Jharkhand",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 10",
+        "Class 12"
+      ],
+      "states": [
+        "Jharkhand"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Chhattisgarh Post-Matric Scholarship (SC/ST/OBC)",
+    "provider": "Tribal Welfare/SC Welfare, CG",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Chhattisgarh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Chhattisgarh BPL Scholarship for College Students",
+    "provider": "Department of Higher Education, CG",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Chhattisgarh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "BPL"
+    ]
+  },
+  {
+    "title": "Assam DHE Combined Merit Scholarship",
+    "provider": "Directorate of Higher Education, Assam",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-20",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Assam"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "Ishan Uday Special Scholarship for North Eastern Region",
+    "provider": "UGC / Ministry of Education",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 450000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Assam",
+        "Arunachal Pradesh",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Sikkim",
+        "Tripura"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "north east"
+    ]
+  },
+  {
+    "title": "Uchcha Shiksha Protsahan Chhatravriti Yojana",
+    "provider": "Higher Education Dept, Uttarakhand",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-24",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Uttarakhand"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "higher education"
+    ]
+  },
+  {
+    "title": "Dr. Ambedkar Medhavi Chattervriti Yojana",
+    "provider": "Welfare Dept, Himachal Pradesh",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-24",
+    "eligibility": {
+      "category": [
+        "SC",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate"
+      ],
+      "states": [
+        "Himachal Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "Prime Minister Special Scholarship Scheme (SSSJKL)",
+    "provider": "AICTE / Ministry of Education",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Jammu and Kashmir"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "J&K"
+    ]
+  },
+  {
+    "title": "Dorjee Khandu Merit Scholarship",
+    "provider": "Higher Education Dept, Arunachal Pradesh",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Arunachal Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "Nagaland State Merit Scholarship",
+    "provider": "Higher Education Dept, Nagaland",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-09-30",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Nagaland"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit",
+      "tribal"
+    ]
+  },
+  {
+    "title": "PM Yasasvi Post-Matric Scholarship (Manipur)",
+    "provider": "OBC & SC Welfare, Manipur",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-19",
+    "eligibility": {
+      "category": [
+        "OBC",
+        "EBC",
+        "DNT"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Manipur"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post-Matric Merit Scholarship (PMMS) Mizoram",
+    "provider": "Mizoram Scholarship Board",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Mizoram"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for SC Students (Tripura)",
+    "provider": "SC Welfare Dept, Tripura",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-15",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Tripura"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Meghalaya Chief Minister Scholarship Scheme (CMSS)",
+    "provider": "Government of Meghalaya",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Meghalaya"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Chief Minister (CM) Scholarship Sikkim",
+    "provider": "Education Dept, Sikkim",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [
+        "EWS",
+        "Merit"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 6",
+        "Undergraduate"
+      ],
+      "states": [
+        "Sikkim"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit"
+    ]
+  },
+  {
+    "title": "Sant Sohirobanath Ambiye Bursary Scheme",
+    "provider": "Directorate of Higher Education, Goa",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-03-17",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 500000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Goa"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Perunthalaivar Kamarajar Financial Assistance Scheme (PKFAS)",
+    "provider": "Higher & Technical Education, Puducherry",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Puducherry"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for SC Students (Chandigarh)",
+    "provider": "Education Dept, Chandigarh Administration",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Chandigarh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Jagananna Vidya Deevena (Fees Reimbursement)",
+    "provider": "Government of Andhra Pradesh",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "BC",
+        "EBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Andhra Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Minority"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "fees reimbursement"
+    ]
+  },
+  {
+    "title": "Sudakshya Scheme for Girls (ITI/Polyechnic)",
+    "provider": "Skill Development & Tech Ed, Odisha",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [
+        "Diploma"
+      ],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": true,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "girls",
+      "technical"
+    ]
+  },
+  {
+    "title": "Additional Scholarship for ST Students (Andaman & Nicobar)",
+    "provider": "Education Dept, A&N Administration",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Andaman and Nicobar Islands"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "tribal"
+    ]
+  },
+  {
+    "title": "Lakshadweep Scholarship Scheme",
+    "provider": "Education Dept, Lakshadweep",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-30",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Lakshadweep"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "tribal"
+    ]
+  },
+  {
+    "title": "PM Yasasvi Post-Matric Scholarship (DNH & DD)",
+    "provider": "Social Welfare Dept, DNH & DD",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [
+        "OBC",
+        "EBC",
+        "DNT"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "Diploma"
+      ],
+      "states": [
+        "Dadra and Nagar Haveli and Daman and Diu"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Central Sector Scheme of Scholarship for College and University Students",
+    "provider": "Ministry of Education, Government of India",
+    "provider_type": "government",
+    "amount": 10000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 450000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "merit"
+    ]
+  },
+  {
+    "title": "Top Class Education Scheme for SC Students",
+    "provider": "Ministry of Social Justice and Empowerment",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "top class education"
+    ]
+  },
+  {
+    "title": "National Overseas Scholarship for SC/ST Students",
+    "provider": "Ministry of Social Justice and Empowerment",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-14",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "Landless Agricultural Labourers"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "foreign education"
+    ]
+  },
+  {
+    "title": "INSPIRE Scholarship for Higher Education (SHE)",
+    "provider": "Department of Science and Technology (DST)",
+    "provider_type": "government",
+    "amount": 80000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "science",
+      "merit"
+    ]
+  },
+  {
+    "title": "AICTE Pragati Scholarship for Girl Students",
+    "provider": "All India Council for Technical Education (AICTE)",
+    "provider_type": "government",
+    "amount": 50000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [
+        "Undergraduate",
+        "Diploma"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": true,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "girls",
+      "technical"
+    ]
+  },
+  {
+    "title": "AICTE Saksham Scholarship for Students with Disabilities",
+    "provider": "All India Council for Technical Education (AICTE)",
+    "provider_type": "government",
+    "amount": 50000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Diploma"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": true,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "disability",
+      "technical"
+    ]
+  },
+  {
+    "title": "AICTE Swanath Scholarship Scheme",
+    "provider": "All India Council for Technical Education (AICTE)",
+    "provider_type": "government",
+    "amount": 50000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Diploma"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": true
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "orphan",
+      "vulnerable"
+    ]
+  },
+  {
+    "title": "UGC Junior Research Fellowship (JRF)",
+    "provider": "University Grants Commission (UGC)",
+    "provider_type": "government",
+    "amount": 444000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-07",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "research",
+      "fellowship"
+    ]
+  },
+  {
+    "title": "Prime Minister's Research Fellowship (PMRF)",
+    "provider": "Ministry of Education, Government of India",
+    "provider_type": "government",
+    "amount": 840000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "PhD"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "research",
+      "fellowship"
+    ]
+  },
+  {
+    "title": "PMSS for CAPFs and Assam Rifles",
+    "provider": "Kendriya Sainik Board, Ministry of Home Affairs",
+    "provider_type": "government",
+    "amount": 30000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [
+        "CAPF personnel",
+        "Assam Rifles personnel"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "defense personnel children"
+    ]
+  },
+  {
+    "title": "PMSS for Railway Protection Force (RPF/RPSF)",
+    "provider": "Ministry of Railways, Government of India",
+    "provider_type": "government",
+    "amount": 30000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [
+        "RPF personnel",
+        "RPSF personnel"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "railway personnel children"
+    ]
+  },
+  {
+    "title": "S.N. Bose Scholars Program (International Research)",
+    "provider": "IUSSTF, SERB & WINStep Forward",
+    "provider_type": "government",
+    "amount": 168000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "international research"
+    ]
+  },
+  {
+    "title": "Post-Matric Scholarship for Minorities (Central Sector)",
+    "provider": "Ministry of Minority Affairs (MOMA)",
+    "provider_type": "government",
+    "amount": 6000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 200000.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "minority",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Pre-Matric Scholarship for Minorities (Central Sector)",
+    "provider": "Ministry of Minority Affairs (MOMA)",
+    "provider_type": "government",
+    "amount": 1000.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 100000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "minority",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "National Fellowship & Scholarship for Higher Education of ST Students",
+    "provider": "Ministry of Tribal Affairs",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-10-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 600000.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD",
+        "Research"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "tribal",
+      "fellowship"
+    ]
+  },
+  {
+    "title": "NEC Merit Scholarship",
+    "provider": "North Eastern Council",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-11-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Diploma",
+        "Undergraduate",
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [
+        "Assam",
+        "Arunachal Pradesh",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Sikkim",
+        "Tripura"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "north east",
+      "merit"
+    ]
+  },
+  {
+    "title": "Pre-Matric Scholarship for Students with Disabilities",
+    "provider": "Dept. of Empowerment of PwD",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 250000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": true,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "disability",
+      "pre-matric"
+    ]
+  },
+  {
+    "title": "PM Scholarship Scheme (Railways)",
+    "provider": "Ministry of Railways",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Professional"
+      ],
+      "states": [
+        "All India"
+      ],
+      "parent_occupation": [
+        "Railway employees"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "central",
+      "railway personnel children"
+    ]
+  },
+  {
+    "title": "SSP Pre-Matric & Post-Matric Scholarship (Karnataka)",
+    "provider": "Government of Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-01-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10",
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate",
+        "PhD",
+        "Professional",
+        "ITI",
+        "Diploma"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "pre-matric",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "MahaDBT Post-Matric Scholarship (Maharashtra)",
+    "provider": "Government of Maharashtra",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-11-30",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 800000.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "post-matric"
+    ]
+  },
+  {
+    "title": "Pudhumai Penn Scheme (Tamil Nadu)",
+    "provider": "Government of Tamil Nadu",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [
+        "Undergraduate",
+        "Diploma",
+        "ITI",
+        "Professional"
+      ],
+      "states": [
+        "Tamil Nadu"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": true,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "girls"
+    ]
+  },
+  {
+    "title": "NMMS Scholarship (Karnataka)",
+    "provider": "DSERT Karnataka",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-15",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 8"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit",
+      "means"
+    ]
+  },
+  {
+    "title": "NMMS Scholarship (Maharashtra)",
+    "provider": "MSCE Pune",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-10-11",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 8"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "https://www.indiascholarships.in/government-scholarships?utm_source=chatgpt.com",
+    "tags": [
+      "state specific",
+      "merit",
+      "means"
+    ]
+  },
+  {
+    "title": "DRDO ADE Research Fellowship Notification 2026",
+    "provider": "DRDO ADE",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Research",
+        "Fellowship"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Research",
+      "Fellowship",
+      "Government"
+    ]
+  },
+  {
+    "title": "Yuva Unstoppable Scholarship 2026",
+    "provider": "Yuva Unstoppable",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Tata Steel Millennium Scholarship 2025-26",
+    "provider": "Tata Steel",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "C H Muhammed Koya Scholarship",
+    "provider": "C H Muhammed Koya Trust",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "SWE India Scholarships 2026",
+    "provider": "SWE India",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Engineering",
+        "STEM"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Women in STEM",
+      "Engineering"
+    ]
+  },
+  {
+    "title": "CM Kids Scholarship 2026",
+    "provider": "State Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "School"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Kids"
+    ]
+  },
+  {
+    "title": "Sitaram Jindal Foundation Scholarship 2026",
+    "provider": "Sitaram Jindal Foundation",
+    "provider_type": "ngo",
+    "amount": 3200.0,
+    "amount_type": "monthly",
+    "deadline": "2026-03-10",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Yuva Sathi Scheme 2026",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 1500.0,
+    "amount_type": "monthly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Unemployed Youth"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Youth",
+      "Unemployment",
+      "West Bengal"
+    ]
+  },
+  {
+    "title": "Agnipankh Scholarship Exam 2026",
+    "provider": "Agnipankh",
+    "provider_type": "private",
+    "amount": 800000.0,
+    "amount_type": "one-time",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Merit"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 1",
+        "Class 2",
+        "Class 3",
+        "Class 4",
+        "Class 5",
+        "Class 6",
+        "Class 7",
+        "Class 8",
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Merit Scholarship"
+    ]
+  },
+  {
+    "title": "Vidyadhan Scholarship 2026",
+    "provider": "Sarojini Damodaran Foundation",
+    "provider_type": "ngo",
+    "amount": 30000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Nabanna Scholarship 2025-26",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "West Bengal"
+    ]
+  },
+  {
+    "title": "Oasis Scholarship 2026",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "West Bengal"
+    ]
+  },
+  {
+    "title": "VIVO KanyaGyaan Scholarship Program 2025-26",
+    "provider": "VIVO",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-03-03",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Girls"
+    ]
+  },
+  {
+    "title": "Har-Chhatravratti Scholarship 2026",
+    "provider": "Haryana Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Haryana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Haryana"
+    ]
+  },
+  {
+    "title": "Jnanabhumi Scholarship 2026",
+    "provider": "Andhra Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Andhra Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Andhra Pradesh"
+    ]
+  },
+  {
+    "title": "Padavukal Scholarship 2026",
+    "provider": "Padavukal",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Tata Capital Pankh Scholarship Program 2026",
+    "provider": "Tata Capital",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "MEXT Scholarship 2026",
+    "provider": "MEXT, Government of Japan",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Indian Students"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Master's",
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "International",
+      "Japan"
+    ]
+  },
+  {
+    "title": "INSPIRE Scholarship 2026",
+    "provider": "Department of Science & Technology (DST), Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Science",
+        "Research"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Science",
+      "Research"
+    ]
+  },
+  {
+    "title": "Chief Minister’s Connect To Work Scholarship 2026",
+    "provider": "State Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "PMSS Scholarship 2026",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Defence Families",
+        "Police Families"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Defence",
+      "Police"
+    ]
+  },
+  {
+    "title": "Gyan Sadhana Scholarship 2026",
+    "provider": "Gyan Sadhana",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Kind Circle Scholarship 2026",
+    "provider": "Kind Circle",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Suzlon Scholarship 2026",
+    "provider": "Suzlon",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Green India"
+    ]
+  },
+  {
+    "title": "NTSE Scholarship 2026",
+    "provider": "NCERT, Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Talent Search",
+        "Merit"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 10"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Talent Search",
+      "Merit"
+    ]
+  },
+  {
+    "title": "FFE Scholarship 2026",
+    "provider": "Foundation for Excellence (FFE)",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Engineering",
+        "MBBS",
+        "Law"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Professional Courses"
+    ]
+  },
+  {
+    "title": "Meri Pehchaan Scholarship 2026",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "SBI Youth for India Fellowship 2026",
+    "provider": "State Bank of India (SBI)",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "monthly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Youth"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Graduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Fellowship",
+      "Youth"
+    ]
+  },
+  {
+    "title": "BGM Foundation Pashu-Seva Scholarship 2026",
+    "provider": "BGM Foundation",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Veterinary",
+        "Agriculture"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Animal Welfare"
+    ]
+  },
+  {
+    "title": "Bihar NMMSS Scholarship 2026-27",
+    "provider": "Bihar Government / SCERT Bihar",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2027-03-31",
+    "eligibility": {
+      "category": [
+        "Economically Weaker Section",
+        "Merit-cum-Means"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 8"
+      ],
+      "states": [
+        "Bihar"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Bihar",
+      "Merit-cum-Means"
+    ]
+  },
+  {
+    "title": "Top 10 Government Scholarships in India 2026",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 50000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Government",
+      "India"
+    ]
+  },
+  {
+    "title": "Top 5 Private Scholarships in India 2026",
+    "provider": "Various Private Organizations",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Private",
+      "India"
+    ]
+  },
+  {
+    "title": "Ekalyan Scholarship 2026",
+    "provider": "Jharkhand Government",
+    "provider_type": "government",
+    "amount": 90000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Jharkhand"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Jharkhand"
+    ]
+  },
+  {
+    "title": "Subhadra Yojana 2026",
+    "provider": "Odisha Government",
+    "provider_type": "government",
+    "amount": 50000.0,
+    "amount_type": "one-time",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Odisha",
+      "DBT"
+    ]
+  },
+  {
+    "title": "MPTAAS Scholarship Portal 2026",
+    "provider": "Madhya Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Madhya Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Madhya Pradesh",
+      "Reserved Category"
+    ]
+  },
+  {
+    "title": "IAS Research Fellowship Program 2026",
+    "provider": "Indian Academy of Sciences (IAS)",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Research",
+        "Fellowship"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Research",
+      "Fellowship"
+    ]
+  },
+  {
+    "title": "TSDPL Silver Jubilee Scholarship 2025-26",
+    "provider": "TSDPL (Tata Steel Downstream Products Limited)",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Central Sector Scholarship Scheme 2026",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "College",
+        "University"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Central Government"
+    ]
+  },
+  {
+    "title": "National Fellowship & Scholarship 2026 for ST Students",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Central Government",
+      "ST Category"
+    ]
+  },
+  {
+    "title": "Santoor Scholarship 2025-26",
+    "provider": "Wipro Consumer Care and Lighting",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Girls"
+    ]
+  },
+  {
+    "title": "Arcelor Mittal Nippon Steel Beti Padhao Scholarship 2026",
+    "provider": "Arcelor Mittal Nippon Steel",
+    "provider_type": "private",
+    "amount": 50000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Girls",
+      "Education"
+    ]
+  },
+  {
+    "title": "UP Scholarship 2026",
+    "provider": "Uttar Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Uttar Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Uttar Pradesh"
+    ]
+  },
+  {
+    "title": "LIC Golden Jubilee Scholarship 2026",
+    "provider": "Life Insurance Corporation of India (LIC)",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Sahayog Scholarship 2026",
+    "provider": "Redington Foundation",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Kishore Vaigyanik Protsahan Yojana (KVPY)",
+    "provider": "Department of Science & Technology (DST), Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Science",
+        "Research",
+        "Talent Search"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Science",
+      "Research",
+      "Talent Search"
+    ]
+  },
+  {
+    "title": "RR Kabel Star Scholarship 2026",
+    "provider": "RR Kabel",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "JIIT Scholarship Program 2026",
+    "provider": "Jaypee Institute of Information Technology (JIIT)",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Engineering",
+      "IT"
+    ]
+  },
+  {
+    "title": "IndianOil Sports Scholarship Scheme 2026",
+    "provider": "IndianOil",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Sports"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Sports"
+    ]
+  },
+  {
+    "title": "Jai Jawan Scholarship",
+    "provider": "Chandigarh University",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Defence Families"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [
+        "Defence Personnel"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Defence"
+    ]
+  },
+  {
+    "title": "ONGC Foundation Scholarship 2026",
+    "provider": "ONGC Foundation",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Merit"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Sports Scholarship in India 2026",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Sports"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Sports"
+    ]
+  },
+  {
+    "title": "Ladli Laxmi Yojana 2026",
+    "provider": "Madhya Pradesh Government",
+    "provider_type": "government",
+    "amount": 118000.0,
+    "amount_type": "one-time",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [],
+      "states": [
+        "Madhya Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Girls",
+      "Madhya Pradesh"
+    ]
+  },
+  {
+    "title": "Inlaks Scholarship 2026",
+    "provider": "Inlaks Shivdasani Foundation",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "International"
+    ]
+  },
+  {
+    "title": "Kanyashree Prakalpa Scheme",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Girls",
+      "West Bengal"
+    ]
+  },
+  {
+    "title": "CBSE Scholarship 2026",
+    "provider": "CBSE (Central Board of Secondary Education)",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "School"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "School Education"
+    ]
+  },
+  {
+    "title": "Aditya Birla Group Scholarship 2026",
+    "provider": "Aditya Birla Group",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Merit"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Baal Vikas Foundation Scholarship 2026",
+    "provider": "Baal Vikas Foundation",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Deserving Students"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Kotak Kanya Scholarship 2026",
+    "provider": "Kotak Education Foundation",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [
+        "female"
+      ],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Girls"
+    ]
+  },
+  {
+    "title": "JSW UDAAN Scholarship for PG Students",
+    "provider": "JSW Foundation",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "SBI Platinum Jubilee Asha Scholarship",
+    "provider": "State Bank of India (SBI)",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Lalithakala Akademi Scholarship 2026",
+    "provider": "Kerala Lalithakala Akademi",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Arts"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Kerala"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Arts",
+      "Kerala"
+    ]
+  },
+  {
+    "title": "Power of One Program",
+    "provider": "HCL Foundation",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Ramanujan Fellowship 2026",
+    "provider": "Department of Science & Technology (DST), Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "monthly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Research",
+        "Fellowship"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "PhD",
+        "Postdoctoral"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Fellowship",
+      "Research"
+    ]
+  },
+  {
+    "title": "Jindal Scholarship 2026",
+    "provider": "Jindal Foundation",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 11",
+        "Class 12",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "MWD Scholarship Portal Kerala",
+    "provider": "Government of Kerala",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Kerala"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Kerala"
+    ]
+  },
+  {
+    "title": "Tata Scholarship 2026",
+    "provider": "Tata Trust",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Arvind Foundation Scholarship",
+    "provider": "Arvind Foundation",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "BPL Scholarship for College Students",
+    "provider": "Government of Chhattisgarh",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Economically Weaker Section"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "College"
+      ],
+      "states": [
+        "Chhattisgarh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Chhattisgarh",
+      "BPL"
+    ]
+  },
+  {
+    "title": "Telangana ePASS Scholarship 2026",
+    "provider": "Telangana Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Telangana"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Telangana"
+    ]
+  },
+  {
+    "title": "Digital Gujarat Scholarship 2025",
+    "provider": "Gujarat Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Gujarat"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Gujarat"
+    ]
+  },
+  {
+    "title": "British Council GREAT Scholarships 2026-27",
+    "provider": "British Council",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2027-03-31",
+    "eligibility": {
+      "category": [
+        "Indian Students"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "International",
+      "UK"
+    ]
+  },
+  {
+    "title": "Allen Shiksha Sambal Yojana",
+    "provider": "Allen Career Institute",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "one-time",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Government School Students"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "School"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "NEET Coaching"
+    ]
+  },
+  {
+    "title": "Prof. Joseph Mundassery Scholarship Award 2025",
+    "provider": "Prof. Joseph Mundassery Foundation",
+    "provider_type": "ngo",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Bihar State Sports Scholarship Portal 2026",
+    "provider": "Bihar Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Sports"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Bihar"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Bihar",
+      "Sports"
+    ]
+  },
+  {
+    "title": "Banishree Scholarship Scheme Odisha 2025",
+    "provider": "Odisha Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Odisha"
+    ]
+  },
+  {
+    "title": "Swami Vivekananda Scholarship",
+    "provider": "West Bengal Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Merit-cum-Means"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Higher Secondary",
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "West Bengal"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "West Bengal",
+      "Merit-cum-Means"
+    ]
+  },
+  {
+    "title": "Chhattisgarh Scholarship Portal 2026",
+    "provider": "Chhattisgarh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Chhattisgarh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Chhattisgarh"
+    ]
+  },
+  {
+    "title": "PMS Umbrella Scheme for Education of ST Students (Post Matric)",
+    "provider": "Arunachal Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Post Matric"
+      ],
+      "states": [
+        "Arunachal Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Arunachal Pradesh",
+      "ST Category"
+    ]
+  },
+  {
+    "title": "Umbrella Scheme for Education of ST Students (Pre-Matric Class IX & X)",
+    "provider": "Arunachal Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "ST"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 9",
+        "Class 10"
+      ],
+      "states": [
+        "Arunachal Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Arunachal Pradesh",
+      "ST Category"
+    ]
+  },
+  {
+    "title": "e-Medhabruti Government of Odisha Scholarship",
+    "provider": "Government of Odisha",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Odisha"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Odisha"
+    ]
+  },
+  {
+    "title": "Arunachal Pradesh State Stipend Scheme",
+    "provider": "Arunachal Pradesh Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Arunachal Pradesh"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Arunachal Pradesh"
+    ]
+  },
+  {
+    "title": "NCPA Citi Scholarship for Young Musicians 2026-28",
+    "provider": "NCPA (National Centre for the Performing Arts) & Citi",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2028-12-31",
+    "eligibility": {
+      "category": [
+        "Music",
+        "Arts"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Music",
+      "Arts"
+    ]
+  },
+  {
+    "title": "AICTE Scholarship 2026",
+    "provider": "AICTE (All India Council for Technical Education)",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Technical Education"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Technical Education"
+    ]
+  },
+  {
+    "title": "SSP Scholarship Karnataka 2025-26",
+    "provider": "Karnataka Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Karnataka"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Karnataka"
+    ]
+  },
+  {
+    "title": "Azim Premji Scholarship 2026",
+    "provider": "Azim Premji Foundation",
+    "provider_type": "ngo",
+    "amount": 30000.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "HDFC Bank Parivartan ECSS Scholarship 2025-26",
+    "provider": "HDFC Bank",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "AIYSEE Scholarship 2025-26",
+    "provider": "AIYSEE (All India Youth Scholarship Entrance Examination)",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Entrance Exam"
+    ]
+  },
+  {
+    "title": "IndiaAI Fellowship 2025",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2025-12-31",
+    "eligibility": {
+      "category": [
+        "AI",
+        "Fellowship",
+        "Research"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate",
+        "PhD"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "AI",
+      "Fellowship",
+      "Research"
+    ]
+  },
+  {
+    "title": "Bihar Scholarship List 2025-2026",
+    "provider": "Bihar Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Bihar"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Bihar"
+    ]
+  },
+  {
+    "title": "Central Sector Scheme NMMSS",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Economically Weaker Section",
+        "Merit-cum-Means"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Class 8"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Central Government",
+      "Merit-cum-Means"
+    ]
+  },
+  {
+    "title": "PMSS Scholarship for Wards of Police Personnel",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Police Families"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [
+        "Police"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Police Families"
+    ]
+  },
+  {
+    "title": "PMSS Scholarship for CAPF and Assam Rifles Wards",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Defence Families"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [
+        "CAPF",
+        "Assam Rifles"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Defence Families"
+    ]
+  },
+  {
+    "title": "PM Scholarship for Railway Protection Force",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Railway Families"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [],
+      "parent_occupation": [
+        "Railway Protection Force"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Railway Families"
+    ]
+  },
+  {
+    "title": "Ishan Uday Special Scholarship Scheme",
+    "provider": "UGC (University Grants Commission), Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [
+        "Arunachal Pradesh",
+        "Assam",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Sikkim",
+        "Tripura"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "North East India"
+    ]
+  },
+  {
+    "title": "NEC Merit Scholarship for Higher Professional Courses",
+    "provider": "North Eastern Council (NEC), Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Professional Courses",
+        "Merit"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [
+        "Arunachal Pradesh",
+        "Assam",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Sikkim",
+        "Tripura"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "North East India",
+      "Merit"
+    ]
+  },
+  {
+    "title": "Top Class Education Scheme for SC Students",
+    "provider": "Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "SC"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Central Government",
+      "SC Category"
+    ]
+  },
+  {
+    "title": "Scholarship for the Wards of Beedi/Cine/IOMC/LSDM Workers",
+    "provider": "Ministry of Labour & Employment, Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Workers' Children"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Pre-Matric",
+        "Post-Matric"
+      ],
+      "states": [],
+      "parent_occupation": [
+        "Beedi Worker",
+        "Cine Worker",
+        "IOMC Worker",
+        "LSDM Worker"
+      ],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Workers' Children"
+    ]
+  },
+  {
+    "title": "PM-YASASVI Scholarship Scheme",
+    "provider": "Ministry of Social Justice and Empowerment, Government of India",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "OBC",
+        "EBC",
+        "DNT"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "School"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Central Government",
+      "OBC",
+      "EBC",
+      "DNT"
+    ]
+  },
+  {
+    "title": "Indian Statistical Institute Scholarship 2026",
+    "provider": "Indian Statistical Institute",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Statistics",
+        "Research"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Statistics",
+      "Research"
+    ]
+  },
+  {
+    "title": "Reliance Foundation Postgraduate Scholarship 2025-26",
+    "provider": "Reliance Foundation",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "Reliance Foundation Undergraduate Scholarships 2025-26",
+    "provider": "Reliance Foundation",
+    "provider_type": "private",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [
+        "Indian Students"
+      ],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Undergraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": []
+  },
+  {
+    "title": "National Scholarship For Postgraduate Studies",
+    "provider": "Government of India (National Scholarship Portal)",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Postgraduate"
+      ],
+      "states": [],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Central Government"
+    ]
+  },
+  {
+    "title": "Medhasoft Government of Bihar Scholarship",
+    "provider": "Government of Bihar",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [],
+      "states": [
+        "Bihar"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Bihar"
+    ]
+  },
+  {
+    "title": "Bihar Post Matric Scholarship 2026",
+    "provider": "Bihar Government",
+    "provider_type": "government",
+    "amount": 0.0,
+    "amount_type": "yearly",
+    "deadline": "2026-12-31",
+    "eligibility": {
+      "category": [],
+      "min_percentage": 0.0,
+      "max_income": 0.0,
+      "gender": [],
+      "education_levels": [
+        "Post Matric"
+      ],
+      "states": [
+        "Bihar"
+      ],
+      "parent_occupation": [],
+      "minority": [],
+      "hosteller": null,
+      "disability": null,
+      "single_girl_child": null,
+      "orphan_single_parent": null
+    },
+    "application_url": "null",
+    "tags": [
+      "Bihar"
+    ]
+  }
+]

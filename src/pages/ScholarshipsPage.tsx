@@ -13,6 +13,7 @@ import { ScholarshipCard } from '@/components/ScholarshipCard';
 import { scholarshipAPI, profileAPI } from '@/lib/api';
 import { calculateMatchScore, type UserProfile, type Scholarship } from '@/lib/scholarships-data';
 import { useAuth } from '@/hooks/useAuth';
+import { useSavedScholarships } from '@/hooks/useSavedScholarships';
 
 const ScholarshipsPage = () => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const ScholarshipsPage = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
-  const [savedScholarships, setSavedScholarships] = useState<string[]>([]);
+  const { savedScholarships, toggleSave } = useSavedScholarships();
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [filterCriteria, setFilterCriteria] = useState<{
     income?: number;
@@ -284,13 +285,7 @@ const ScholarshipsPage = () => {
                     scholarship={scholarship}
                     userProfile={effectiveProfile}
                     isSaved={savedScholarships.includes(scholarship.id)}
-                    onSave={() =>
-                      setSavedScholarships((prev) =>
-                        prev.includes(scholarship.id)
-                          ? prev.filter((s) => s !== scholarship.id)
-                          : [...prev, scholarship.id]
-                      )
-                    }
+                    onSave={() => toggleSave(scholarship.id)}
                   />
                 </motion.div>
               );

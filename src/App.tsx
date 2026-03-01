@@ -12,6 +12,7 @@ import DashboardPage from "./pages/DashboardPage";
 import ScholarshipsPage from "./pages/ScholarshipsPage";
 import ApplicationsPage from "./pages/ApplicationsPage";
 import { AdminDashboard } from "./pages/AdminDashboard";
+import { ProviderDashboard } from "./pages/ProviderDashboard";
 import { MentorDashboard } from "./pages/MentorDashboard";
 import { EligibilityPage } from "./pages/EligibilityPage";
 import ScholarshipDetailsPage from "./pages/ScholarshipDetailsPage";
@@ -80,6 +81,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRole="admin">
                   <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/provider"
+              element={
+                <ProtectedRoute requiredRole="provider">
+                  <ProviderDashboard />
                 </ProtectedRoute>
               }
             />

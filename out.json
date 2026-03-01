@@ -1,0 +1,14 @@
+{
+  "draft": "Allowed",
+  "applied": "Allowed",
+  "submitted": "Allowed",
+  "pending": "Allowed",
+  "pending_verification": "Allowed",
+  "in_progress": "Allowed",
+  "under_review": "Allowed",
+  "verified": "Allowed",
+  "approved": "Allowed",
+  "disbursed": "Allowed",
+  "rejected": "Allowed",
+  "processing": "Allowed"
+}

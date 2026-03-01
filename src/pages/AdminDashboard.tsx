@@ -3,9 +3,10 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import {
   Users, GraduationCap, TrendingUp, DollarSign, PieChart,
-  BarChart3, Activity, CheckCircle2, XCircle, AlertCircle
+  BarChart3, Activity, CheckCircle2, XCircle, AlertCircle, Shield
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { adminAPI } from '@/lib/api';
 import {
@@ -46,20 +47,34 @@ export const AdminDashboard = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
+  const [users, setUsers] = useState<any[]>([]);
 
   useEffect(() => {
-    loadAnalytics();
+    loadDashboardData();
   }, []);
 
-  const loadAnalytics = async () => {
+  const loadDashboardData = async () => {
     try {
       setIsLoading(true);
-      const data = await adminAPI.getAnalytics();
+      const [data, usersList] = await Promise.all([
+        adminAPI.getAnalytics(),
+        adminAPI.getUsersList()
+      ]);
       setAnalytics(data);
+      setUsers(usersList);
     } catch (error) {
-      console.error('Failed to load analytics:', error);
+      console.error('Failed to load dashboard data:', error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleUpgradeToProvider = async (userId: string) => {
+    try {
+      await adminAPI.upgradeUserToProvider(userId);
+      setUsers(users.map(u => u.id === userId ? { ...u, role: 'provider' } : u));
+    } catch (error) {
+      console.error('Failed to upgrade user:', error);
     }
   };
 
@@ -87,7 +102,7 @@ export const AdminDashboard = () => {
             <AlertCircle className="h-16 w-16 text-destructive mx-auto mb-4" />
             <h3 className="font-semibold text-xl mb-2">Failed to load analytics</h3>
             <p className="text-muted-foreground mb-6">We couldn't retrieve the system metrics at this time. Please try again later.</p>
-            <Button onClick={loadAnalytics}>Retry Now</Button>
+            <Button onClick={loadDashboardData}>Retry Now</Button>
           </Card>
         </main>
         <BottomNav />
@@ -187,6 +202,7 @@ export const AdminDashboard = () => {
             <TabsTrigger value="scholarships">Scholarships</TabsTrigger>
             <TabsTrigger value="categories">Categories</TabsTrigger>
             <TabsTrigger value="trends">Trends</TabsTrigger>
+            <TabsTrigger value="users">Manage Users</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
@@ -306,6 +322,47 @@ export const AdminDashboard = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="users" className="space-y-6">
+            <Card className="p-6">
+              <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                <Shield className="h-5 w-5" />
+                User Roles & Verification
+              </h3>
+              <p className="text-muted-foreground mb-6">Upgrade verified accounts to "Provider" so they can create scholarships.</p>
+
+              <div className="space-y-3">
+                {users.map((user) => (
+                  <div
+                    key={user.id}
+                    className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-muted rounded-lg gap-4"
+                  >
+                    <div>
+                      <p className="font-medium">{user.full_name || 'Anonymous User'}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {user.email || 'No email'} — Current Role: <span className="font-semibold capitalize text-primary">{user.role}</span>
+                      </p>
+                    </div>
+                    {user.role === 'student' && (
+                      <Button onClick={() => handleUpgradeToProvider(user.id)} variant="outline">
+                        Upgrade to Provider
+                      </Button>
+                    )}
+                    {user.role === 'provider' && (
+                      <span className="text-green-600 font-medium text-sm flex items-center gap-1">
+                        <CheckCircle2 className="w-4 h-4" /> Provider Account
+                      </span>
+                    )}
+                    {user.role === 'admin' && (
+                      <span className="text-blue-600 font-medium text-sm flex items-center gap-1">
+                        <Shield className="w-4 h-4" /> Admin Account
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
             </Card>
           </TabsContent>
         </Tabs>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
     ArrowLeft, Calendar, Building2, IndianRupee, CheckCircle2,
-    ExternalLink, Loader2, Share2, Info, AlertCircle, Copy, Navigation
+    ExternalLink, Loader2, Share2, Info, AlertCircle, Copy, Navigation, Bookmark
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -18,6 +18,7 @@ import { scholarshipAPI, applicationAPI, profileAPI } from '@/lib/api';
 import { Scholarship, UserProfile, calculateMatchScore, getMatchReasons } from '@/lib/scholarships-data';
 import { Target } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
+import { useSavedScholarships } from '@/hooks/useSavedScholarships';
 
 const ScholarshipDetailsPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -33,6 +34,7 @@ const ScholarshipDetailsPage = () => {
     const [applying, setApplying] = useState(false);
     const [hasApplied, setHasApplied] = useState(false);
     const [showAssistant, setShowAssistant] = useState(false);
+    const { savedScholarships, toggleSave } = useSavedScholarships();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -203,9 +205,19 @@ const ScholarshipDetailsPage = () => {
                                 )}
                             </div>
 
-                            <h1 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                                {isHindi ? scholarship.titleHi : scholarship.title}
-                            </h1>
+                            <div className="flex items-center justify-between gap-4 mb-4">
+                                <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                                    {isHindi ? scholarship.titleHi : scholarship.title}
+                                </h1>
+                                <Button
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={() => toggleSave(scholarship.id)}
+                                    className={`shrink-0 rounded-full h-12 w-12 ${savedScholarships.includes(scholarship.id) ? 'bg-primary/10 text-primary border-primary/30' : 'text-muted-foreground'}`}
+                                >
+                                    <Bookmark className={`h-6 w-6 ${savedScholarships.includes(scholarship.id) ? 'fill-current' : ''}`} />
+                                </Button>
+                            </div>
 
                             <div className="flex items-center gap-2 text-muted-foreground mb-6">
                                 <Building2 className="h-5 w-5" />

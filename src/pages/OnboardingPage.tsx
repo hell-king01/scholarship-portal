@@ -19,6 +19,7 @@ import { profileAPI } from '@/lib/api';
 import { useAuth } from '@/hooks/useAuth';
 import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
+import { OCRFillSection } from '@/components/OCRFillSection';
 
 type UserRole = 'student' | 'mentor' | 'admin';
 
@@ -31,6 +32,35 @@ const OnboardingPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [dataLoading, setDataLoading] = useState(true);
+  const [extractedData, setExtractedData] = useState<Record<string, any>>({});
+
+  const handleExtract = (type: string, data: any) => {
+    setExtractedData(prev => ({ ...prev, [type]: data }));
+
+    const parsed = data.parsed;
+    if (parsed) {
+      const updates: any = {};
+
+      // Personal Details mappings
+      if (parsed.fullName) updates.fullName = parsed.fullName;
+      if (parsed.dateOfBirth) updates.dateOfBirth = parsed.dateOfBirth;
+      if (parsed.gender) updates.gender = parsed.gender;
+      if (parsed.category) updates.category = parsed.category;
+
+      // Financial Details mappings
+      if (parsed.annualIncome) updates.annualIncome = parsed.annualIncome;
+
+      // Education Details mappings
+      if (parsed.percentage) updates.percentage = parsed.percentage;
+      if (parsed.institution) updates.institution = parsed.institution;
+
+      // Update form data merging with existing values
+      setFormData(prev => ({
+        ...prev,
+        ...updates
+      }));
+    }
+  };
 
   // Form Data
   const [formData, setFormData] = useState({
@@ -58,6 +88,8 @@ const OnboardingPage = () => {
     annualIncome: '',
     incomeCategory: 'General',
     parentOccupation: 'other', // Moved to Step 4 (Mandatory)
+    singleGirlChild: 'no',
+    orphanSingleParent: 'no',
   });
 
   // Fetch existing profile on mount
@@ -98,6 +130,8 @@ const OnboardingPage = () => {
             annualIncome: profile.annual_income?.toString() || '',
             incomeCategory: profile.income_category || 'General',
             parentOccupation: profile.parent_occupation || 'other',
+            singleGirlChild: profile.single_girl_child ? 'yes' : 'no',
+            orphanSingleParent: profile.orphan_single_parent ? 'yes' : 'no',
           }));
         } else if (user?.user_metadata?.full_name) {
           setFormData(prev => ({ ...prev, fullName: user.user_metadata.full_name }));
@@ -118,6 +152,10 @@ const OnboardingPage = () => {
 
   const validateStep = (step: number) => {
     if (step === 1) {
+      // Document Upload Step: No strict mandatory frontend validation needed, they can skip if they want, or we can make them upload at least one
+      return null;
+    }
+    if (step === 2) {
       if (!formData.fullName.trim()) return "Full Name is required";
       if (!formData.dateOfBirth) return "Date of Birth is required";
       if (!formData.gender) return "Gender is required";
@@ -125,13 +163,13 @@ const OnboardingPage = () => {
       // minorityStatus has default 'none', hasDisability has default 'no'
       return null;
     }
-    if (step === 2) {
+    if (step === 3) {
       if (!formData.state) return "State is required";
       if (!formData.district) return "District is required";
       // isHosteller has default 'no'
       return null;
     }
-    if (step === 3) {
+    if (step === 4) {
       if (!formData.educationLevel) return "Education Level is required";
       if (!formData.institution.trim()) return "Institution Name is required";
       if (!formData.course.trim()) return "Course Name is required";
@@ -139,7 +177,7 @@ const OnboardingPage = () => {
       // institutionType, courseCategory, degreeType have defaults
       return null;
     }
-    if (step === 4) {
+    if (step === 5) {
       if (!formData.annualIncome) return "Annual Family Income is required";
       if (!formData.parentOccupation) return "Parent's Occupation is required";
       return null;
@@ -179,6 +217,8 @@ const OnboardingPage = () => {
         parentOccupation: formData.parentOccupation,
         minorityStatus: formData.minorityStatus,
         isHosteller: formData.isHosteller === 'yes',
+        singleGirlChild: formData.singleGirlChild === 'yes',
+        orphanSingleParent: formData.orphanSingleParent === 'yes',
       });
 
       toast({
@@ -270,10 +310,11 @@ const OnboardingPage = () => {
   }
 
   const steps = [
-    { id: 1, title: "Personal", icon: User },
-    { id: 2, title: "Location", icon: MapPin },
-    { id: 3, title: "Education", icon: School },
-    { id: 4, title: "Family", icon: IndianRupee },
+    { id: 1, title: "Documents", icon: Sparkles },
+    { id: 2, title: "Personal", icon: User },
+    { id: 3, title: "Location", icon: MapPin },
+    { id: 4, title: "Education", icon: School },
+    { id: 5, title: "Family", icon: IndianRupee },
   ];
 
   return (
@@ -325,10 +366,10 @@ const OnboardingPage = () => {
           {/* Mobile Progress Bar */}
           <div className="sm:hidden mb-4">
             <div className="flex justify-between text-sm mb-2">
-              <span className="font-medium">Step {currentStep} of 4</span>
+              <span className="font-medium">Step {currentStep} of 5</span>
               <span className="text-muted-foreground">{steps[currentStep - 1].title}</span>
             </div>
-            <Progress value={((currentStep) / 4) * 100} className="h-2" />
+            <Progress value={((currentStep) / 5) * 100} className="h-2" />
           </div>
         </div>
 
@@ -340,8 +381,23 @@ const OnboardingPage = () => {
           transition={{ duration: 0.3 }}
         >
           <Card className="p-6 md:p-8 shadow-lg border-primary/10">
-            {/* Step 1: Personal Details */}
+            {/* Step 1: Document Upload */}
             {currentStep === 1 && (
+              <div className="space-y-6">
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-foreground">Smart Document Setup</h2>
+                  <p className="text-muted-foreground">Upload your documents and let our AI auto-fill the form for you!</p>
+                </div>
+
+                <OCRFillSection
+                  onExtract={handleExtract}
+                  extractedData={extractedData}
+                />
+              </div>
+            )}
+
+            {/* Step 2: Personal Details */}
+            {currentStep === 2 && (
               <div className="space-y-6">
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-foreground">Let's get to know you</h2>
@@ -442,8 +498,8 @@ const OnboardingPage = () => {
               </div>
             )}
 
-            {/* Step 2: Location & Residence */}
-            {currentStep === 2 && (
+            {/* Step 3: Location & Residence */}
+            {currentStep === 3 && (
               <div className="space-y-6">
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-foreground">Where do you live?</h2>
@@ -496,8 +552,8 @@ const OnboardingPage = () => {
               </div>
             )}
 
-            {/* Step 3: Detailed Education */}
-            {currentStep === 3 && (
+            {/* Step 4: Detailed Education */}
+            {currentStep === 4 && (
               <div className="space-y-6">
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-foreground">Education Details</h2>
@@ -622,8 +678,8 @@ const OnboardingPage = () => {
               </div>
             )}
 
-            {/* Step 4: Family & Economy */}
-            {currentStep === 4 && (
+            {/* Step 5: Family & Economy */}
+            {currentStep === 5 && (
               <div className="space-y-6">
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-foreground">Family & Financials</h2>
@@ -673,6 +729,41 @@ const OnboardingPage = () => {
                       Many scholarships are specifically reserved for children of farmers, laborers, or government employees. Accurate info here increases your match chances significantly.
                     </p>
                   </div>
+
+                  {formData.gender === 'Female' && (
+                    <div className="space-y-2">
+                      <Label htmlFor="singleGirlChild">Single Girl Child? <span className="text-destructive">*</span></Label>
+                      <Select
+                        value={formData.singleGirlChild}
+                        onValueChange={(value) => updateField('singleGirlChild', value)}
+                      >
+                        <SelectTrigger className="h-12">
+                          <SelectValue placeholder="Select" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="yes">Yes</SelectItem>
+                          <SelectItem value="no">No</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <p className="text-xs text-muted-foreground">Massive specific funding available for single girl child.</p>
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <Label htmlFor="orphanSingleParent">Orphan / Single Parent Status? <span className="text-destructive">*</span></Label>
+                    <Select
+                      value={formData.orphanSingleParent}
+                      onValueChange={(value) => updateField('orphanSingleParent', value)}
+                    >
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Select" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="yes">Yes</SelectItem>
+                        <SelectItem value="no">No</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
               </div>
             )}
@@ -685,7 +776,7 @@ const OnboardingPage = () => {
                 </Button>
               )}
 
-              {currentStep < 4 ? (
+              {currentStep < 5 ? (
                 <Button className="flex-1 h-12" onClick={handleNext} disabled={loading}>
                   {loading ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
                   {loading ? 'Saving...' : 'Next Step'} <ChevronRight className="h-4 w-4 ml-2" />
